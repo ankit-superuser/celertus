@@ -21,19 +21,16 @@ const Navigation = () => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled 
-        ? 'bg-background/80 backdrop-blur-md border-b border-border/50' 
-        : 'bg-transparent'
-    }`}>
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+      ? 'bg-background/80 backdrop-blur-md border-b border-border/50'
+      : 'bg-transparent'
+      }`}>
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-gradient-primary rounded-lg flex items-center justify-center">
-              <Code className="w-5 h-5 text-white" />
-            </div>
-            <span className="text-xl font-bold text-foreground">TechSolutions</span>
+            <img src="/favicon.png" alt="Nurovia Logo" className="w-12 h-12 rounded-lg object-cover" />
+            <span className="text-xl font-bold text-foreground">Nurovia</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -60,7 +57,7 @@ const Navigation = () => {
 
           {/* CTA Button */}
           <div className="hidden md:block">
-            <Button 
+            <Button
               variant="default"
               onClick={() => scrollToSection('contact')}
               className="hover:scale-105 transition-transform"
@@ -100,7 +97,7 @@ const Navigation = () => {
               >
                 Contact
               </button>
-              <Button 
+              <Button
                 variant="default"
                 onClick={() => scrollToSection('contact')}
                 className="mt-2"
