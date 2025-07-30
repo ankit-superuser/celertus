@@ -11,7 +11,10 @@ const services = [
 const AnimatedTrain = () => (
     <div className="w-full overflow-x-hidden py-8 bg-background">
         <div className="relative w-full">
-            <div className="flex gap-8 animate-train whitespace-nowrap" style={{ animation: 'train-scroll 20s linear infinite' }}>
+            <div
+                className="flex gap-8 animate-train whitespace-nowrap"
+                style={{ animation: 'train-scroll 20s linear infinite' }}
+            >
                 {Array(2).fill(services).flat().map((service, idx) => {
                     const Icon = service.icon;
                     return (
@@ -27,12 +30,19 @@ const AnimatedTrain = () => (
             </div>
         </div>
         <style>{`
-      @keyframes train-scroll {
-        0% { transform: translateX(0); }
-        100% { transform: translateX(-50%); }
-      }
-    `}</style>
+          @keyframes train-scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+
+          /* Speed up animation for screens smaller than 768px */
+          @media (max-width: 768px) {
+            .animate-train {
+              animation-duration: 5s !important; /* twice as fast */
+            }
+          }
+        `}</style>
     </div>
 );
 
-export default AnimatedTrain; 
+export default AnimatedTrain;
