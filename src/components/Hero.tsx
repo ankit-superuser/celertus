@@ -29,7 +29,7 @@ const Hero = () => {
                     {/* Badge */}
                     <div className="inline-flex items-center gap-2 bg-card/50 backdrop-blur-sm border border-border/50 rounded-full px-4 py-2 mb-8 animate-scale-in">
                         <Zap className="w-4 h-4 text-primary" />
-                        <span className="text-sm font-medium">Innovative Software Solutions</span>
+                        <span className="text-sm font-medium">Innovative Software Solution</span>
                     </div>
 
                     {/* Main Heading */}
