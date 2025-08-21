@@ -30,7 +30,7 @@ const Navigation = () => {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <img src="/favicon.png" alt="Nurovia Logo" className="w-12 h-12 rounded-lg object-cover" />
-            <span className="text-xl font-bold text-foreground">Nurovia</span>
+            <span className="text-xl font-bold text-foreground">CELERTUS</span>
           </div>
 
           {/* Desktop Navigation */}
