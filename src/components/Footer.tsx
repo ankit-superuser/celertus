@@ -11,7 +11,7 @@ const Footer = () => {
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <img src="/favicon.png" alt="Nurovia Logo" className="w-8 h-8 rounded-lg object-cover" />
-              <span className="text-xl font-bold">Nurovia</span>
+              <span className="text-xl font-bold">CELERTUS</span>
             </div>
             <p className="text-muted-foreground mb-6 max-w-md">
               We create innovative software solutions that transform businesses and drive growth.
@@ -46,7 +46,7 @@ const Footer = () => {
             <div className="space-y-3 text-muted-foreground">
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
-                <span>germanysoon@gmail.com</span>
+                <span>celertustechnologies@gmail.com</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4" />
@@ -63,7 +63,7 @@ const Footer = () => {
         {/* Bottom Bar */}
         <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-muted-foreground text-sm">
-            © {currentYear} Nurovia. All rights reserved.
+            © {currentYear} CELERTUS. All rights reserved.
           </p>
           <div className="flex gap-6 mt-4 md:mt-0 text-sm text-muted-foreground">
             <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
