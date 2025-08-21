@@ -23,10 +23,6 @@ const Index = () => {
         <section id="services" data-aos="fade-up">
           <ProfessionalServices />
         </section>
-        {/* Portfolio Section */}
-        <section id="portfolio" data-aos="fade-up">
-          <Portfolio />
-        </section>
         {/* Contact Section */}
         <section id="contact" data-aos="fade-up">
           <Contact />
@@ -36,5 +32,9 @@ const Index = () => {
     </div>
   );
 };
+//  </section>
+//         {/* Portfolio Section */}
+//         <section id="portfolio" data-aos="fade-up">
+//           <Portfolio />
 
 export default Index;

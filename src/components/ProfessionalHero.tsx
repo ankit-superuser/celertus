@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
-const typingText = "Tech Solutions";
+const typingText = "TECHNOLOGIES";
 
 const ProfessionalHero = () => {
   const [typed, setTyped] = useState("");
@@ -28,7 +28,7 @@ const ProfessionalHero = () => {
     <section className="relative min-h-[80vh] flex flex-col items-center justify-center bg-background py-24 px-4 sm:px-8 md:px-16">
       {/* Company Name */}
       <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 text-center max-w-full whitespace-nowrap mt-8">
-        <span className="text-gradient">Nurovia </span>
+        <span className="text-gradient">CELERTUS </span>
         <span className="text-gradient">{typed}</span>
       </h1>
       {/* Tagline */}
