@@ -1,4 +1,4 @@
-import { Code, Mail, Phone, MapPin, Github, Linkedin, Twitter } from "lucide-react";
+import { Code, Mail, Phone, MapPin, Linkedin, Instagram, Facebook } from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -17,14 +17,26 @@ const Footer = () => {
               We create innovative software solutions that transform businesses and drive growth.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-muted/80 transition-colors">
-                <Github className="w-5 h-5" />
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/celertus.tech?igsh=ZGZnemJ1dnd5OWpx"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-muted/80 transition-colors"
+              >
+                <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-muted/80 transition-colors">
+              <a href="https://www.linkedin.com/company/celertus-technologies/" className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-muted/80 transition-colors">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-muted/80 transition-colors">
-                <Twitter className="w-5 h-5" />
+              {/* Facebook */}
+              <a
+                href="https://www.facebook.com/yourpage"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-muted/80 transition-colors"
+              >
+                <Facebook className="w-5 h-5" />
               </a>
             </div>
           </div>
