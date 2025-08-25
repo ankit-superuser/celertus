@@ -27,9 +27,10 @@ const ProfessionalHero = () => {
   return (
     <section className="relative min-h-[80vh] flex flex-col items-center justify-center bg-background py-24 px-4 sm:px-8 md:px-16">
       {/* Company Name */}
-      <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 text-center max-w-full whitespace-nowrap mt-8">
-        <span className="text-gradient">CELERTUS </span>
-        <span className="text-gradient">{typed}</span>
+      <h1 className="font-bold mb-4 text-center mt-8 leading-tight 
+               text-3xl sm:text-4xl md:text-6xl">
+        <span className="text-gradient block sm:inline">CELERTUS</span>{" "}
+        <span className="text-gradient block sm:inline">{typed}</span>
       </h1>
       {/* Tagline */}
       <p className="text-base sm:text-lg md:text-2xl text-muted-foreground mb-8 text-center max-w-2xl">
