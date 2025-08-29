@@ -9,6 +9,7 @@ import WebDevelopment from "./pages/WebDevelopment";
 import MobileDevelopment from "./pages/MobileDevelopment";
 import BackendSystem from "./pages/BackendSystem";
 import CloudSolutions from "./pages/CloudSolutions";
+import SecurityCompliance from "./pages/SecurityCompliance";
 
 const queryClient = new QueryClient();
 
@@ -23,7 +24,8 @@ const App = () => (
           <Route path="/web-development" element={<WebDevelopment />} />
           <Route path="/mobile-development" element={<MobileDevelopment />} />
           <Route path="/backend-system" element={<BackendSystem />} />
-           <Route path="/cloud-solutions" element={<CloudSolutions />} />
+          <Route path="/cloud-solutions" element={<CloudSolutions />} />
+          <Route path="/security-compliance" element={<SecurityCompliance/>} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
