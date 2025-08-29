@@ -7,6 +7,8 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import WebDevelopment from "./pages/WebDevelopment";
 import MobileDevelopment from "./pages/MobileDevelopment";
+import BackendSystem from "./pages/BackendSystem";
+import CloudSolutions from "./pages/CloudSolutions";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +22,8 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/web-development" element={<WebDevelopment />} />
           <Route path="/mobile-development" element={<MobileDevelopment />} />
+          <Route path="/backend-system" element={<BackendSystem />} />
+           <Route path="/cloud-solutions" element={<CloudSolutions />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
