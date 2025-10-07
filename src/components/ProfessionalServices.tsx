@@ -12,6 +12,7 @@ import {
   Code2
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import ShinyText from "./ShinyText";
 
 const ProfessionalServices = () => {
   const navigate = useNavigate();
@@ -68,7 +69,7 @@ const ProfessionalServices = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-muted/50 rounded-full px-4 py-2 mb-6">
             <Code2 className="w-4 h-4 text-primary" />
-            <span className="text-sm text-muted-foreground">Our Services</span>
+            <ShinyText text="Our Services" speed={3} />
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
