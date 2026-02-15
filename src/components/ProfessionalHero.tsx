@@ -50,7 +50,7 @@ const ProfessionalHero = () => {
       <div className="absolute inset-0 z-[1] bg-gradient-hero pointer-events-none" />
       {/* Content – centered, bolder white text */}
       <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-3xl mx-auto text-center px-6 sm:px-8">
-        <h1 className="font-extrabold mb-4 leading-tight text-white text-3xl sm:text-4xl md:text-6xl whitespace-nowrap">
+        <h1 className="font-extrabold mb-4 leading-tight text-white text-3xl sm:text-4xl md:text-6xl whitespace-normal md:whitespace-nowrap">
           <span className="inline">CELERTUS</span>{" "}
           <span className="inline">{typed}</span>
         </h1>
