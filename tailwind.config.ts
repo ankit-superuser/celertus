@@ -71,7 +71,8 @@ export default {
 			},
 			backgroundImage: {
 				'gradient-primary': 'linear-gradient(135deg, hsl(262 83% 58%), hsl(276 100% 70%))',
-				'gradient-secondary': 'linear-gradient(120deg, hsl(262 90% 60%) 0%, hsl(276 100% 75%) 100%)'
+				'gradient-secondary': 'linear-gradient(120deg, hsl(262 90% 60%) 0%, hsl(276 100% 75%) 100%)',
+				'gradient-hero': 'linear-gradient(180deg, transparent 0%, hsl(var(--background) / 0.25) 60%, hsl(var(--background) / 0.7) 100%)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
