@@ -1,27 +1,44 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Code, Zap, Sparkles, Rocket, Eye } from "lucide-react";
+import { Zap, Sparkles, Rocket, Eye } from "lucide-react";
+import { useState, useEffect } from "react";
 import heroBackground from "@/assets/hero-background.jpg";
+import FloatingLines from "@/components/FloatingLines";
 
 const Hero = () => {
+    const [lineCount, setLineCount] = useState(5);
+    useEffect(() => {
+        const mq = window.matchMedia("(max-width: 768px)");
+        const update = () => setLineCount(mq.matches ? 3 : 5);
+        update();
+        mq.addEventListener("change", update);
+        return () => mq.removeEventListener("change", update);
+    }, []);
+
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
             {/* Hero Background */}
             <div
-                className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+                className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat opacity-20"
                 style={{ backgroundImage: `url(${heroBackground})` }}
             />
 
-            {/* Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-hero" />
-
-            {/* Animated Background Elements */}
-            <div className="absolute inset-0">
-                <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/10 rounded-full blur-3xl animate-float" />
-                <div className="absolute bottom-1/4 right-1/4 w-48 h-48 bg-accent/10 rounded-full blur-2xl animate-float delay-1000" />
-                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary-glow/5 rounded-full blur-3xl animate-glow-pulse" />
-                <div className="absolute top-3/4 left-1/6 w-32 h-32 bg-accent/15 rounded-full blur-xl animate-float delay-500" />
-                <div className="absolute top-1/6 right-1/6 w-40 h-40 bg-primary/8 rounded-full blur-2xl animate-float delay-700" />
+            {/* Floating lines – above gradient so they stay visible */}
+            <div className="absolute inset-0 z-[1] w-full h-full min-h-0">
+                <FloatingLines
+                    enabledWaves={["top", "middle", "bottom"]}
+                    lineCount={lineCount}
+                    lineDistance={5}
+                    bendRadius={5}
+                    bendStrength={-0.5}
+                    interactive={true}
+                    parallax={true}
+                    linesGradient={["#a855f7", "#ec4899", "#6366f1"]}
+                />
             </div>
+
+            {/* Gradient overlay – on top of lines so content stays readable */}
+            <div className="absolute inset-0 z-[2] bg-gradient-hero pointer-events-none" />
+
 
             {/* Content */}
             <div className="relative z-10 container mx-auto px-6 text-center">
