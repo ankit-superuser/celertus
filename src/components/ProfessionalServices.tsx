@@ -11,44 +11,53 @@ import {
   ArrowRight,
   Code2
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const ProfessionalServices = () => {
+  const navigate = useNavigate();
+
   const services = [
     {
       icon: Globe,
       title: "Web Development",
       description: "Modern web applications with React, TypeScript, and scalable architecture.",
-      technologies: ["React", "TypeScript", "Node.js", "PostgreSQL"]
+      technologies: ["React", "TypeScript", "Node.js", "PostgreSQL"],
+      route: "/web-development"
     },
     {
       icon: Smartphone,
       title: "Mobile Development",
       description: "Cross-platform mobile applications for iOS and Android.",
-      technologies: ["React Native", "Flutter", "Expo"]
+      technologies: ["React Native", "Flutter", "Expo"],
+      route: "/mobile-development"
     },
     {
       icon: Database,
       title: "Backend Systems",
       description: "Robust backend systems with microservices and real-time processing.",
-      technologies: ["Node.js", "PostgreSQL", "Redis", "GraphQL"]
+      technologies: ["Node.js", "PostgreSQL", "Redis", "GraphQL"],
+      route: "/backend-system"
     },
     {
       icon: Cloud,
       title: "Cloud Solutions",
       description: "Cloud infrastructure with automated deployments and monitoring.",
-      technologies: ["AWS", "Docker", "Kubernetes", "Terraform"]
+      technologies: ["AWS", "Docker", "Kubernetes", "Terraform"],
+      route: "/cloud-solutions"
     },
     {
       icon: Shield,
       title: "Security & Compliance",
       description: "Enterprise security with advanced threat detection and data protection.",
-      technologies: ["OAuth 2.0", "JWT", "SSL/TLS", "OWASP"]
+      technologies: ["OAuth 2.0", "JWT", "SSL/TLS", "OWASP"],
+      route: "/security-compliance"
     },
     {
       icon: Zap,
       title: "Performance Optimization",
       description: "Optimize applications for speed, scalability, and user experience.",
-      technologies: ["CDN", "Caching", "Load Balancing", "Monitoring"]
+      technologies: ["CDN", "Caching", "Load Balancing", "Monitoring"],
+      route: "/performance-optimization"
     }
   ];
 
@@ -114,6 +123,7 @@ const ProfessionalServices = () => {
                     variant="ghost"
                     size="sm"
                     className="w-full hover:bg-primary/10"
+                    onClick={() => navigate(service.route)}
                   >
                     <span className="text-primary">Learn More</span>
                     <ArrowRight className="w-4 h-4 ml-2" />
