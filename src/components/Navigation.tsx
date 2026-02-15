@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Code, Menu, X } from "lucide-react";
+import ShinyText from "./ShinyText";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -62,7 +63,7 @@ const Navigation = () => {
               onClick={() => scrollToSection('contact')}
               className="hover:scale-105 transition-transform"
             >
-              Get Started
+              <ShinyText text="Get Started" speed={3} className="text-primary-foreground" />
             </Button>
           </div>
 
@@ -102,7 +103,7 @@ const Navigation = () => {
                 onClick={() => scrollToSection('contact')}
                 className="mt-2"
               >
-                Get Started
+                <ShinyText text="Get Started" speed={3} className="text-primary-foreground" />
               </Button>
             </div>
           </div>
