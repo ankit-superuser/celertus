@@ -13,6 +13,7 @@ import {
   MessageSquare,
   CheckCircle
 } from "lucide-react";
+import ShinyText from "./ShinyText";
 
 const typingText = "Amazing Together...";
 
@@ -117,7 +118,7 @@ const Contact = () => {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2 mb-6">
             <MessageSquare className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-primary">Get In Touch</span>
+            <ShinyText text="Get In Touch" speed={3} className="text-sm font-medium text-primary" />
           </div>
 
           {/* Responsive Title */}
