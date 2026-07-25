@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import ShinyText from "./ShinyText";
+import Reveal from "@/components/Reveal";
 
 const ProfessionalServices = () => {
   const navigate = useNavigate();
@@ -66,30 +67,31 @@ const ProfessionalServices = () => {
     <section id="services" className="py-20 bg-background px-4 sm:px-8 md:px-16">
       <div className="container mx-auto">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <Reveal variant="pop" className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-muted/50 rounded-full px-4 py-2 mb-6">
             <Code2 className="w-4 h-4 text-primary" />
             <ShinyText text="Our Services" speed={3} />
           </div>
 
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            <span className="text-gradient">Professional Services</span>
+            <span className="text-gradient-animated">Professional Services</span>
           </h2>
 
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Comprehensive technology solutions designed for modern businesses.
           </p>
-        </div>
+        </Reveal>
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
-              <Card key={index} className="group hover:shadow-lg transition-shadow duration-300 w-full max-w-md mx-auto">
+              <Reveal key={index} variant="flip-up" delay={((index % 3) + Math.floor(index / 3)) * 90} className="h-full">
+                <Card className="group cs-card-3d sheen hover:shadow-lg w-full max-w-md mx-auto h-full">
                 <CardHeader>
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="p-3 rounded-lg bg-primary/10">
+                    <div className="p-3 rounded-lg bg-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20">
                       <Icon className="w-6 h-6 text-primary" />
                     </div>
                     <CardTitle className="text-lg font-semibold">
@@ -130,15 +132,16 @@ const ProfessionalServices = () => {
                     <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </CardContent>
-              </Card>
+                </Card>
+              </Reveal>
             );
           })}
         </div>
 
         {/* CTA Section */}
-        <div className="text-center bg-muted/30 rounded-2xl p-8">
+        <Reveal variant="spring-up" className="text-center bg-muted/30 rounded-2xl p-8">
           <div className="flex justify-center mb-4">
-            <div className="p-3 rounded-xl bg-primary/10">
+            <div className="p-3 rounded-xl bg-primary/10 animate-float-slow">
               <Zap className="w-8 h-8 text-primary" />
             </div>
           </div>
@@ -154,7 +157,7 @@ const ProfessionalServices = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-4"
+              className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-4 cs-magnetic"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <Zap className="w-5 h-5 mr-2" />
@@ -162,7 +165,7 @@ const ProfessionalServices = () => {
               <ArrowRight className="w-5 h-5 ml-2" />
             </Button>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

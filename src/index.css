@@ -106,4 +106,234 @@ All colors MUST be HSL.
     background-clip: text;
     color: transparent;
   }
+
+  /* Flowing animated variant of the gradient text (opt-in). */
+  .text-gradient-animated {
+    background: linear-gradient(90deg, #6a5af9, #d66efd, #a855f7, #6a5af9);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    animation: cs-gradient-flow 8s ease infinite;
+  }
+}
+
+/* ───────────────────────────────────────────────────────────────
+   Scroll-reveal engine — used via <Reveal> and the useReveal hook.
+   Elements start hidden/offset and settle when [data-shown="true"].
+   ─────────────────────────────────────────────────────────────── */
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transition-property: opacity, transform, filter;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .reveal[data-reveal="up"] { transform: translateY(34px); }
+  .reveal[data-reveal="down"] { transform: translateY(-34px); }
+  .reveal[data-reveal="left"] { transform: translateX(-44px); }
+  .reveal[data-reveal="right"] { transform: translateX(44px); }
+  .reveal[data-reveal="scale"] { transform: scale(0.9); }
+  .reveal[data-reveal="blur"] { filter: blur(14px); }
+  .reveal[data-reveal="fade"] { transform: none; }
+
+  .reveal[data-shown="true"] {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  /* Reusable continuous motion utilities */
+  .animate-float-slow { animation: cs-float-slow 7s ease-in-out infinite; }
+  .hover-lift { transition: transform .3s cubic-bezier(0.22,1,0.36,1), box-shadow .3s ease; }
+  .hover-lift:hover { transform: translateY(-6px); }
+}
+
+@keyframes cs-gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes cs-float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Users who prefer reduced motion get instant, static content everywhere. */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  .text-gradient-animated,
+  .animate-float-slow {
+    animation: none !important;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════
+   KINETIC SPRING motion system
+   Distinct, GPU-only (transform/opacity/filter) entrances so no two
+   sections animate alike, unified by ONE overshoot easing token.
+   Grafts: specular sheen, hero underline-draw, drifting aurora glow,
+   scroll-linked parallax. Every new variant reuses the .reveal engine.
+   ─────────────────────────────────────────────────────────────────── */
+:root {
+  --cs-spring: cubic-bezier(0.34, 1.56, 0.64, 1);      /* punchy overshoot */
+  --cs-spring-soft: cubic-bezier(0.22, 1.2, 0.36, 1);  /* gentle overshoot */
+}
+
+@layer utilities {
+  /* ── New reveal variants — inherit .reveal's opacity:0 + settle-on-shown;
+        we only swap the start transform + force the spring easing. ── */
+  .reveal[data-reveal="spring-up"]    { transform: translateY(48px) scale(.96); transition-timing-function: var(--cs-spring); }
+  .reveal[data-reveal="spring-left"]  { transform: translateX(-56px);           transition-timing-function: var(--cs-spring); }
+  .reveal[data-reveal="spring-right"] { transform: translateX(56px);            transition-timing-function: var(--cs-spring); }
+  .reveal[data-reveal="pop"]          { transform: scale(.7);                   transition-timing-function: var(--cs-spring); }
+  /* 3D flip — perspective baked in so no parent preserve-3d is required. */
+  .reveal[data-reveal="flip-up"] {
+    transform: perspective(900px) rotateX(26deg) translateY(40px);
+    transform-origin: 50% 100%;
+    transition-timing-function: var(--cs-spring);
+    backface-visibility: hidden;
+  }
+  /* Explicit shown state (double-attr wins over the generic reset) so the
+     3D interpolation stays smooth (matching function lists). */
+  .reveal[data-reveal="flip-up"][data-shown="true"] {
+    transform: perspective(900px) rotateX(0deg) translateY(0);
+  }
+
+  /* ── Magnetic springy hover for buttons (transform only). ── */
+  .cs-magnetic { transition: transform .35s var(--cs-spring); will-change: transform; }
+  .cs-magnetic:hover  { transform: translateY(-4px) scale(1.06); }
+  .cs-magnetic:active { transform: translateY(-1px) scale(1.02); }
+
+  /* ── Springy 3D tilt hover for the service cards. ── */
+  .cs-card-3d { transition: transform .4s var(--cs-spring), box-shadow .4s ease; will-change: transform; }
+  .cs-card-3d:hover { transform: perspective(900px) translateY(-8px) rotateX(6deg) scale(1.03); }
+
+  /* ── Hero headline: per-letter spring pop (children of a shown reveal). ── */
+  .cs-letter { display: inline-block; opacity: 0; will-change: transform, opacity; }
+  [data-shown="true"] .cs-letter { animation: cs-letter-pop .62s var(--cs-spring) both; }
+
+  /* ── Train chips: bounce-drop stagger; hover glow via filter so it never
+        fights the entrance transform fill. ── */
+  .cs-chip { opacity: 0; transition: filter .3s ease; will-change: transform, opacity; }
+  [data-shown="true"] .cs-chip { animation: cs-chip-drop .7s var(--cs-spring) both; }
+  .cs-chip:hover { filter: brightness(1.12) drop-shadow(0 10px 26px rgba(168, 85, 247, .4)); }
+
+  /* ── Specular sheen glint that re-catches the light on hover (Unveil graft).
+        Pure translateX on a pseudo-element → GPU-friendly, no layout. ── */
+  .sheen { position: relative; overflow: hidden; isolation: isolate; }
+  .sheen::after {
+    content: ""; position: absolute; inset: -2px; z-index: 3; pointer-events: none;
+    background: linear-gradient(115deg,
+      transparent 32%,
+      hsl(276 100% 82% / .16) 46%,
+      hsl(0 0% 100% / .42) 50%,
+      hsl(276 100% 82% / .16) 54%,
+      transparent 68%);
+    transform: translateX(-150%);
+  }
+  .sheen:hover::after { animation: cs-sheen .9s ease 1; }
+
+  /* ── Train: a slow soft light band drifting across the whole strip. ── */
+  .train-sheen { position: relative; }
+  .train-sheen::before {
+    content: ""; position: absolute; inset: 0; z-index: 4; pointer-events: none;
+    background: linear-gradient(100deg, transparent 42%, hsl(0 0% 100% / .07) 50%, transparent 58%);
+    transform: translateX(-100%);
+    animation: cs-band 6.5s linear infinite;
+  }
+
+  /* ── Hero: a glowing gradient underline that draws itself in. ── */
+  .underline-draw { position: relative; }
+  .underline-draw::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: -.18em; height: 2px;
+    background: linear-gradient(90deg, #6a5af9, #d66efd, #ec4899);
+    transform: scaleX(0); transform-origin: left center;
+    filter: drop-shadow(0 0 6px hsl(276 100% 70% / .75));
+    animation: cs-underline 1s cubic-bezier(.22, 1, .36, 1) 1.15s forwards;
+  }
+
+  /* ── Aurora gradient-mesh glow drifting behind the true-black. Blur is
+        applied ONCE (static); only the composited transform animates. ── */
+  .cs-aurora {
+    position: absolute; inset: -20%; z-index: 0; pointer-events: none;
+    filter: blur(60px) saturate(140%); opacity: .5;
+  }
+  .cs-aurora::before, .cs-aurora::after {
+    content: ""; position: absolute; inset: 0; will-change: transform;
+    background:
+      radial-gradient(38% 42% at 25% 30%, #6a5af9aa, transparent 60%),
+      radial-gradient(34% 40% at 78% 35%, #a855f7aa, transparent 60%),
+      radial-gradient(40% 44% at 55% 78%, #ec489988, transparent 62%);
+    animation: cs-aurora-drift 24s ease-in-out infinite;
+  }
+  .cs-aurora::after {
+    background:
+      radial-gradient(36% 40% at 70% 22%, #d66efd99, transparent 60%),
+      radial-gradient(42% 46% at 20% 70%, #6366f199, transparent 62%);
+    animation-duration: 32s; animation-direction: reverse; opacity: .85;
+  }
+
+  /* ── Scroll-linked parallax drift — progressive enhancement, fully gated
+        behind @supports so it degrades to static everywhere it's unsupported. ── */
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .cs-parallax {
+        animation: cs-parallax-y linear both;
+        animation-timeline: view();
+        animation-range: entry 0% cover 80%;
+      }
+    }
+  }
+}
+
+@keyframes cs-letter-pop {
+  0%   { opacity: 0; transform: translateY(0.7em) rotate(8deg) scale(.6); }
+  60%  { opacity: 1; transform: translateY(-0.12em) rotate(-2deg) scale(1.08); }
+  100% { opacity: 1; transform: translateY(0) rotate(0deg) scale(1); }
+}
+@keyframes cs-chip-drop {
+  0%   { opacity: 0; transform: translateY(-90px) scale(.85); }
+  55%  { opacity: 1; transform: translateY(10px) scale(1.04); }
+  75%  {             transform: translateY(-4px) scale(.99); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes cs-sheen { from { transform: translateX(-150%); } to { transform: translateX(150%); } }
+@keyframes cs-band  { to { transform: translateX(100%); } }
+@keyframes cs-underline { to { transform: scaleX(1); } }
+@keyframes cs-aurora-drift {
+  0%   { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+  33%  { transform: translate3d(4%, -3%, 0) scale(1.12) rotate(4deg); }
+  66%  { transform: translate3d(-3%, 2%, 0) scale(1.05) rotate(-3deg); }
+  100% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
+}
+/* Referenced from ProjectShowcase's scoped <style> (keyframes are global). */
+@keyframes cs-phone-punch {
+  0%   { opacity: 0; transform: scale(.72) rotateY(-16deg); }
+  60%  { opacity: 1; transform: scale(1.05) rotateY(6deg); }
+  100% { opacity: 1; transform: scale(1) rotateY(0deg); }
+}
+@keyframes cs-card-spring {
+  0%   { opacity: 0; transform: translateX(40px) scale(.9); }
+  60%  { opacity: 1; transform: translateX(-6px) scale(1.02); }
+  100% { opacity: 1; transform: translateX(0) scale(1); }
+}
+@keyframes cs-parallax-y { from { transform: translateY(30px); } to { transform: translateY(-22px); } }
+
+/* Reduced-motion: neutralize every NEW continuous / keyframe motion.
+   (The original reduced-motion block already forces all .reveal variants
+   to transform:none/opacity:1, so the new entrances are covered too.) */
+@media (prefers-reduced-motion: reduce) {
+  .cs-aurora::before, .cs-aurora::after { animation: none !important; }
+  .cs-letter, .cs-chip { opacity: 1 !important; transform: none !important; animation: none !important; }
+  .cs-magnetic, .cs-card-3d { transition: none !important; }
+  .cs-magnetic:hover, .cs-card-3d:hover, .cs-chip:hover { transform: none !important; filter: none !important; }
+  .sheen::after, .train-sheen::before { animation: none !important; display: none !important; }
+  .underline-draw::after { animation: none !important; transform: scaleX(1) !important; }
+  .cs-parallax { animation: none !important; transform: none !important; }
 }

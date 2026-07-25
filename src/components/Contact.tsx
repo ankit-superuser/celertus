@@ -14,6 +14,7 @@ import {
   CheckCircle
 } from "lucide-react";
 import ShinyText from "./ShinyText";
+import Reveal from "@/components/Reveal";
 
 const typingText = "Amazing Together...";
 
@@ -115,7 +116,7 @@ const Contact = () => {
     <section id="contact" className="py-20 bg-muted/20 px-4 sm:px-8 md:px-16">
       <div className="container mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
+        <Reveal variant="up" className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2 mb-6">
             <MessageSquare className="w-4 h-4 text-primary" />
             <ShinyText text="Get In Touch" speed={3} className="text-sm font-medium text-primary" />
@@ -135,56 +136,62 @@ const Contact = () => {
             Ready to transform your ideas into reality? Get in touch with our team of experts
             and let's discuss your next project.
           </p>
-        </div>
+        </Reveal>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-5xl mx-auto w-full">
           {/* Contact Info Cards */}
           <div className="space-y-4">
-            <Card>
-              <CardContent className="p-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <Mail className="w-5 h-5 text-primary" />
+            <Reveal variant="left" delay={0}>
+              <Card className="hover-lift hover:shadow-lg hover:border-primary/40 group">
+                <CardContent className="p-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                      <Mail className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-1">Email Us</h3>
+                      <p className="text-muted-foreground text-sm">celertustechnologies@gmail.com</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Email Us</h3>
-                    <p className="text-muted-foreground text-sm">celertustechnologies@gmail.com</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </Reveal>
 
-            <Card>
-              <CardContent className="p-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <Phone className="w-5 h-5 text-primary" />
+            <Reveal variant="left" delay={90}>
+              <Card className="hover-lift hover:shadow-lg hover:border-primary/40 group">
+                <CardContent className="p-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                      <Phone className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-1">Call Us</h3>
+                      <p className="text-muted-foreground text-sm">+91-8076036432</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Call Us</h3>
-                    <p className="text-muted-foreground text-sm">+91-8076036432</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </Reveal>
 
-            <Card>
-              <CardContent className="p-4">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center">
-                    <MapPin className="w-5 h-5 text-primary" />
+            <Reveal variant="left" delay={180}>
+              <Card className="hover-lift hover:shadow-lg hover:border-primary/40 group">
+                <CardContent className="p-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                      <MapPin className="w-5 h-5 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold mb-1">Visit Us</h3>
+                      <p className="text-muted-foreground text-sm">123 Tech Street, Suite 100<br />New Delhi 110043</p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-semibold mb-1">Visit Us</h3>
-                    <p className="text-muted-foreground text-sm">123 Tech Street, Suite 100<br />New Delhi 110043</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            </Reveal>
           </div>
 
           {/* Contact Form */}
-          <div className="lg:col-span-2 w-full">
+          <Reveal variant="right" className="lg:col-span-2 w-full">
             <Card>
               <CardHeader>
                 <CardTitle className="text-xl font-bold flex items-center gap-2">
@@ -287,7 +294,7 @@ const Contact = () => {
                 </form>
               </CardContent>
             </Card>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
