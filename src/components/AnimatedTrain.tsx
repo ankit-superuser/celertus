@@ -1,4 +1,5 @@
 import { Brain, Shield, Cloud, Code, Monitor } from "lucide-react";
+import Reveal from "@/components/Reveal";
 
 const services = [
     { icon: Brain, label: "AI Solutions" },
@@ -10,7 +11,7 @@ const services = [
 
 const AnimatedTrain = () => (
     <div className="w-full overflow-x-hidden py-8 bg-background">
-        <div className="relative w-full">
+        <Reveal variant="spring-up" className="relative w-full train-sheen">
             <div
                 className="flex gap-8 animate-train whitespace-nowrap"
                 style={{ animation: 'train-scroll 20s linear infinite' }}
@@ -20,7 +21,8 @@ const AnimatedTrain = () => (
                     return (
                         <div
                             key={idx}
-                            className="inline-flex flex-col items-center justify-center bg-muted/10 border border-primary/20 rounded-xl px-8 py-6 mx-2 min-w-[200px] shadow-md hover:scale-105 transition-transform duration-200"
+                            style={{ animationDelay: `${(idx % services.length) * 80}ms` }}
+                            className="cs-chip inline-flex flex-col items-center justify-center bg-muted/10 border border-primary/20 rounded-xl px-8 py-6 mx-2 min-w-[200px] shadow-md"
                         >
                             <Icon className="w-8 h-8 text-primary mb-2" />
                             <span className="text-foreground font-semibold text-lg">{service.label}</span>
@@ -28,7 +30,7 @@ const AnimatedTrain = () => (
                     );
                 })}
             </div>
-        </div>
+        </Reveal>
         <style>{`
           @keyframes train-scroll {
             0% { transform: translateX(0); }

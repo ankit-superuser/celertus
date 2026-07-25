@@ -1,4 +1,5 @@
 import { Code, Mail, Phone, MapPin, Linkedin, Instagram, Facebook } from "lucide-react";
+import Reveal from "@/components/Reveal";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -8,7 +9,7 @@ const Footer = () => {
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
-          <div className="md:col-span-2">
+          <Reveal variant="up" delay={0} className="md:col-span-2">
             <div className="flex items-center gap-2 mb-4">
               <img src="/favicon.png" alt="Nurovia Logo" className="w-8 h-8 rounded-lg object-cover" />
               <span className="text-xl font-bold">CELERTUS</span>
@@ -22,11 +23,11 @@ const Footer = () => {
                 href="https://www.instagram.com/celertus.tech?igsh=ZGZnemJ1dnd5OWpx"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-muted/80 transition-colors"
+                className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:scale-110 hover:-translate-y-0.5 transition-all duration-300"
               >
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="https://www.linkedin.com/company/celertus-technologies/" className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-muted/80 transition-colors">
+              <a href="https://www.linkedin.com/company/celertus-technologies/" className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:scale-110 hover:-translate-y-0.5 transition-all duration-300">
                 <Linkedin className="w-5 h-5" />
               </a>
               {/* Facebook */}
@@ -34,15 +35,15 @@ const Footer = () => {
                 href="https://www.facebook.com/yourpage"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-muted/80 transition-colors"
+                className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center hover:bg-primary hover:text-primary-foreground hover:scale-110 hover:-translate-y-0.5 transition-all duration-300"
               >
                 <Facebook className="w-5 h-5" />
               </a>
             </div>
-          </div>
+          </Reveal>
 
           {/* Services */}
-          <div>
+          <Reveal variant="up" delay={100}>
             <h3 className="font-semibold mb-4">Services</h3>
             <ul className="space-y-2 text-muted-foreground">
               <li><a href="#" className="hover:text-foreground transition-colors">Website Development</a></li>
@@ -50,10 +51,10 @@ const Footer = () => {
               <li><a href="#" className="hover:text-foreground transition-colors">Mobile Apps</a></li>
               <li><a href="#" className="hover:text-foreground transition-colors">Cloud Solutions</a></li>
             </ul>
-          </div>
+          </Reveal>
 
           {/* Contact Info */}
-          <div>
+          <Reveal variant="up" delay={200}>
             <h3 className="font-semibold mb-4">Contact Info</h3>
             <div className="space-y-3 text-muted-foreground">
               <div className="flex items-center gap-2">
@@ -69,11 +70,11 @@ const Footer = () => {
                 <span>123 Tech Street, Suite 100<br />New Delhi 110043</span>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <Reveal variant="fade" className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-muted-foreground text-sm">
             © {currentYear} CELERTUS. All rights reserved.
           </p>
@@ -81,7 +82,7 @@ const Footer = () => {
             <a href="#" className="hover:text-foreground transition-colors">Privacy Policy</a>
             <a href="#" className="hover:text-foreground transition-colors">Terms of Service</a>
           </div>
-        </div>
+        </Reveal>
       </div>
     </footer>
   );

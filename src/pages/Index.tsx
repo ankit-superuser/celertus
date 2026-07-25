@@ -4,7 +4,8 @@ import ProfessionalServices from "@/components/ProfessionalServices";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import AnimatedTrain from "@/components/AnimatedTrain";
-import Portfolio from "@/components/Portfolio";
+import ProjectShowcase from "@/components/ProjectShowcase";
+import BackToTop from "@/components/BackToTop";
 
 const Index = () => {
   return (
@@ -23,18 +24,19 @@ const Index = () => {
         <section id="services" data-aos="fade-up">
           <ProfessionalServices />
         </section>
+        {/* Work / Projects Showcase Section */}
+        <section id="work" data-aos="fade-up">
+          <ProjectShowcase />
+        </section>
         {/* Contact Section */}
         <section id="contact" data-aos="fade-up">
           <Contact />
         </section>
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 };
-//  </section>
-//         {/* Portfolio Section */}
-//         <section id="portfolio" data-aos="fade-up">
-//           <Portfolio />
 
 export default Index;
