@@ -1,20 +1,21 @@
 {
-    "short_name": "Celertus",
-    "name": "Celertus Technologies",
-    "icons": [
-        {
-            "src": "/logo192.png",
-            "type": "image/png",
-            "sizes": "192x192"
-        },
-        {
-            "src": "/logo512.png",
-            "type": "image/png",
-            "sizes": "512x512"
-        }
-    ],
-    "start_url": ".",
-    "display": "standalone",
-    "theme_color": "#000000",
-    "background_color": "#ffffff"
+  "short_name": "Celertus.ai",
+  "name": "Celertus.ai - Premier AI & Custom Software Engineering Studio",
+  "description": "Building swift, scalable, and sophisticated AI & custom software solutions.",
+  "icons": [
+    {
+      "src": "/logo192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/favicon.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#0F172A",
+  "background_color": "#0F172A"
 }

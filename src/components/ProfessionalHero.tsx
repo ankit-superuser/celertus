@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import LiquidEther from "./LiquidEther";
 import { ArrowRight } from "lucide-react";
 import FloatingLines from "@/components/FloatingLines";
 
-const typingText = "TECHNOLOGIES";
+const typingText = "ENGINEERING";
 
 const ProfessionalHero = () => {
   const [typed, setTyped] = useState("");
@@ -32,8 +31,8 @@ const ProfessionalHero = () => {
   }, []);
 
   return (
-    <section className="relative min-h-[80vh] flex flex-col items-center justify-center overflow-hidden py-24 px-4 sm:px-8 md:px-16">
-      {/* Floating lines background – dimmed so text stays readable */}
+    <section className="relative min-h-[85vh] flex flex-col items-center justify-center overflow-hidden py-24 px-4 sm:px-8 md:px-16">
+      {/* Floating lines background */}
       <div className="absolute inset-0 z-0 w-full h-full min-h-0 opacity-50">
         <FloatingLines
           enabledWaves={["top", "middle", "bottom"]}
@@ -48,23 +47,42 @@ const ProfessionalHero = () => {
       </div>
       {/* Gradient overlay */}
       <div className="absolute inset-0 z-[1] bg-gradient-hero pointer-events-none" />
-      {/* Content – centered, bolder white text */}
-      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-3xl mx-auto text-center px-6 sm:px-8">
-        <h1 className="font-extrabold mb-4 leading-tight text-white text-3xl sm:text-4xl md:text-6xl whitespace-normal md:whitespace-nowrap">
-          <span className="inline">CELERTUS</span>{" "}
-          <span className="inline">{typed}</span>
+
+      {/* Hero Content */}
+      <div className="relative z-10 flex flex-col items-center justify-center w-full max-w-4xl mx-auto text-center px-6 sm:px-8">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/30 text-xs font-semibold text-primary mb-6 shadow-sm">
+          <span>Enterprise AI & Digital Transformation Studio</span>
+        </div>
+
+        <h1 className="font-extrabold mb-6 leading-tight text-white text-3xl sm:text-5xl md:text-6xl tracking-tight">
+          CELERTUS<span className="text-primary">.AI</span> SOFTWARE <br className="hidden sm:inline" />
+          <span className="bg-gradient-to-r from-primary via-purple-400 to-pink-400 bg-clip-text text-transparent">
+            {typed}
+          </span>
         </h1>
-        <p className="text-base sm:text-lg md:text-2xl text-white font-bold mb-8 max-w-2xl mx-auto">
-          Empowering your business with AI, Cybersecurity, Cloud, and Web Solutions.
+
+        <p className="text-base sm:text-lg md:text-xl text-muted-foreground font-medium mb-8 max-w-2xl mx-auto leading-relaxed">
+          Building swift, scalable, and sophisticated AI systems, cloud infrastructure, enterprise mobile applications, and modern web platforms.
         </p>
-        <Button
-          size="lg"
-          className="bg-primary hover:bg-primary/90 text-white font-bold px-8 py-4 w-full max-w-xs sm:max-w-sm md:max-w-md mx-auto"
-          onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-        >
-          Let's Collaborate
-          <ArrowRight className="w-5 h-5 ml-2" />
-        </Button>
+
+        <div className="flex flex-col sm:flex-row gap-4 justify-center w-full max-w-md mx-auto">
+          <Button
+            size="lg"
+            className="bg-primary hover:bg-primary/90 text-white font-bold px-8 py-4 w-full shadow-tech hover:scale-105 transition-all"
+            onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
+          >
+            Let's Collaborate
+            <ArrowRight className="w-5 h-5 ml-2" />
+          </Button>
+          <Button
+            variant="outline"
+            size="lg"
+            className="border-border hover:bg-card hover:text-primary font-semibold px-8 py-4 w-full transition-all"
+            onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
+          >
+            Explore Services
+          </Button>
+        </div>
       </div>
     </section>
   );
