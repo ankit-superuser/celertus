@@ -113,22 +113,22 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="w-full py-20 sm:py-24 lg:py-28 bg-background px-4 sm:px-8 md:px-12 relative border-b border-white/10">
+    <section id="contact" className="w-full py-16 sm:py-20 lg:py-24 bg-background px-4 sm:px-8 md:px-12 relative overflow-hidden">
       <div className="container mx-auto">
         {/* Split-Screen Header & Contact Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
           {/* Left Split: Details & Direct Contact */}
           <div className="lg:col-span-5 flex flex-col items-start text-left font-mono">
-            <Reveal variant="left" className="w-full">
+            <Reveal variant="up" className="w-full">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/30 backdrop-blur-xl text-xs text-primary uppercase tracking-wider mb-4 rounded-full shadow-lg shadow-primary/10">
                 <MessageSquare className="w-4 h-4 text-primary" />
                 <span>[04 // INITIATE DISCOVERY]</span>
               </div>
 
-              <h2 className="font-display font-bold text-3xl sm:text-5xl lg:text-6xl tracking-wide text-foreground mb-4">
+              <h2 className="font-display font-bold text-3xl sm:text-5xl lg:text-6xl tracking-wide text-foreground mb-4 leading-tight">
                 LET'S BUILD <br />
-                <span className="text-gradient-animated">{typed}</span>
+                <span className="text-gradient-animated inline-block min-h-[1.25em]">{typed}</span>
               </h2>
 
               <p className="text-sm sm:text-base text-muted-foreground leading-[1.7] max-w-[70ch] mb-8">
@@ -138,30 +138,30 @@ const Contact = () => {
               {/* Direct Info Cards */}
               <div className="space-y-4 w-full">
                 <div className="border border-white/10 hover:border-primary/50 bg-card/60 backdrop-blur-xl p-5 rounded-2xl shadow-xl transition-all flex items-center gap-4">
-                  <div className="p-3 bg-primary/10 border border-primary/30 rounded-xl text-primary">
+                  <div className="p-3 bg-primary/10 border border-primary/30 rounded-xl text-primary shrink-0">
                     <Mail className="w-5 h-5 text-primary" />
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <h3 className="font-display font-bold text-sm text-foreground uppercase tracking-wider">Email Us</h3>
-                    <p className="text-muted-foreground text-xs font-mono mt-0.5">celertustechnologies@gmail.com</p>
+                    <p className="text-muted-foreground text-xs font-mono mt-0.5 truncate">celertustechnologies@gmail.com</p>
                   </div>
                 </div>
 
                 <div className="border border-white/10 hover:border-primary/50 bg-card/60 backdrop-blur-xl p-5 rounded-2xl shadow-xl transition-all flex items-center gap-4">
-                  <div className="p-3 bg-primary/10 border border-primary/30 rounded-xl text-primary">
+                  <div className="p-3 bg-primary/10 border border-primary/30 rounded-xl text-primary shrink-0">
                     <Phone className="w-5 h-5 text-primary" />
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <h3 className="font-display font-bold text-sm text-foreground uppercase tracking-wider">Direct Line</h3>
                     <p className="text-muted-foreground text-xs font-mono mt-0.5">+91-8076036432</p>
                   </div>
                 </div>
 
                 <div className="border border-white/10 hover:border-primary/50 bg-card/60 backdrop-blur-xl p-5 rounded-2xl shadow-xl transition-all flex items-center gap-4">
-                  <div className="p-3 bg-primary/10 border border-primary/30 rounded-xl text-primary">
+                  <div className="p-3 bg-primary/10 border border-primary/30 rounded-xl text-primary shrink-0">
                     <MapPin className="w-5 h-5 text-primary" />
                   </div>
-                  <div>
+                  <div className="min-w-0 flex-1">
                     <h3 className="font-display font-bold text-sm text-foreground uppercase tracking-wider">Headquarters</h3>
                     <p className="text-muted-foreground text-xs font-mono mt-0.5">New Delhi 110043, India</p>
                   </div>
@@ -177,7 +177,7 @@ const Contact = () => {
           </div>
 
           {/* Right Split: High-Contrast Glass Form */}
-          <Reveal variant="right" className="lg:col-span-7 w-full font-mono">
+          <Reveal variant="up" delay={100} className="lg:col-span-7 w-full font-mono">
             <Card className="border border-white/10 bg-card/70 backdrop-blur-2xl rounded-3xl shadow-2xl p-6 sm:p-8">
               <CardHeader className="p-0 mb-6 pb-4 border-b border-white/10">
                 <CardTitle className="font-display text-xl font-bold uppercase tracking-wider flex items-center gap-2.5 text-foreground">
