@@ -125,12 +125,12 @@ const ProfessionalHero = () => {
 
         {/* Right Column: Soft Glass Split Diagnostics Card */}
         <div className="lg:col-span-5 w-full">
-          <div className="border border-white/10 bg-card/60 backdrop-blur-2xl p-6 sm:p-8 rounded-3xl shadow-2xl shadow-primary/10 relative">
+          <div className="border border-white/10 bg-card/70 backdrop-blur-2xl p-7 sm:p-9 rounded-3xl shadow-2xl shadow-primary/15 relative overflow-hidden">
             {/* Header bar */}
             <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
-              <div className="flex items-center gap-2 font-mono text-xs font-semibold text-primary uppercase tracking-wider">
-                <Terminal className="w-4 h-4 text-primary" />
-                <span>SYS_DIAGNOSTICS // V2.6</span>
+              <div className="flex items-center gap-2 font-mono text-xs font-semibold text-primary uppercase tracking-wider overflow-hidden text-ellipsis">
+                <Terminal className="w-4 h-4 text-primary shrink-0" />
+                <span className="truncate">SYS_DIAGNOSTICS // V2.6</span>
               </div>
               <div className="flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 rounded-full">
                 <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
