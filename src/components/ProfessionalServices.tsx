@@ -64,11 +64,11 @@ const ProfessionalServices = () => {
   ];
 
   return (
-    <section id="services" className="py-20 bg-background px-4 sm:px-8 md:px-16">
+    <section id="services" className="py-20 bg-background px-4 sm:px-8 md:px-16 relative overflow-hidden">
       <div className="container mx-auto">
         {/* Section Header */}
         <Reveal variant="pop" className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-muted/50 rounded-full px-4 py-2 mb-6">
+          <div className="inline-flex items-center gap-2 bg-muted/50 rounded-full px-4 py-2 mb-6 border border-primary/20 backdrop-blur-md">
             <Code2 className="w-4 h-4 text-primary" />
             <ShinyText text="Our Services" speed={3} />
           </div>
@@ -88,50 +88,50 @@ const ProfessionalServices = () => {
             const Icon = service.icon;
             return (
               <Reveal key={index} variant="flip-up" delay={((index % 3) + Math.floor(index / 3)) * 90} className="h-full">
-                <Card className="group cs-card-3d sheen hover:shadow-lg w-full max-w-md mx-auto h-full">
-                <CardHeader>
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="p-3 rounded-lg bg-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary/20">
-                      <Icon className="w-6 h-6 text-primary" />
+                <Card className="group cs-card-3d sheen hover:shadow-2xl border-border/60 hover:border-primary/50 w-full max-w-md mx-auto h-full flex flex-col justify-between transition-all duration-300">
+                  <CardHeader>
+                    <div className="flex items-center gap-4 mb-4">
+                      <div className="p-3.5 rounded-xl bg-primary/10 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-white group-hover:rotate-3 shadow-md">
+                        <Icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
+                      </div>
+                      <CardTitle className="text-lg font-semibold group-hover:text-primary transition-colors">
+                        {service.title}
+                      </CardTitle>
                     </div>
-                    <CardTitle className="text-lg font-semibold">
-                      {service.title}
-                    </CardTitle>
-                  </div>
 
-                  <CardDescription className="text-muted-foreground">
-                    {service.description}
-                  </CardDescription>
-                </CardHeader>
+                    <CardDescription className="text-muted-foreground leading-relaxed">
+                      {service.description}
+                    </CardDescription>
+                  </CardHeader>
 
-                <CardContent>
-                  {/* Technologies */}
-                  <div className="mb-4">
-                    <h4 className="text-sm font-medium text-primary mb-2">Technologies</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {service.technologies.map((tech, techIndex) => (
-                        <Badge
-                          key={techIndex}
-                          variant="secondary"
-                          className="text-xs bg-muted/50"
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
+                  <CardContent className="pt-0">
+                    {/* Technologies */}
+                    <div className="mb-6">
+                      <h4 className="text-xs font-semibold text-primary/80 uppercase tracking-wider mb-2.5">Technologies</h4>
+                      <div className="flex flex-wrap gap-1.5">
+                        {service.technologies.map((tech, techIndex) => (
+                          <Badge
+                            key={techIndex}
+                            variant="secondary"
+                            className="text-xs bg-muted/60 hover:bg-primary/20 hover:text-primary transition-colors cursor-default border border-border/40"
+                          >
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
-                  </div>
 
-                  {/* Action Button */}
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="w-full hover:bg-primary/10"
-                    onClick={() => navigate(service.route)}
-                  >
-                    <span className="text-primary">Learn More</span>
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </Button>
-                </CardContent>
+                    {/* Action Button */}
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      className="w-full hover:bg-primary/10 group/btn transition-all duration-300"
+                      onClick={() => navigate(service.route)}
+                    >
+                      <span className="text-primary font-medium group-hover/btn:mr-1 transition-all">Learn More</span>
+                      <ArrowRight className="w-4 h-4 ml-2 text-primary group-hover/btn:translate-x-1 transition-transform" />
+                    </Button>
+                  </CardContent>
                 </Card>
               </Reveal>
             );
@@ -139,25 +139,25 @@ const ProfessionalServices = () => {
         </div>
 
         {/* CTA Section */}
-        <Reveal variant="spring-up" className="text-center bg-muted/30 rounded-2xl p-8">
+        <Reveal variant="spring-up" className="text-center bg-muted/30 border border-primary/20 backdrop-blur-md rounded-2xl p-8 sm:p-10 shadow-xl">
           <div className="flex justify-center mb-4">
-            <div className="p-3 rounded-xl bg-primary/10 animate-float-slow">
+            <div className="p-3.5 rounded-2xl bg-primary/10 animate-float-slow border border-primary/30">
               <Zap className="w-8 h-8 text-primary" />
             </div>
           </div>
 
-          <h3 className="text-2xl font-bold mb-4 text-primary">
+          <h3 className="text-2xl font-bold mb-4 text-foreground">
             Ready to Start Your Project?
           </h3>
 
-          <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+          <p className="text-muted-foreground mb-6 max-w-xl mx-auto leading-relaxed">
             Let's discuss your requirements and create a solution that drives real business value.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-4 cs-magnetic"
+              className="bg-primary hover:bg-primary/90 text-white font-semibold px-8 py-4 cs-magnetic sheen shadow-tech"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <Zap className="w-5 h-5 mr-2" />

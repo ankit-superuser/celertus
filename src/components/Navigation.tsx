@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Menu, X, ChevronDown, Globe, Smartphone, Database, Cloud, Shield, Zap } from "lucide-react";
 import ShinyText from "./ShinyText";
+import ScrollProgress from "./ScrollProgress";
 
 const servicesList = [
   { name: "Web Development", path: "/web-development", icon: Globe },
@@ -25,7 +26,7 @@ const Navigation = () => {
       setIsScrolled(window.scrollY > 50);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -44,6 +45,8 @@ const Navigation = () => {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+      <ScrollProgress />
+      
       {/* Skip to main content link for screen reader accessibility */}
       <a
         href="#main-content"
@@ -56,7 +59,7 @@ const Navigation = () => {
         aria-label="Main Navigation"
         className={`w-full transition-all duration-300 ${
           isScrolled
-            ? "bg-background/90 backdrop-blur-md border-b border-border/50 shadow-md py-3"
+            ? "bg-background/85 backdrop-blur-xl border-b border-border/50 shadow-2xl py-3"
             : "bg-transparent py-4"
         }`}
       >
@@ -71,7 +74,7 @@ const Navigation = () => {
               <img
                 src="/favicon.png"
                 alt="Celertus.ai Logo"
-                className="w-10 h-10 rounded-lg object-cover group-hover:scale-105 transition-transform"
+                className="w-10 h-10 rounded-lg object-cover group-hover:scale-105 group-hover:rotate-3 transition-transform duration-300 shadow-md"
                 width="40"
                 height="40"
               />
@@ -84,9 +87,10 @@ const Navigation = () => {
             <div className="hidden md:flex items-center gap-8">
               <button
                 onClick={() => handleNavClick("hero")}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors focus:outline-none focus:text-primary"
+                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors focus:outline-none focus:text-primary relative group"
               >
                 Home
+                <span className="absolute left-0 right-0 bottom-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </button>
 
               {/* Services Dropdown */}
@@ -97,14 +101,15 @@ const Navigation = () => {
               >
                 <button
                   onClick={() => handleNavClick("services")}
-                  className="flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors focus:outline-none"
+                  className="flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors focus:outline-none relative group"
                   aria-expanded={isServicesDropdownOpen}
                 >
-                  Services <ChevronDown className={`w-4 h-4 transition-transform ${isServicesDropdownOpen ? "rotate-180" : ""}`} />
+                  Services <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isServicesDropdownOpen ? "rotate-180 text-primary" : ""}`} />
+                  <span className="absolute left-0 right-0 bottom-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
                 </button>
 
                 {isServicesDropdownOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-64 p-2 bg-card/95 backdrop-blur-md rounded-xl border border-border/60 shadow-xl grid gap-1 animate-in fade-in slide-in-from-top-2 duration-200 z-50">
+                  <div className="absolute top-full left-0 mt-2 w-64 p-2 bg-card/95 backdrop-blur-xl rounded-2xl border border-border/60 shadow-2xl grid gap-1 animate-in fade-in slide-in-from-top-2 duration-200 z-50">
                     {servicesList.map((service) => {
                       const Icon = service.icon;
                       return (
@@ -112,9 +117,9 @@ const Navigation = () => {
                           key={service.path}
                           to={service.path}
                           onClick={() => setIsServicesDropdownOpen(false)}
-                          className="flex items-center gap-3 px-3 py-2 text-xs font-medium text-foreground/80 hover:text-primary hover:bg-primary/10 rounded-lg transition-all"
+                          className="flex items-center gap-3 px-3.5 py-2.5 text-xs font-medium text-foreground/80 hover:text-primary hover:bg-primary/10 rounded-xl transition-all duration-200 group/item"
                         >
-                          <Icon className="w-4 h-4 text-primary" />
+                          <Icon className="w-4 h-4 text-primary group-hover/item:scale-110 transition-transform" />
                           {service.name}
                         </Link>
                       );
@@ -125,16 +130,18 @@ const Navigation = () => {
 
               <button
                 onClick={() => handleNavClick("work")}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors focus:outline-none focus:text-primary"
+                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors focus:outline-none focus:text-primary relative group"
               >
                 Work
+                <span className="absolute left-0 right-0 bottom-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </button>
 
               <button
                 onClick={() => handleNavClick("contact")}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors focus:outline-none focus:text-primary"
+                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors focus:outline-none focus:text-primary relative group"
               >
                 Contact
+                <span className="absolute left-0 right-0 bottom-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
               </button>
             </div>
 
@@ -143,7 +150,7 @@ const Navigation = () => {
               <Button
                 variant="default"
                 onClick={() => handleNavClick("contact")}
-                className="hover:scale-105 transition-transform shadow-tech"
+                className="cs-magnetic sheen hover:scale-105 transition-transform shadow-tech"
                 aria-label="Get Started with Celertus.ai"
               >
                 <ShinyText text="Get Started" speed={3} className="text-primary-foreground font-semibold" />
@@ -163,7 +170,7 @@ const Navigation = () => {
 
           {/* Mobile Navigation Drawer */}
           {isMobileMenuOpen && (
-            <div className="md:hidden mt-4 py-4 px-4 bg-card/95 backdrop-blur-md rounded-2xl border border-border/60 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-300">
+            <div className="md:hidden mt-4 py-4 px-4 bg-card/95 backdrop-blur-xl rounded-2xl border border-border/60 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-300">
               <div className="flex flex-col gap-3">
                 <button
                   onClick={() => handleNavClick("hero")}
@@ -211,7 +218,7 @@ const Navigation = () => {
                 <Button
                   variant="default"
                   onClick={() => handleNavClick("contact")}
-                  className="mt-2 w-full"
+                  className="mt-2 w-full cs-magnetic"
                 >
                   <ShinyText text="Get Started" speed={3} className="text-primary-foreground font-semibold" />
                 </Button>

@@ -104,7 +104,6 @@ const Contact = () => {
     }
   };
 
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData(prev => ({
       ...prev,
@@ -113,11 +112,11 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-muted/20 px-4 sm:px-8 md:px-16">
+    <section id="contact" className="py-20 bg-muted/20 px-4 sm:px-8 md:px-16 relative">
       <div className="container mx-auto">
         {/* Header */}
         <Reveal variant="up" className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2 mb-6">
+          <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2 mb-6 border border-primary/30 backdrop-blur-md">
             <MessageSquare className="w-4 h-4 text-primary" />
             <ShinyText text="Get In Touch" speed={3} className="text-sm font-medium text-primary" />
           </div>
@@ -132,7 +131,7 @@ const Contact = () => {
             </span>
           </div>
 
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
             Ready to transform your ideas into reality? Get in touch with our team of experts
             and let's discuss your next project.
           </p>
@@ -142,15 +141,15 @@ const Contact = () => {
           {/* Contact Info Cards */}
           <div className="space-y-4">
             <Reveal variant="left" delay={0}>
-              <Card className="hover-lift hover:shadow-lg hover:border-primary/40 group">
-                <CardContent className="p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                      <Mail className="w-5 h-5 text-primary" />
+              <Card className="cs-magnetic sheen hover:shadow-xl border-border/60 hover:border-primary/50 group transition-all duration-300">
+                <CardContent className="p-5">
+                  <div className="flex items-center gap-4">
+                    <div className="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-white shadow-sm">
+                      <Mail className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-1">Email Us</h3>
-                      <p className="text-muted-foreground text-sm">celertustechnologies@gmail.com</p>
+                      <h3 className="font-semibold mb-0.5 text-foreground group-hover:text-primary transition-colors">Email Us</h3>
+                      <p className="text-muted-foreground text-xs sm:text-sm font-mono">celertustechnologies@gmail.com</p>
                     </div>
                   </div>
                 </CardContent>
@@ -158,15 +157,15 @@ const Contact = () => {
             </Reveal>
 
             <Reveal variant="left" delay={90}>
-              <Card className="hover-lift hover:shadow-lg hover:border-primary/40 group">
-                <CardContent className="p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                      <Phone className="w-5 h-5 text-primary" />
+              <Card className="cs-magnetic sheen hover:shadow-xl border-border/60 hover:border-primary/50 group transition-all duration-300">
+                <CardContent className="p-5">
+                  <div className="flex items-center gap-4">
+                    <div className="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-white shadow-sm">
+                      <Phone className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-1">Call Us</h3>
-                      <p className="text-muted-foreground text-sm">+91-8076036432</p>
+                      <h3 className="font-semibold mb-0.5 text-foreground group-hover:text-primary transition-colors">Call Us</h3>
+                      <p className="text-muted-foreground text-xs sm:text-sm font-mono">+91-8076036432</p>
                     </div>
                   </div>
                 </CardContent>
@@ -174,15 +173,15 @@ const Contact = () => {
             </Reveal>
 
             <Reveal variant="left" delay={180}>
-              <Card className="hover-lift hover:shadow-lg hover:border-primary/40 group">
-                <CardContent className="p-4">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                      <MapPin className="w-5 h-5 text-primary" />
+              <Card className="cs-magnetic sheen hover:shadow-xl border-border/60 hover:border-primary/50 group transition-all duration-300">
+                <CardContent className="p-5">
+                  <div className="flex items-center gap-4">
+                    <div className="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-white shadow-sm">
+                      <MapPin className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
                     </div>
                     <div>
-                      <h3 className="font-semibold mb-1">Visit Us</h3>
-                      <p className="text-muted-foreground text-sm">123 Tech Street, Suite 100<br />New Delhi 110043</p>
+                      <h3 className="font-semibold mb-0.5 text-foreground group-hover:text-primary transition-colors">Visit Us</h3>
+                      <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">123 Tech Street, Suite 100<br />New Delhi 110043</p>
                     </div>
                   </div>
                 </CardContent>
@@ -192,19 +191,19 @@ const Contact = () => {
 
           {/* Contact Form */}
           <Reveal variant="right" className="lg:col-span-2 w-full">
-            <Card>
-              <CardHeader>
-                <CardTitle className="text-xl font-bold flex items-center gap-2">
+            <Card className="border-border/60 shadow-2xl backdrop-blur-md">
+              <CardHeader className="p-6 sm:p-8 border-b border-border/40">
+                <CardTitle className="text-xl font-bold flex items-center gap-2.5 text-foreground">
                   <Send className="w-5 h-5 text-primary" />
                   Send us a Message
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
+              <CardContent className="p-6 sm:p-8">
+                <form onSubmit={handleSubmit} className="space-y-5">
                   {/* Row 1: Name and Email */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="name">Full Name *</Label>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div className="space-y-2">
+                      <Label htmlFor="name" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Full Name *</Label>
                       <Input
                         id="name"
                         name="name"
@@ -212,10 +211,11 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         placeholder="Your Name"
+                        className="bg-card/60 border-border/60 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all rounded-xl py-3"
                       />
                     </div>
-                    <div>
-                      <Label htmlFor="email">Email Address *</Label>
+                    <div className="space-y-2">
+                      <Label htmlFor="email" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Email Address *</Label>
                       <Input
                         id="email"
                         name="email"
@@ -224,14 +224,15 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         placeholder="Your Email"
+                        className="bg-card/60 border-border/60 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all rounded-xl py-3"
                       />
                     </div>
                   </div>
 
                   {/* Row 2: Phone and Company */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="phone">Phone Number</Label>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    <div className="space-y-2">
+                      <Label htmlFor="phone" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Phone Number</Label>
                       <Input
                         id="phone"
                         name="phone"
@@ -239,23 +240,25 @@ const Contact = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="(123) 456-7890"
+                        className="bg-card/60 border-border/60 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all rounded-xl py-3"
                       />
                     </div>
-                    <div>
-                      <Label htmlFor="company">Company Name</Label>
+                    <div className="space-y-2">
+                      <Label htmlFor="company" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Company Name</Label>
                       <Input
                         id="company"
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
                         placeholder="Your Company Name"
+                        className="bg-card/60 border-border/60 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all rounded-xl py-3"
                       />
                     </div>
                   </div>
 
                   {/* Project Details */}
-                  <div>
-                    <Label htmlFor="message">Project Details *</Label>
+                  <div className="space-y-2">
+                    <Label htmlFor="message" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Project Details *</Label>
                     <Textarea
                       id="message"
                       name="message"
@@ -264,6 +267,7 @@ const Contact = () => {
                       required
                       rows={4}
                       placeholder="Tell us about your project requirements..."
+                      className="bg-card/60 border-border/60 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all rounded-xl p-3"
                     />
                   </div>
 
@@ -272,11 +276,11 @@ const Contact = () => {
                     type="submit"
                     disabled={isSubmitting}
                     size="lg"
-                    className="w-full"
+                    className="w-full cs-magnetic sheen bg-primary hover:bg-primary/90 font-semibold py-4 shadow-tech text-white rounded-xl"
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
                         Sending Message...
                       </>
                     ) : (
@@ -287,8 +291,8 @@ const Contact = () => {
                     )}
                   </Button>
 
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm">
-                    <CheckCircle className="w-4 h-4 text-green-500" />
+                  <div className="flex items-center gap-2 text-muted-foreground text-xs pt-1">
+                    <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" />
                     We typically respond within 24 hours
                   </div>
                 </form>

@@ -7,6 +7,7 @@ import Footer from "@/components/Footer";
 import AnimatedTrain from "@/components/AnimatedTrain";
 import ProjectShowcase from "@/components/ProjectShowcase";
 import BackToTop from "@/components/BackToTop";
+import SpotlightCursor from "@/components/SpotlightCursor";
 
 const indexSchema = [
   {
@@ -59,7 +60,8 @@ const indexSchema = [
 
 const Index = () => {
   return (
-    <div className="dark min-h-screen bg-background">
+    <div className="dark min-h-screen bg-background relative selection:bg-primary/30 selection:text-primary-foreground">
+      <SpotlightCursor />
       <SEO
         title="Celertus.ai | Premier AI & Custom Software Engineering Studio"
         description="Celertus.ai architects cutting-edge AI systems, cloud infrastructure, enterprise web & mobile applications, and high-performance microservices. Transform your digital vision into enterprise reality."
@@ -70,23 +72,23 @@ const Index = () => {
       <Navigation />
       <main id="main-content">
         {/* Hero Section */}
-        <section id="hero" data-aos="fade-up">
+        <section id="hero">
           <ProfessionalHero />
         </section>
         {/* Animated Train Section */}
-        <section id="animated-train" data-aos="fade-up">
+        <section id="animated-train">
           <AnimatedTrain />
         </section>
         {/* Services Section */}
-        <section id="services" data-aos="fade-up">
+        <section id="services">
           <ProfessionalServices />
         </section>
         {/* Work / Projects Showcase Section */}
-        <section id="work" data-aos="fade-up">
+        <section id="work">
           <ProjectShowcase />
         </section>
         {/* Contact Section */}
-        <section id="contact" data-aos="fade-up">
+        <section id="contact">
           <Contact />
         </section>
       </main>
