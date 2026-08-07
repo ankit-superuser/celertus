@@ -11,7 +11,9 @@ import {
   MapPin,
   Send,
   MessageSquare,
-  CheckCircle
+  CheckCircle,
+  Clock,
+  ShieldCheck
 } from "lucide-react";
 import ShinyText from "./ShinyText";
 import Reveal from "@/components/Reveal";
@@ -87,8 +89,8 @@ const Contact = () => {
       }
 
       toast({
-        title: "Message Sent Successfully!",
-        description: "We'll get back to you within 24 hours.",
+        title: "Discovery Request Submitted!",
+        description: "Our technical architects will contact you within 24 hours.",
       });
 
       // Clear form
@@ -112,110 +114,97 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-muted/20 px-4 sm:px-8 md:px-16 relative">
+    <section id="contact" className="py-24 bg-background px-4 sm:px-8 md:px-12 relative border-b-2 border-border/40">
       <div className="container mx-auto">
-        {/* Header */}
-        <Reveal variant="up" className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 bg-primary/10 rounded-full px-4 py-2 mb-6 border border-primary/30 backdrop-blur-md">
-            <MessageSquare className="w-4 h-4 text-primary" />
-            <ShinyText text="Get In Touch" speed={3} className="text-sm font-medium text-primary" />
-          </div>
+        {/* Split-Screen Header & Contact Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          
+          {/* Left Split: Details & Direct Contact */}
+          <div className="lg:col-span-5 flex flex-col items-start text-left font-mono">
+            <Reveal variant="left" className="w-full">
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/40 text-xs text-primary uppercase tracking-wider mb-4 rounded-none shadow-brutal-sm">
+                <MessageSquare className="w-4 h-4 text-primary" />
+                <span>[04 // INITIATE DISCOVERY]</span>
+              </div>
 
-          {/* Responsive Title */}
-          <div className="mb-6">
-            <span className="block text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-foreground">
-              Let's Build Something
-            </span>
-            <span className="block text-xl xs:text-2xl sm:text-3xl md:text-4xl font-bold text-gradient mt-2 min-h-[1.5em]">
-              {typed}
-            </span>
-          </div>
+              <h2 className="font-display font-bold text-3xl sm:text-5xl lg:text-6xl tracking-wide text-foreground mb-4">
+                LET'S BUILD <br />
+                <span className="text-gradient-animated">{typed}</span>
+              </h2>
 
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Ready to transform your ideas into reality? Get in touch with our team of experts
-            and let's discuss your next project.
-          </p>
-        </Reveal>
+              <p className="text-sm sm:text-base text-muted-foreground leading-[1.7] max-w-[70ch] mb-8">
+                Ready to accelerate your engineering roadmap? Share your system specifications or project objectives with our team.
+              </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-5xl mx-auto w-full">
-          {/* Contact Info Cards */}
-          <div className="space-y-4">
-            <Reveal variant="left" delay={0}>
-              <Card className="cs-magnetic sheen hover:shadow-xl border-border/60 hover:border-primary/50 group transition-all duration-300">
-                <CardContent className="p-5">
-                  <div className="flex items-center gap-4">
-                    <div className="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-white shadow-sm">
-                      <Mail className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-0.5 text-foreground group-hover:text-primary transition-colors">Email Us</h3>
-                      <p className="text-muted-foreground text-xs sm:text-sm font-mono">celertustechnologies@gmail.com</p>
-                    </div>
+              {/* Direct Info Cards */}
+              <div className="space-y-4 w-full">
+                <div className="border-2 border-border/70 hover:border-primary bg-card p-5 rounded-none shadow-brutal-sm transition-all flex items-center gap-4">
+                  <div className="p-3 bg-primary/10 border border-primary/30 rounded-none text-primary">
+                    <Mail className="w-5 h-5 text-primary" />
                   </div>
-                </CardContent>
-              </Card>
-            </Reveal>
-
-            <Reveal variant="left" delay={90}>
-              <Card className="cs-magnetic sheen hover:shadow-xl border-border/60 hover:border-primary/50 group transition-all duration-300">
-                <CardContent className="p-5">
-                  <div className="flex items-center gap-4">
-                    <div className="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-white shadow-sm">
-                      <Phone className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-0.5 text-foreground group-hover:text-primary transition-colors">Call Us</h3>
-                      <p className="text-muted-foreground text-xs sm:text-sm font-mono">+91-8076036432</p>
-                    </div>
+                  <div>
+                    <h3 className="font-display font-bold text-sm text-foreground uppercase tracking-wider">Email Us</h3>
+                    <p className="text-muted-foreground text-xs font-mono mt-0.5">celertustechnologies@gmail.com</p>
                   </div>
-                </CardContent>
-              </Card>
-            </Reveal>
+                </div>
 
-            <Reveal variant="left" delay={180}>
-              <Card className="cs-magnetic sheen hover:shadow-xl border-border/60 hover:border-primary/50 group transition-all duration-300">
-                <CardContent className="p-5">
-                  <div className="flex items-center gap-4">
-                    <div className="w-11 h-11 bg-primary/10 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-white shadow-sm">
-                      <MapPin className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
-                    </div>
-                    <div>
-                      <h3 className="font-semibold mb-0.5 text-foreground group-hover:text-primary transition-colors">Visit Us</h3>
-                      <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">123 Tech Street, Suite 100<br />New Delhi 110043</p>
-                    </div>
+                <div className="border-2 border-border/70 hover:border-primary bg-card p-5 rounded-none shadow-brutal-sm transition-all flex items-center gap-4">
+                  <div className="p-3 bg-primary/10 border border-primary/30 rounded-none text-primary">
+                    <Phone className="w-5 h-5 text-primary" />
                   </div>
-                </CardContent>
-              </Card>
+                  <div>
+                    <h3 className="font-display font-bold text-sm text-foreground uppercase tracking-wider">Direct Line</h3>
+                    <p className="text-muted-foreground text-xs font-mono mt-0.5">+91-8076036432</p>
+                  </div>
+                </div>
+
+                <div className="border-2 border-border/70 hover:border-primary bg-card p-5 rounded-none shadow-brutal-sm transition-all flex items-center gap-4">
+                  <div className="p-3 bg-primary/10 border border-primary/30 rounded-none text-primary">
+                    <MapPin className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-display font-bold text-sm text-foreground uppercase tracking-wider">Headquarters</h3>
+                    <p className="text-muted-foreground text-xs font-mono mt-0.5">New Delhi 110043, India</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Response Guarantee Pill */}
+              <div className="mt-6 p-4 border border-emerald-500/40 bg-emerald-500/10 flex items-center gap-3 text-xs text-foreground">
+                <Clock className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span><strong>SLA Guarantee:</strong> Technical response within 24 business hours.</span>
+              </div>
             </Reveal>
           </div>
 
-          {/* Contact Form */}
-          <Reveal variant="right" className="lg:col-span-2 w-full">
-            <Card className="border-border/60 shadow-2xl backdrop-blur-md">
-              <CardHeader className="p-6 sm:p-8 border-b border-border/40">
-                <CardTitle className="text-xl font-bold flex items-center gap-2.5 text-foreground">
+          {/* Right Split: High-Contrast Neo-Brutalist Form */}
+          <Reveal variant="right" className="lg:col-span-7 w-full font-mono">
+            <Card className="border-2 border-primary/50 bg-card rounded-none shadow-brutal p-6 sm:p-8">
+              <CardHeader className="p-0 mb-6 pb-4 border-b border-border/60">
+                <CardTitle className="font-display text-xl font-bold uppercase tracking-wider flex items-center gap-2.5 text-foreground">
                   <Send className="w-5 h-5 text-primary" />
-                  Send us a Message
+                  SUBMIT SPECIFICATIONS
                 </CardTitle>
               </CardHeader>
-              <CardContent className="p-6 sm:p-8">
+
+              <CardContent className="p-0">
                 <form onSubmit={handleSubmit} className="space-y-5">
                   {/* Row 1: Name and Email */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="space-y-2">
-                      <Label htmlFor="name" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Full Name *</Label>
+                      <Label htmlFor="name" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Full Name *</Label>
                       <Input
                         id="name"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        placeholder="Your Name"
-                        className="bg-card/60 border-border/60 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all rounded-xl py-3"
+                        placeholder="John Doe"
+                        className="bg-background border-2 border-border/80 focus:border-primary rounded-none font-mono text-xs py-3 transition-colors"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Email Address *</Label>
+                      <Label htmlFor="email" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Email Address *</Label>
                       <Input
                         id="email"
                         name="email"
@@ -223,42 +212,42 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        placeholder="Your Email"
-                        className="bg-card/60 border-border/60 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all rounded-xl py-3"
+                        placeholder="john@company.com"
+                        className="bg-background border-2 border-border/80 focus:border-primary rounded-none font-mono text-xs py-3 transition-colors"
                       />
                     </div>
                   </div>
 
                   {/* Row 2: Phone and Company */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="space-y-2">
-                      <Label htmlFor="phone" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Phone Number</Label>
+                      <Label htmlFor="phone" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Phone Number</Label>
                       <Input
                         id="phone"
                         name="phone"
                         type="tel"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="(123) 456-7890"
-                        className="bg-card/60 border-border/60 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all rounded-xl py-3"
+                        placeholder="+1 (555) 000-0000"
+                        className="bg-background border-2 border-border/80 focus:border-primary rounded-none font-mono text-xs py-3 transition-colors"
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="company" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Company Name</Label>
+                      <Label htmlFor="company" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Company / Organization</Label>
                       <Input
                         id="company"
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        placeholder="Your Company Name"
-                        className="bg-card/60 border-border/60 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all rounded-xl py-3"
+                        placeholder="Enterprise Inc."
+                        className="bg-background border-2 border-border/80 focus:border-primary rounded-none font-mono text-xs py-3 transition-colors"
                       />
                     </div>
                   </div>
 
                   {/* Project Details */}
                   <div className="space-y-2">
-                    <Label htmlFor="message" className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">Project Details *</Label>
+                    <Label htmlFor="message" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Project Specification &amp; Timeline *</Label>
                     <Textarea
                       id="message"
                       name="message"
@@ -266,8 +255,8 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       rows={4}
-                      placeholder="Tell us about your project requirements..."
-                      className="bg-card/60 border-border/60 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all rounded-xl p-3"
+                      placeholder="Outline your project scope, target tech stack, timeline, or engineering team requirements..."
+                      className="bg-background border-2 border-border/80 focus:border-primary rounded-none font-mono text-xs p-3 transition-colors"
                     />
                   </div>
 
@@ -276,24 +265,24 @@ const Contact = () => {
                     type="submit"
                     disabled={isSubmitting}
                     size="lg"
-                    className="w-full cs-magnetic sheen bg-primary hover:bg-primary/90 font-semibold py-4 shadow-tech text-white rounded-xl"
+                    className="w-full cs-magnetic font-mono text-xs uppercase tracking-wider rounded-none bg-primary hover:bg-primary/90 text-white font-bold py-6 border border-primary shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
                   >
                     {isSubmitting ? (
                       <>
                         <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-                        Sending Message...
+                        SUBMITTING REQUEST...
                       </>
                     ) : (
                       <>
                         <Send className="w-4 h-4 mr-2" />
-                        Send Message
+                        INITIATE PROJECT DISCOVERY
                       </>
                     )}
                   </Button>
 
-                  <div className="flex items-center gap-2 text-muted-foreground text-xs pt-1">
+                  <div className="flex items-center justify-center gap-2 text-muted-foreground text-[11px] pt-1">
                     <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" />
-                    We typically respond within 24 hours
+                    <span>Non-disclosure agreement &amp; data privacy protected</span>
                   </div>
                 </form>
               </CardContent>

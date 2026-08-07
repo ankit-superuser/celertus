@@ -19,9 +19,16 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				inter: ['Inter', 'sans-serif'],
-				mono: ['JetBrains Mono', 'monospace'],
-				display: ['Playfair Display', 'serif'],
+				sans: ['IBM Plex Mono', 'monospace'],
+				mono: ['IBM Plex Mono', 'monospace'],
+				display: ['Clash Display', 'sans-serif'],
+				heading: ['Clash Display', 'sans-serif'],
+			},
+			boxShadow: {
+				'brutal-sm': '2px 2px 0px 0px rgba(168, 85, 247, 0.4)',
+				'brutal': '4px 4px 0px 0px rgba(168, 85, 247, 0.5)',
+				'brutal-lg': '6px 6px 0px 0px rgba(168, 85, 247, 0.6)',
+				'brutal-white': '4px 4px 0px 0px rgba(255, 255, 255, 0.9)',
 			},
 			colors: {
 				border: 'hsl(var(--border))',

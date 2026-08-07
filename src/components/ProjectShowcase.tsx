@@ -199,19 +199,22 @@ const ProjectShowcase = () => {
       className={`cs-root container mx-auto py-20 px-4 sm:px-8 md:px-16 ${shown ? "cs-in" : ""}`}
       style={{ ["--accent" as string]: project.accent }}
     >
-      {/* Section header — mirrors the Services section styling */}
-      <div className="text-center mb-14">
-        <div className="inline-flex items-center gap-2 bg-muted/50 rounded-full px-4 py-2 mb-6 border border-primary/20 backdrop-blur-md">
-          <MousePointerClick className="w-4 h-4 text-primary animate-pulse" />
-          <ShinyText text="Our Work" speed={3} />
+      {/* Section header — Split-Screen header format */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-14 pb-8 border-b-2 border-border/40 text-left">
+        <div className="lg:col-span-7">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/40 font-mono text-xs text-primary uppercase tracking-wider mb-4 rounded-none shadow-brutal-sm">
+            <MousePointerClick className="w-4 h-4 text-primary animate-pulse" />
+            <span>[03 // FEATURED WORK]</span>
+          </div>
+          <h2 className="font-display font-bold text-3xl sm:text-5xl lg:text-6xl tracking-wide text-foreground">
+            PROJECTS, <span className="text-gradient-animated">LIVE &amp; INTERACTIVE</span>
+          </h2>
         </div>
-        <h2 className="text-4xl md:text-5xl font-bold mb-6">
-          <span className="text-gradient">Projects, Live &amp; Interactive</span>
-        </h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Pick a project and explore the real, deployed site right inside the
-          phone — scroll it, tap it, try it.
-        </p>
+        <div className="lg:col-span-5">
+          <p className="font-mono text-sm sm:text-base text-muted-foreground leading-[1.7] max-w-[70ch]">
+            Select a project to explore the real, deployed production website directly within the interactive viewport—scroll, navigate, and test performance in real-time.
+          </p>
+        </div>
       </div>
 
       {/* Two-column stage: phone + selector. Stacks on mobile (selector first). */}
@@ -260,30 +263,30 @@ const ProjectShowcase = () => {
                     ) : null}
 
                     {failed ? (
-                      <div className="relative z-10 flex flex-col items-center gap-2 px-6 text-center text-white/85">
+                      <div className="relative z-10 flex flex-col items-center gap-2 px-6 text-center text-white/85 font-mono">
                         <AlertTriangle className="w-7 h-7 text-white/70 animate-bounce" />
-                        <span className="text-sm font-semibold">
-                          Can&apos;t preview in-frame
+                        <span className="text-xs font-semibold uppercase tracking-wider">
+                          CAN'T EMBED IN-FRAME
                         </span>
-                        <span className="text-xs text-white/55">
-                          This site blocks embedding or took too long. Open it live below.
+                        <span className="text-[11px] text-white/60 leading-[1.6]">
+                          Site blocks frame embedding. Open directly in a new tab.
                         </span>
                         <a
                           href={project.url}
                           target="_blank"
                           rel="noreferrer noopener"
-                          className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-white/10 px-4 py-2 text-xs font-semibold transition-all hover:bg-white/20 hover:scale-105"
+                          className="mt-2 inline-flex items-center gap-1.5 border border-primary bg-primary px-4 py-2 text-xs font-mono font-semibold uppercase text-white rounded-none shadow-brutal-sm hover:-translate-y-0.5 transition-all"
                         >
-                          Open live site
+                          Open Live Site
                           <ExternalLink className="w-3.5 h-3.5" />
                         </a>
                       </div>
                     ) : (
                       <>
                         <div className="cs-shimmer" />
-                        <div className="relative z-10 flex flex-col items-center gap-3 text-white/80">
+                        <div className="relative z-10 flex flex-col items-center gap-3 text-white/80 font-mono">
                           <Loader2 className="w-7 h-7 animate-spin text-primary" />
-                          <span className="text-xs font-medium tracking-wide">
+                          <span className="text-xs font-medium tracking-wider uppercase">
                             Loading {project.name}…
                           </span>
                         </div>
@@ -299,9 +302,9 @@ const ProjectShowcase = () => {
                       aria-label={`Tap to interact with ${project.name}`}
                       className={`cs-tap ${loading ? "opacity-0 pointer-events-none" : "opacity-100"}`}
                     >
-                      <span className="cs-tap-pill">
+                      <span className="cs-tap-pill font-mono">
                         <MousePointerClick className="w-4 h-4" />
-                        Tap to interact
+                        TAP TO INTERACT
                       </span>
                     </button>
                   )}
@@ -311,23 +314,23 @@ const ProjectShowcase = () => {
           </div>
 
           {/* Controls under the phone */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3 font-mono">
             <a
               href={project.url}
               target="_blank"
               rel="noreferrer noopener"
-              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-tech transition-transform hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="cs-magnetic inline-flex items-center gap-2 rounded-none border border-primary bg-primary px-6 py-3 text-xs font-bold font-mono uppercase tracking-wider text-white shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
             >
-              Open live site
+              Open Live Site
               <ExternalLink className="w-4 h-4" />
             </a>
             <button
               type="button"
               onClick={reload}
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-muted/30 px-5 py-3 text-sm font-medium text-foreground transition-all hover:bg-muted/60 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="cs-magnetic inline-flex items-center gap-2 rounded-none border-2 border-foreground/30 bg-background px-5 py-3 text-xs font-semibold font-mono uppercase tracking-wider text-foreground hover:border-primary transition-all"
             >
               <RotateCw className="w-4 h-4" />
-              Reload
+              Reload Frame
             </button>
           </div>
         </div>
@@ -347,24 +350,24 @@ const ProjectShowcase = () => {
                 aria-label={`Preview ${p.name}`}
                 onClick={() => select(idx)}
                 style={{ ["--accent" as string]: p.accent, animationDelay: `${idx * 90}ms` }}
-                className={`cs-card sheen group snap-start shrink-0 w-[85%] sm:w-[50%] lg:w-full text-left rounded-2xl border p-5 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+                className={`cs-card sheen group snap-start shrink-0 w-[85%] sm:w-[50%] lg:w-full text-left rounded-none border-2 p-5 transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
                   isActive
-                    ? "cs-card-active border-transparent bg-card/90 shadow-xl"
-                    : "border-border bg-card/40 hover:bg-card/70 hover:-translate-y-0.5"
+                    ? "cs-card-active border-primary bg-card/90 shadow-brutal"
+                    : "border-border/70 bg-card/40 hover:bg-card/70 hover:border-primary/50 hover:-translate-y-0.5"
                 }`}
               >
                 <div className="flex items-start gap-4">
                   <span
-                    className="grid h-11 w-11 shrink-0 place-items-center rounded-xl font-mono text-sm font-bold text-white shadow-md transition-transform group-hover:scale-110"
+                    className="grid h-10 w-10 shrink-0 place-items-center rounded-none font-mono text-xs font-bold text-white shadow-brutal-sm border border-white/20 transition-transform group-hover:scale-105"
                     style={{
-                      background: `linear-gradient(150deg, ${p.accent}, ${p.accent}66)`,
+                      background: `linear-gradient(150deg, ${p.accent}, ${p.accent}99)`,
                     }}
                   >
-                    {String(idx + 1).padStart(2, "0")}
+                    0{idx + 1}
                   </span>
-                  <div className="min-w-0 flex-1">
+                  <div className="min-w-0 flex-1 font-mono">
                     <div className="flex items-center justify-between gap-2">
-                      <h3 className="truncate text-base font-semibold text-foreground group-hover:text-primary transition-colors">
+                      <h3 className="font-display font-bold text-lg text-foreground group-hover:text-primary transition-colors tracking-wide truncate">
                         {p.name}
                       </h3>
                       <ArrowUpRight
@@ -376,20 +379,20 @@ const ProjectShowcase = () => {
                         style={{ color: p.accent }}
                       />
                     </div>
-                    <p className="mt-0.5 truncate text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                    <p className="mt-0.5 truncate text-[11px] font-bold uppercase tracking-widest text-primary">
                       {p.category}
                     </p>
-                    <p className="mt-2 line-clamp-2 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    <p className="mt-2 line-clamp-2 text-xs text-muted-foreground leading-[1.7]">
                       {p.description}
                     </p>
 
-                    {/* Animated Project Tags */}
+                    {/* Project Tags */}
                     {p.tags && p.tags.length > 0 && (
                       <div className="mt-3 flex flex-wrap gap-1.5">
                         {p.tags.map((tag, tagIdx) => (
                           <span
                             key={tagIdx}
-                            className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-medium bg-muted/60 text-muted-foreground border border-border/40 group-hover:border-primary/30 transition-colors"
+                            className="inline-flex items-center gap-1 px-2 py-0.5 rounded-none text-[9px] font-mono uppercase bg-muted/60 text-muted-foreground border border-border/50 group-hover:border-primary/30 transition-colors"
                           >
                             <Tag className="w-2.5 h-2.5 opacity-60" />
                             {tag}

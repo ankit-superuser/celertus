@@ -68,29 +68,29 @@ const Navigation = () => {
             {/* Logo Link */}
             <Link
               to="/"
-              className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-primary rounded-lg"
+              className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-primary p-1 border border-transparent hover:border-primary/40 transition-all"
               aria-label="Celertus.ai Home"
             >
               <img
                 src="/favicon.png"
                 alt="Celertus.ai Logo"
-                className="w-10 h-10 rounded-lg object-cover group-hover:scale-105 group-hover:rotate-3 transition-transform duration-300 shadow-md"
-                width="40"
-                height="40"
+                className="w-9 h-9 object-cover rounded-none border border-primary/50 group-hover:scale-105 transition-transform duration-300 shadow-brutal-sm"
+                width="36"
+                height="36"
               />
-              <span className="text-xl font-bold tracking-tight text-foreground">
+              <span className="font-display text-xl font-bold tracking-wider text-foreground">
                 CELERTUS<span className="text-primary">.AI</span>
               </span>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-wider">
               <button
                 onClick={() => handleNavClick("hero")}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors focus:outline-none focus:text-primary relative group"
+                className="text-foreground/80 hover:text-primary transition-colors focus:outline-none relative group py-1"
               >
-                Home
-                <span className="absolute left-0 right-0 bottom-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <span className="text-primary/60 mr-1">[01]</span>Home
+                <span className="absolute left-0 right-0 bottom-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
               </button>
 
               {/* Services Dropdown */}
@@ -101,26 +101,27 @@ const Navigation = () => {
               >
                 <button
                   onClick={() => handleNavClick("services")}
-                  className="flex items-center gap-1 text-sm font-medium text-foreground/80 hover:text-primary transition-colors focus:outline-none relative group"
+                  className="flex items-center gap-1 text-foreground/80 hover:text-primary transition-colors focus:outline-none relative group py-1"
                   aria-expanded={isServicesDropdownOpen}
                 >
-                  Services <ChevronDown className={`w-4 h-4 transition-transform duration-300 ${isServicesDropdownOpen ? "rotate-180 text-primary" : ""}`} />
-                  <span className="absolute left-0 right-0 bottom-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                  <span className="text-primary/60 mr-1">[02]</span>Services <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isServicesDropdownOpen ? "rotate-180 text-primary" : ""}`} />
+                  <span className="absolute left-0 right-0 bottom-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
                 </button>
 
                 {isServicesDropdownOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-64 p-2 bg-card/95 backdrop-blur-xl rounded-2xl border border-border/60 shadow-2xl grid gap-1 animate-in fade-in slide-in-from-top-2 duration-200 z-50">
-                    {servicesList.map((service) => {
+                  <div className="absolute top-full left-0 mt-2 w-64 p-2 bg-background/95 backdrop-blur-xl border-2 border-primary/40 shadow-brutal grid gap-1 animate-in fade-in slide-in-from-top-2 duration-200 z-50 rounded-none">
+                    {servicesList.map((service, idx) => {
                       const Icon = service.icon;
                       return (
                         <Link
                           key={service.path}
                           to={service.path}
                           onClick={() => setIsServicesDropdownOpen(false)}
-                          className="flex items-center gap-3 px-3.5 py-2.5 text-xs font-medium text-foreground/80 hover:text-primary hover:bg-primary/10 rounded-xl transition-all duration-200 group/item"
+                          className="flex items-center gap-3 px-3 py-2 text-xs font-mono text-foreground/90 hover:text-white hover:bg-primary/20 border border-transparent hover:border-primary/40 transition-all duration-150 group/item"
                         >
+                          <span className="text-[10px] text-primary font-semibold">[0{idx+1}]</span>
                           <Icon className="w-4 h-4 text-primary group-hover/item:scale-110 transition-transform" />
-                          {service.name}
+                          <span>{service.name}</span>
                         </Link>
                       );
                     })}
@@ -130,18 +131,18 @@ const Navigation = () => {
 
               <button
                 onClick={() => handleNavClick("work")}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors focus:outline-none focus:text-primary relative group"
+                className="text-foreground/80 hover:text-primary transition-colors focus:outline-none relative group py-1"
               >
-                Work
-                <span className="absolute left-0 right-0 bottom-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <span className="text-primary/60 mr-1">[03]</span>Work
+                <span className="absolute left-0 right-0 bottom-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
               </button>
 
               <button
                 onClick={() => handleNavClick("contact")}
-                className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors focus:outline-none focus:text-primary relative group"
+                className="text-foreground/80 hover:text-primary transition-colors focus:outline-none relative group py-1"
               >
-                Contact
-                <span className="absolute left-0 right-0 bottom-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                <span className="text-primary/60 mr-1">[04]</span>Contact
+                <span className="absolute left-0 right-0 bottom-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
               </button>
             </div>
 
@@ -150,10 +151,10 @@ const Navigation = () => {
               <Button
                 variant="default"
                 onClick={() => handleNavClick("contact")}
-                className="cs-magnetic sheen hover:scale-105 transition-transform shadow-tech"
+                className="font-mono text-xs uppercase tracking-wider rounded-none bg-primary hover:bg-primary/90 text-white border border-primary/80 shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 transition-all duration-200 px-5 py-2.5"
                 aria-label="Get Started with Celertus.ai"
               >
-                <ShinyText text="Get Started" speed={3} className="text-primary-foreground font-semibold" />
+                <ShinyText text="Get Started" speed={3} className="text-white font-semibold" />
               </Button>
             </div>
 

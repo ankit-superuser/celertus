@@ -78,7 +78,37 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground font-inter antialiased;
+    font-family: 'IBM Plex Mono', monospace;
+    @apply bg-background text-foreground antialiased selection:bg-primary/40 selection:text-white leading-[1.7];
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Clash Display', sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    @apply text-foreground;
+  }
+
+  /* Strict H1 sizing rule: Minimum 72px on desktop and >= 3x visual weight over body text */
+  h1 {
+    font-size: clamp(2.75rem, 6vw, 5rem); /* Minimum 44px on smallest mobile, up to 80px (5rem) */
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3.25rem);
+    line-height: 1.15;
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    line-height: 1.25;
+  }
+
+  p {
+    line-height: 1.7;
+    max-width: 70ch;
   }
 
   /* Custom scrollbar */
@@ -92,7 +122,7 @@ All colors MUST be HSL.
 
   ::-webkit-scrollbar-thumb {
     background: hsl(var(--primary));
-    border-radius: 3px;
+    border-radius: 0px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
@@ -107,9 +137,8 @@ All colors MUST be HSL.
     color: transparent;
   }
 
-  /* Flowing animated variant of the gradient text (opt-in). */
   .text-gradient-animated {
-    background: linear-gradient(90deg, #6a5af9, #d66efd, #a855f7, #6a5af9);
+    background: linear-gradient(90deg, #a855f7, #ec4899, #d66efd, #a855f7);
     background-size: 300% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
