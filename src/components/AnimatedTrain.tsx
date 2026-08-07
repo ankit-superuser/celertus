@@ -11,8 +11,8 @@ const services = [
 ];
 
 const AnimatedTrain = () => (
-  <div className="w-full overflow-x-hidden py-8 bg-background border-y border-white/10">
-    <Reveal variant="spring-up" className="relative w-full train-sheen">
+  <div className="w-full overflow-hidden py-8 bg-background border-y border-white/10 scrollbar-none">
+    <Reveal variant="spring-up" className="relative w-full train-sheen overflow-hidden">
       <div
         className="flex gap-6 animate-train whitespace-nowrap"
         style={{ animation: 'train-scroll 25s linear infinite' }}

@@ -113,7 +113,7 @@ const Navigation = () => {
                 </button>
 
                 {isServicesDropdownOpen && (
-                  <div className="absolute top-full left-0 mt-3 w-64 p-2 bg-card/90 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl grid gap-1 animate-in fade-in slide-in-from-top-2 duration-200 z-50">
+                  <div className="absolute top-full left-0 mt-3 w-64 p-2 bg-card/90 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl grid gap-1 animate-in fade-in slide-in-from-top-2 duration-200 z-50 overflow-hidden max-h-[85vh]">
                     {servicesList.map((service, idx) => {
                       const Icon = service.icon;
                       return (

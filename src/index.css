@@ -133,6 +133,15 @@ All colors MUST be HSL.
     background: hsl(var(--primary));
   }
 
+  /* Utility to completely hide scrollbars */
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
   .text-gradient {
     background: linear-gradient(90deg, #6a5af9, #d66efd);
     -webkit-background-clip: text;
