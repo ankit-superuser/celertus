@@ -77,6 +77,10 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     font-family: 'IBM Plex Mono', monospace;
     @apply bg-background text-foreground antialiased selection:bg-primary/40 selection:text-white leading-[1.7];
@@ -85,13 +89,13 @@ All colors MUST be HSL.
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Clash Display', sans-serif;
     font-weight: 700;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.03em;
     @apply text-foreground;
   }
 
   /* Strict H1 sizing rule: Minimum 72px on desktop and >= 3x visual weight over body text */
   h1 {
-    font-size: clamp(2.75rem, 6vw, 5rem); /* Minimum 44px on smallest mobile, up to 80px (5rem) */
+    font-size: clamp(2.75rem, 6.5vw, 5.25rem); /* Minimum 44px on mobile up to 84px */
     line-height: 1.05;
     letter-spacing: -0.01em;
   }
@@ -113,20 +117,20 @@ All colors MUST be HSL.
 
   /* Custom scrollbar */
   ::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
   }
 
   ::-webkit-scrollbar-track {
-    background: hsl(var(--muted));
+    background: rgba(15, 15, 20, 0.5);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--primary));
-    border-radius: 0px;
+    background: hsl(var(--primary) / 0.7);
+    border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--primary) / 0.8);
+    background: hsl(var(--primary));
   }
 
   .text-gradient {

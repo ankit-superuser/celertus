@@ -70,12 +70,12 @@ const ProfessionalServices = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-background px-4 sm:px-8 md:px-12 relative overflow-hidden border-b-2 border-border/40">
+    <section id="services" className="min-h-screen flex flex-col justify-center py-24 lg:py-32 bg-background px-4 sm:px-8 md:px-12 relative overflow-hidden border-b border-white/10">
       <div className="container mx-auto">
         {/* Split-Screen Header */}
-        <Reveal variant="spring-up" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16 pb-8 border-b-2 border-border/40">
+        <Reveal variant="spring-up" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16 pb-8 border-b border-white/10">
           <div className="lg:col-span-7">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/40 font-mono text-xs text-primary uppercase tracking-wider mb-4 rounded-none shadow-brutal-sm">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/30 backdrop-blur-xl font-mono text-xs text-primary uppercase tracking-wider mb-4 rounded-full shadow-lg shadow-primary/10">
               <Code2 className="w-4 h-4 text-primary" />
               <span>[02 // CORE CAPABILITIES]</span>
             </div>
@@ -92,16 +92,16 @@ const ProfessionalServices = () => {
           </div>
         </Reveal>
 
-        {/* Services Grid with Neo-Brutalist Cards */}
+        {/* Services Grid with Curved Glass Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {services.map((service, index) => {
             const Icon = service.icon;
             return (
               <Reveal key={index} variant="flip-up" delay={((index % 3) + Math.floor(index / 3)) * 80} className="h-full">
-                <Card className="group cs-card-3d bg-card border-2 border-border/70 hover:border-primary rounded-none p-6 shadow-brutal-sm hover:shadow-brutal h-full flex flex-col justify-between transition-all duration-200">
+                <Card className="group cs-card-3d bg-card/60 backdrop-blur-xl border border-white/10 hover:border-primary/50 rounded-3xl p-7 shadow-2xl hover:shadow-primary/20 h-full flex flex-col justify-between transition-all duration-300">
                   <CardHeader className="p-0 mb-6">
-                    <div className="flex items-center justify-between gap-4 mb-4 pb-4 border-b border-border/50">
-                      <div className="p-3 bg-primary/10 border border-primary/30 rounded-none group-hover:bg-primary group-hover:text-white transition-colors">
+                    <div className="flex items-center justify-between gap-4 mb-4 pb-4 border-b border-white/10">
+                      <div className="p-3 bg-primary/10 border border-primary/30 rounded-2xl group-hover:bg-primary group-hover:text-white transition-all duration-300">
                         <Icon className="w-6 h-6 text-primary group-hover:text-white transition-colors" />
                       </div>
                       <span className="font-mono text-xs font-bold text-primary tracking-widest">
@@ -118,10 +118,10 @@ const ProfessionalServices = () => {
                     </CardDescription>
                   </CardHeader>
 
-                  <CardContent className="p-0 pt-4 border-t border-border/50">
+                  <CardContent className="p-0 pt-4 border-t border-white/10">
                     {/* Technologies */}
                     <div className="mb-6 font-mono">
-                      <h4 className="text-[10px] font-bold text-primary/80 uppercase tracking-widest mb-2">
+                      <h4 className="text-[10px] font-bold text-primary/80 uppercase tracking-widest mb-2.5">
                         STACK //
                       </h4>
                       <div className="flex flex-wrap gap-1.5">
@@ -129,7 +129,7 @@ const ProfessionalServices = () => {
                           <Badge
                             key={techIndex}
                             variant="secondary"
-                            className="font-mono text-[10px] uppercase rounded-none bg-muted/60 hover:bg-primary/20 hover:text-primary border border-border/60 transition-colors"
+                            className="font-mono text-[10px] uppercase rounded-full bg-muted/60 hover:bg-primary/20 hover:text-primary border border-white/10 transition-colors px-3 py-1"
                           >
                             {tech}
                           </Badge>
@@ -141,7 +141,7 @@ const ProfessionalServices = () => {
                     <Button
                       variant="ghost"
                       size="sm"
-                      className="w-full font-mono text-xs uppercase tracking-wider rounded-none border border-border hover:border-primary hover:bg-primary/10 justify-between group/btn transition-all"
+                      className="w-full font-mono text-xs uppercase tracking-wider rounded-full border border-white/10 hover:border-primary hover:bg-primary/10 justify-between group/btn transition-all py-5"
                       onClick={() => navigate(service.route)}
                     >
                       <span className="text-primary font-bold">Explore Solution</span>
@@ -154,10 +154,10 @@ const ProfessionalServices = () => {
           })}
         </div>
 
-        {/* Neo-Brutalist CTA Split Banner */}
-        <Reveal variant="spring-up" className="border-2 border-primary/50 bg-card p-8 sm:p-12 shadow-brutal grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        {/* Curved Glass Banner */}
+        <Reveal variant="spring-up" className="border border-white/10 bg-card/60 backdrop-blur-2xl p-8 sm:p-12 rounded-3xl shadow-2xl shadow-primary/10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-8 flex flex-col items-start text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/40 font-mono text-xs text-primary uppercase tracking-wider mb-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/30 font-mono text-xs text-primary uppercase tracking-wider mb-4 rounded-full">
               <Zap className="w-4 h-4 text-primary" />
               <span>[READY FOR DISCOVERY]</span>
             </div>
@@ -172,7 +172,7 @@ const ProfessionalServices = () => {
           <div className="lg:col-span-4 flex lg:justify-end">
             <Button
               size="lg"
-              className="cs-magnetic font-mono text-xs uppercase tracking-wider rounded-none bg-primary hover:bg-primary/90 text-white font-bold px-8 py-6 border border-primary shadow-brutal hover:-translate-x-1 hover:-translate-y-1 transition-all w-full sm:w-auto"
+              className="cs-magnetic font-mono text-xs uppercase tracking-wider rounded-full bg-primary hover:bg-primary/90 text-white font-bold px-8 py-6 border border-primary shadow-xl shadow-primary/25 hover:scale-105 transition-all w-full sm:w-auto"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <ShinyText text="Start Your Project" speed={3} className="text-white font-semibold" />

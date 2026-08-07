@@ -1,4 +1,4 @@
-import { Brain, Shield, Cloud, Code, Monitor, Cpu, Sparkles } from "lucide-react";
+import { Brain, Shield, Cloud, Code, Monitor, Cpu } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
 const services = [
@@ -11,7 +11,7 @@ const services = [
 ];
 
 const AnimatedTrain = () => (
-  <div className="w-full overflow-x-hidden py-6 bg-background border-y-2 border-primary/30">
+  <div className="w-full overflow-x-hidden py-8 bg-background border-y border-white/10">
     <Reveal variant="spring-up" className="relative w-full train-sheen">
       <div
         className="flex gap-6 animate-train whitespace-nowrap"
@@ -23,10 +23,10 @@ const AnimatedTrain = () => (
           return (
             <div
               key={idx}
-              className="cs-chip inline-flex items-center gap-3 bg-card border-2 border-primary/40 rounded-none px-6 py-4 mx-1 min-w-[220px] shadow-brutal-sm hover:shadow-brutal hover:border-primary hover:-translate-y-0.5 transition-all font-mono"
+              className="cs-chip inline-flex items-center gap-3 bg-card/60 backdrop-blur-xl border border-white/10 rounded-full px-7 py-3.5 mx-1 min-w-[230px] shadow-lg hover:shadow-primary/20 hover:border-primary/50 hover:scale-105 transition-all duration-300 font-mono"
             >
               <span className="text-primary text-xs font-bold font-mono">[{indexNum}]</span>
-              <Icon className="w-5 h-5 text-primary" />
+              <Icon className="w-4 h-4 text-primary" />
               <span className="text-foreground font-semibold text-xs uppercase tracking-wider">{service.label}</span>
             </div>
           );

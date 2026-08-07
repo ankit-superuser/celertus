@@ -70,25 +70,25 @@ const Index = () => {
         schema={indexSchema}
       />
       <Navigation />
-      <main id="main-content">
+      <main id="main-content" className="snap-y snap-proximity overflow-y-auto">
         {/* Hero Section */}
-        <section id="hero">
+        <section id="hero" className="snap-start">
           <ProfessionalHero />
         </section>
         {/* Animated Train Section */}
-        <section id="animated-train">
+        <section id="animated-train" className="snap-start">
           <AnimatedTrain />
         </section>
         {/* Services Section */}
-        <section id="services">
+        <section id="services" className="snap-start">
           <ProfessionalServices />
         </section>
         {/* Work / Projects Showcase Section */}
-        <section id="work">
+        <section id="work" className="snap-start">
           <ProjectShowcase />
         </section>
         {/* Contact Section */}
-        <section id="contact">
+        <section id="contact" className="snap-start">
           <Contact />
         </section>
       </main>

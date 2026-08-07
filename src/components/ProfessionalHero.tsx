@@ -50,10 +50,10 @@ const ProfessionalHero = () => {
       ref={heroRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-[92vh] flex flex-col justify-center overflow-hidden py-20 lg:py-28 px-4 sm:px-8 md:px-12 border-b-2 border-border/40"
+      className="relative min-h-screen flex flex-col justify-center overflow-hidden py-24 lg:py-32 px-4 sm:px-8 md:px-12"
     >
-      {/* Background Aurora Mesh Glow */}
-      <div className="cs-aurora opacity-30" aria-hidden="true" />
+      {/* Background Ambient Aurora Mesh Glow */}
+      <div className="cs-aurora opacity-40" aria-hidden="true" />
 
       {/* Floating lines background */}
       <div className="absolute inset-0 z-0 w-full h-full min-h-0 opacity-40">
@@ -69,8 +69,8 @@ const ProfessionalHero = () => {
         />
       </div>
 
-      {/* Grid line overlay for neo-brutalist aesthetic */}
-      <div className="absolute inset-0 z-[1] bg-[linear-gradient(to_right,#1f1f2e15_1px,transparent_1px),linear-gradient(to_bottom,#1f1f2e15_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
+      {/* Soft curved grid background overlay */}
+      <div className="absolute inset-0 z-[1] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(168,85,247,0.15),rgba(255,255,255,0))] pointer-events-none" />
 
       {/* Split-Screen Container */}
       <div
@@ -82,12 +82,12 @@ const ProfessionalHero = () => {
         {/* Left Column: Huge Clash Display H1 + Mono Subtext + CTAs */}
         <div className="lg:col-span-7 flex flex-col items-start text-left">
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 border border-primary/50 bg-primary/10 font-mono text-xs text-primary uppercase tracking-wider mb-6 shadow-brutal-sm rounded-none">
-            <Cpu className="w-3.5 h-3.5 text-primary animate-pulse" />
+          <div className="inline-flex items-center gap-2.5 px-4 py-2 border border-primary/30 bg-primary/10 backdrop-blur-xl rounded-full font-mono text-xs text-primary uppercase tracking-wider mb-6 shadow-lg shadow-primary/10">
+            <Cpu className="w-4 h-4 text-primary animate-pulse" />
             <span>[STUDIO // AI-FIRST DEVELOPMENT]</span>
           </div>
 
-          {/* H1: Minimum 72px on Desktop, Clash Display Bold */}
+          {/* H1: Minimum 76px on Desktop, Clash Display Bold */}
           <h1 className="font-display font-bold text-4xl sm:text-6xl lg:text-[76px] xl:text-[84px] leading-[1.02] tracking-wide text-foreground mb-6">
             CELERTUS<span className="text-primary">.AI</span><br />
             SOFTWARE <br />
@@ -102,11 +102,11 @@ const ProfessionalHero = () => {
             cross-platform mobile applications, and scalable microservice architectures for ambitious startups and global enterprises.
           </p>
 
-          {/* Neo-Brutalist CTAs */}
+          {/* Luxury Curved CTAs */}
           <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md">
             <Button
               size="lg"
-              className="cs-magnetic font-mono text-xs uppercase tracking-wider rounded-none bg-primary hover:bg-primary/90 text-white font-bold px-8 py-6 border border-primary shadow-brutal hover:-translate-x-1 hover:-translate-y-1 active:translate-x-0 active:translate-y-0 transition-all duration-200"
+              className="cs-magnetic font-mono text-xs uppercase tracking-wider rounded-full bg-primary hover:bg-primary/90 text-white font-bold px-8 py-6 border border-primary/80 shadow-2xl shadow-primary/30 hover:scale-105 transition-all duration-300"
               onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" })}
             >
               <ShinyText text="Let's Collaborate" speed={3} className="text-white font-semibold" />
@@ -115,7 +115,7 @@ const ProfessionalHero = () => {
             <Button
               variant="outline"
               size="lg"
-              className="cs-magnetic font-mono text-xs uppercase tracking-wider rounded-none border-2 border-foreground/30 bg-background hover:bg-muted text-foreground font-semibold px-8 py-6 hover:border-primary transition-all duration-200"
+              className="cs-magnetic font-mono text-xs uppercase tracking-wider rounded-full border border-white/20 bg-card/60 backdrop-blur-xl hover:bg-card hover:border-primary text-foreground font-semibold px-8 py-6 hover:scale-105 transition-all duration-300"
               onClick={() => document.getElementById("services")?.scrollIntoView({ behavior: "smooth" })}
             >
               Explore Services
@@ -123,24 +123,24 @@ const ProfessionalHero = () => {
           </div>
         </div>
 
-        {/* Right Column: Neo-Brutalist Split Feature Matrix Block */}
+        {/* Right Column: Soft Glass Split Diagnostics Card */}
         <div className="lg:col-span-5 w-full">
-          <div className="border-2 border-primary/40 bg-card/60 backdrop-blur-md p-6 sm:p-8 shadow-brutal relative">
+          <div className="border border-white/10 bg-card/60 backdrop-blur-2xl p-6 sm:p-8 rounded-3xl shadow-2xl shadow-primary/10 relative">
             {/* Header bar */}
-            <div className="flex items-center justify-between border-b border-border/60 pb-4 mb-6">
+            <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-6">
               <div className="flex items-center gap-2 font-mono text-xs font-semibold text-primary uppercase tracking-wider">
                 <Terminal className="w-4 h-4 text-primary" />
                 <span>SYS_DIAGNOSTICS // V2.6</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <div className="w-2.5 h-2.5 bg-emerald-500 rounded-none animate-pulse" />
-                <span className="font-mono text-[10px] text-muted-foreground uppercase">ONLINE</span>
+              <div className="flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 rounded-full">
+                <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                <span className="font-mono text-[10px] text-emerald-400 uppercase font-bold">ONLINE</span>
               </div>
             </div>
 
             {/* Matrix items */}
             <div className="space-y-4 font-mono text-xs">
-              <div className="p-3.5 border border-border/60 bg-background/80 flex items-start gap-3 hover:border-primary/50 transition-colors">
+              <div className="p-4 border border-white/10 bg-background/50 rounded-2xl flex items-start gap-3 hover:border-primary/50 transition-colors">
                 <span className="text-primary font-bold">[01]</span>
                 <div>
                   <div className="font-bold text-foreground mb-1 uppercase tracking-wider flex items-center gap-1.5">
@@ -153,7 +153,7 @@ const ProfessionalHero = () => {
                 </div>
               </div>
 
-              <div className="p-3.5 border border-border/60 bg-background/80 flex items-start gap-3 hover:border-primary/50 transition-colors">
+              <div className="p-4 border border-white/10 bg-background/50 rounded-2xl flex items-start gap-3 hover:border-primary/50 transition-colors">
                 <span className="text-primary font-bold">[02]</span>
                 <div>
                   <div className="font-bold text-foreground mb-1 uppercase tracking-wider flex items-center gap-1.5">
@@ -166,7 +166,7 @@ const ProfessionalHero = () => {
                 </div>
               </div>
 
-              <div className="p-3.5 border border-border/60 bg-background/80 flex items-start gap-3 hover:border-primary/50 transition-colors">
+              <div className="p-4 border border-white/10 bg-background/50 rounded-2xl flex items-start gap-3 hover:border-primary/50 transition-colors">
                 <span className="text-primary font-bold">[03]</span>
                 <div>
                   <div className="font-bold text-foreground mb-1 uppercase tracking-wider flex items-center gap-1.5">
@@ -181,16 +181,16 @@ const ProfessionalHero = () => {
             </div>
 
             {/* Footer metrics bar */}
-            <div className="grid grid-cols-3 gap-2 mt-6 pt-4 border-t border-border/60 text-center font-mono">
-              <div className="p-2 border border-border/40 bg-background/40">
+            <div className="grid grid-cols-3 gap-3 mt-6 pt-4 border-t border-white/10 text-center font-mono">
+              <div className="p-2.5 border border-white/10 bg-background/40 rounded-xl">
                 <div className="font-display font-bold text-lg text-primary">50+</div>
                 <div className="text-[9px] text-muted-foreground uppercase">SHIPPED</div>
               </div>
-              <div className="p-2 border border-border/40 bg-background/40">
+              <div className="p-2.5 border border-white/10 bg-background/40 rounded-xl">
                 <div className="font-display font-bold text-lg text-primary">99.9%</div>
                 <div className="text-[9px] text-muted-foreground uppercase">UPTIME</div>
               </div>
-              <div className="p-2 border border-border/40 bg-background/40">
+              <div className="p-2.5 border border-white/10 bg-background/40 rounded-xl">
                 <div className="font-display font-bold text-lg text-primary">24/7</div>
                 <div className="text-[9px] text-muted-foreground uppercase">SUPPORT</div>
               </div>

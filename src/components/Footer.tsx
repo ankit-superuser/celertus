@@ -6,8 +6,8 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-card border-t-2 border-primary/40 text-foreground relative overflow-hidden font-mono">
-      <div className="container mx-auto px-6 py-14">
+    <footer className="bg-card/80 backdrop-blur-xl border-t border-white/10 text-foreground relative overflow-hidden font-mono">
+      <div className="container mx-auto px-6 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           {/* Company Info */}
           <Reveal variant="up" delay={0} className="md:col-span-2">
@@ -15,7 +15,7 @@ const Footer = () => {
               <img
                 src="/favicon.png"
                 alt="Celertus.ai Logo"
-                className="w-9 h-9 object-cover border border-primary/50 shadow-brutal-sm rounded-none"
+                className="w-9 h-9 object-cover border border-primary/50 shadow-lg rounded-full"
                 width="36"
                 height="36"
               />
@@ -32,7 +32,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Follow Celertus.ai on Instagram"
-                className="w-10 h-10 bg-background border-2 border-border/70 hover:border-primary flex items-center justify-center text-primary shadow-brutal-sm hover:shadow-brutal hover:-translate-y-0.5 transition-all group"
+                className="w-10 h-10 bg-background/60 border border-white/10 hover:border-primary/50 flex items-center justify-center text-primary rounded-full shadow-lg hover:scale-110 transition-all group"
               >
                 <Instagram className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
               </a>
@@ -41,7 +41,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Connect with Celertus.ai on LinkedIn"
-                className="w-10 h-10 bg-background border-2 border-border/70 hover:border-primary flex items-center justify-center text-primary shadow-brutal-sm hover:shadow-brutal hover:-translate-y-0.5 transition-all group"
+                className="w-10 h-10 bg-background/60 border border-white/10 hover:border-primary/50 flex items-center justify-center text-primary rounded-full shadow-lg hover:scale-110 transition-all group"
               >
                 <Linkedin className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
               </a>
@@ -50,7 +50,7 @@ const Footer = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Follow Celertus.ai on Facebook"
-                className="w-10 h-10 bg-background border-2 border-border/70 hover:border-primary flex items-center justify-center text-primary shadow-brutal-sm hover:shadow-brutal hover:-translate-y-0.5 transition-all group"
+                className="w-10 h-10 bg-background/60 border border-white/10 hover:border-primary/50 flex items-center justify-center text-primary rounded-full shadow-lg hover:scale-110 transition-all group"
               >
                 <Facebook className="w-4 h-4 text-primary group-hover:scale-110 transition-transform" />
               </a>
@@ -119,7 +119,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <Reveal variant="fade" className="border-t border-border/60 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground font-mono">
+        <Reveal variant="fade" className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground font-mono">
           <p>
             © {currentYear} Celertus.ai. All rights reserved. Architecting Future Technologies.
           </p>

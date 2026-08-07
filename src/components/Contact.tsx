@@ -12,8 +12,7 @@ import {
   Send,
   MessageSquare,
   CheckCircle,
-  Clock,
-  ShieldCheck
+  Clock
 } from "lucide-react";
 import ShinyText from "./ShinyText";
 import Reveal from "@/components/Reveal";
@@ -114,7 +113,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-background px-4 sm:px-8 md:px-12 relative border-b-2 border-border/40">
+    <section id="contact" className="min-h-screen flex flex-col justify-center py-24 lg:py-32 bg-background px-4 sm:px-8 md:px-12 relative border-b border-white/10">
       <div className="container mx-auto">
         {/* Split-Screen Header & Contact Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
@@ -122,7 +121,7 @@ const Contact = () => {
           {/* Left Split: Details & Direct Contact */}
           <div className="lg:col-span-5 flex flex-col items-start text-left font-mono">
             <Reveal variant="left" className="w-full">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/40 text-xs text-primary uppercase tracking-wider mb-4 rounded-none shadow-brutal-sm">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/30 backdrop-blur-xl text-xs text-primary uppercase tracking-wider mb-4 rounded-full shadow-lg shadow-primary/10">
                 <MessageSquare className="w-4 h-4 text-primary" />
                 <span>[04 // INITIATE DISCOVERY]</span>
               </div>
@@ -138,8 +137,8 @@ const Contact = () => {
 
               {/* Direct Info Cards */}
               <div className="space-y-4 w-full">
-                <div className="border-2 border-border/70 hover:border-primary bg-card p-5 rounded-none shadow-brutal-sm transition-all flex items-center gap-4">
-                  <div className="p-3 bg-primary/10 border border-primary/30 rounded-none text-primary">
+                <div className="border border-white/10 hover:border-primary/50 bg-card/60 backdrop-blur-xl p-5 rounded-2xl shadow-xl transition-all flex items-center gap-4">
+                  <div className="p-3 bg-primary/10 border border-primary/30 rounded-xl text-primary">
                     <Mail className="w-5 h-5 text-primary" />
                   </div>
                   <div>
@@ -148,8 +147,8 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="border-2 border-border/70 hover:border-primary bg-card p-5 rounded-none shadow-brutal-sm transition-all flex items-center gap-4">
-                  <div className="p-3 bg-primary/10 border border-primary/30 rounded-none text-primary">
+                <div className="border border-white/10 hover:border-primary/50 bg-card/60 backdrop-blur-xl p-5 rounded-2xl shadow-xl transition-all flex items-center gap-4">
+                  <div className="p-3 bg-primary/10 border border-primary/30 rounded-xl text-primary">
                     <Phone className="w-5 h-5 text-primary" />
                   </div>
                   <div>
@@ -158,8 +157,8 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="border-2 border-border/70 hover:border-primary bg-card p-5 rounded-none shadow-brutal-sm transition-all flex items-center gap-4">
-                  <div className="p-3 bg-primary/10 border border-primary/30 rounded-none text-primary">
+                <div className="border border-white/10 hover:border-primary/50 bg-card/60 backdrop-blur-xl p-5 rounded-2xl shadow-xl transition-all flex items-center gap-4">
+                  <div className="p-3 bg-primary/10 border border-primary/30 rounded-xl text-primary">
                     <MapPin className="w-5 h-5 text-primary" />
                   </div>
                   <div>
@@ -170,17 +169,17 @@ const Contact = () => {
               </div>
 
               {/* Response Guarantee Pill */}
-              <div className="mt-6 p-4 border border-emerald-500/40 bg-emerald-500/10 flex items-center gap-3 text-xs text-foreground">
+              <div className="mt-6 p-4 border border-emerald-500/30 bg-emerald-500/10 backdrop-blur-xl rounded-2xl flex items-center gap-3 text-xs text-foreground">
                 <Clock className="w-4 h-4 text-emerald-400 shrink-0" />
                 <span><strong>SLA Guarantee:</strong> Technical response within 24 business hours.</span>
               </div>
             </Reveal>
           </div>
 
-          {/* Right Split: High-Contrast Neo-Brutalist Form */}
+          {/* Right Split: High-Contrast Glass Form */}
           <Reveal variant="right" className="lg:col-span-7 w-full font-mono">
-            <Card className="border-2 border-primary/50 bg-card rounded-none shadow-brutal p-6 sm:p-8">
-              <CardHeader className="p-0 mb-6 pb-4 border-b border-border/60">
+            <Card className="border border-white/10 bg-card/70 backdrop-blur-2xl rounded-3xl shadow-2xl p-6 sm:p-8">
+              <CardHeader className="p-0 mb-6 pb-4 border-b border-white/10">
                 <CardTitle className="font-display text-xl font-bold uppercase tracking-wider flex items-center gap-2.5 text-foreground">
                   <Send className="w-5 h-5 text-primary" />
                   SUBMIT SPECIFICATIONS
@@ -200,7 +199,7 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         placeholder="John Doe"
-                        className="bg-background border-2 border-border/80 focus:border-primary rounded-none font-mono text-xs py-3 transition-colors"
+                        className="bg-background/60 border border-white/10 focus:border-primary rounded-xl font-mono text-xs py-3.5 transition-colors"
                       />
                     </div>
                     <div className="space-y-2">
@@ -213,7 +212,7 @@ const Contact = () => {
                         onChange={handleChange}
                         required
                         placeholder="john@company.com"
-                        className="bg-background border-2 border-border/80 focus:border-primary rounded-none font-mono text-xs py-3 transition-colors"
+                        className="bg-background/60 border border-white/10 focus:border-primary rounded-xl font-mono text-xs py-3.5 transition-colors"
                       />
                     </div>
                   </div>
@@ -229,7 +228,7 @@ const Contact = () => {
                         value={formData.phone}
                         onChange={handleChange}
                         placeholder="+1 (555) 000-0000"
-                        className="bg-background border-2 border-border/80 focus:border-primary rounded-none font-mono text-xs py-3 transition-colors"
+                        className="bg-background/60 border border-white/10 focus:border-primary rounded-xl font-mono text-xs py-3.5 transition-colors"
                       />
                     </div>
                     <div className="space-y-2">
@@ -240,7 +239,7 @@ const Contact = () => {
                         value={formData.company}
                         onChange={handleChange}
                         placeholder="Enterprise Inc."
-                        className="bg-background border-2 border-border/80 focus:border-primary rounded-none font-mono text-xs py-3 transition-colors"
+                        className="bg-background/60 border border-white/10 focus:border-primary rounded-xl font-mono text-xs py-3.5 transition-colors"
                       />
                     </div>
                   </div>
@@ -256,7 +255,7 @@ const Contact = () => {
                       required
                       rows={4}
                       placeholder="Outline your project scope, target tech stack, timeline, or engineering team requirements..."
-                      className="bg-background border-2 border-border/80 focus:border-primary rounded-none font-mono text-xs p-3 transition-colors"
+                      className="bg-background/60 border border-white/10 focus:border-primary rounded-xl font-mono text-xs p-3.5 transition-colors"
                     />
                   </div>
 
@@ -265,7 +264,7 @@ const Contact = () => {
                     type="submit"
                     disabled={isSubmitting}
                     size="lg"
-                    className="w-full cs-magnetic font-mono text-xs uppercase tracking-wider rounded-none bg-primary hover:bg-primary/90 text-white font-bold py-6 border border-primary shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 transition-all"
+                    className="w-full cs-magnetic font-mono text-xs uppercase tracking-wider rounded-full bg-primary hover:bg-primary/90 text-white font-bold py-6 border border-primary shadow-2xl shadow-primary/25 hover:scale-105 transition-all duration-300"
                   >
                     {isSubmitting ? (
                       <>

@@ -59,22 +59,26 @@ const Navigation = () => {
         aria-label="Main Navigation"
         className={`w-full transition-all duration-300 ${
           isScrolled
-            ? "bg-background/85 backdrop-blur-xl border-b border-border/50 shadow-2xl py-3"
-            : "bg-transparent py-4"
+            ? "py-3 px-4 sm:px-8"
+            : "py-5 px-4 sm:px-8"
         }`}
       >
-        <div className="container mx-auto px-6">
-          <div className="flex items-center justify-between">
+        <div className="container mx-auto">
+          <div className={`flex items-center justify-between px-6 py-3 transition-all duration-300 ${
+            isScrolled
+              ? "bg-card/70 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl shadow-primary/5"
+              : "bg-card/40 backdrop-blur-md border border-white/10 rounded-full"
+          }`}>
             {/* Logo Link */}
             <Link
               to="/"
-              className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-primary p-1 border border-transparent hover:border-primary/40 transition-all"
+              className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-primary rounded-full p-1"
               aria-label="Celertus.ai Home"
             >
               <img
                 src="/favicon.png"
                 alt="Celertus.ai Logo"
-                className="w-9 h-9 object-cover rounded-none border border-primary/50 group-hover:scale-105 transition-transform duration-300 shadow-brutal-sm"
+                className="w-9 h-9 object-cover rounded-full border border-primary/50 group-hover:scale-105 transition-transform duration-300 shadow-md"
                 width="36"
                 height="36"
               />
@@ -109,7 +113,7 @@ const Navigation = () => {
                 </button>
 
                 {isServicesDropdownOpen && (
-                  <div className="absolute top-full left-0 mt-2 w-64 p-2 bg-background/95 backdrop-blur-xl border-2 border-primary/40 shadow-brutal grid gap-1 animate-in fade-in slide-in-from-top-2 duration-200 z-50 rounded-none">
+                  <div className="absolute top-full left-0 mt-3 w-64 p-2 bg-card/90 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl grid gap-1 animate-in fade-in slide-in-from-top-2 duration-200 z-50">
                     {servicesList.map((service, idx) => {
                       const Icon = service.icon;
                       return (
@@ -117,7 +121,7 @@ const Navigation = () => {
                           key={service.path}
                           to={service.path}
                           onClick={() => setIsServicesDropdownOpen(false)}
-                          className="flex items-center gap-3 px-3 py-2 text-xs font-mono text-foreground/90 hover:text-white hover:bg-primary/20 border border-transparent hover:border-primary/40 transition-all duration-150 group/item"
+                          className="flex items-center gap-3 px-3.5 py-2.5 text-xs font-mono text-foreground/90 hover:text-white hover:bg-primary/20 rounded-xl transition-all duration-150 group/item"
                         >
                           <span className="text-[10px] text-primary font-semibold">[0{idx+1}]</span>
                           <Icon className="w-4 h-4 text-primary group-hover/item:scale-110 transition-transform" />
@@ -151,7 +155,7 @@ const Navigation = () => {
               <Button
                 variant="default"
                 onClick={() => handleNavClick("contact")}
-                className="font-mono text-xs uppercase tracking-wider rounded-none bg-primary hover:bg-primary/90 text-white border border-primary/80 shadow-brutal hover:-translate-x-0.5 hover:-translate-y-0.5 active:translate-x-0 active:translate-y-0 transition-all duration-200 px-5 py-2.5"
+                className="cs-magnetic font-mono text-xs uppercase tracking-wider rounded-full bg-primary hover:bg-primary/90 text-white border border-primary/80 shadow-lg shadow-primary/25 hover:scale-105 active:scale-95 transition-all duration-200 px-6 py-2.5"
                 aria-label="Get Started with Celertus.ai"
               >
                 <ShinyText text="Get Started" speed={3} className="text-white font-semibold" />
