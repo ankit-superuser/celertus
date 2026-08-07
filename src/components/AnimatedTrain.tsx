@@ -11,11 +11,11 @@ const services = [
 ];
 
 const AnimatedTrain = () => (
-  <div className="w-full overflow-hidden py-10 sm:py-12 bg-background border-y border-white/10 scrollbar-none my-6">
-    <Reveal variant="spring-up" className="relative w-full train-sheen overflow-hidden py-2">
+  <div className="w-full overflow-hidden py-10 sm:py-14 bg-background border-y border-white/10 scrollbar-none my-6">
+    <Reveal variant="spring-up" className="relative w-full train-sheen overflow-hidden py-3">
       <div
-        className="flex gap-6 animate-train whitespace-nowrap items-center py-2"
-        style={{ animation: 'train-scroll 25s linear infinite' }}
+        className="flex gap-8 animate-train whitespace-nowrap items-center py-2"
+        style={{ animation: 'train-scroll 28s linear infinite' }}
       >
         {Array(3).fill(services).flat().map((service, idx) => {
           const Icon = service.icon;
@@ -23,11 +23,11 @@ const AnimatedTrain = () => (
           return (
             <div
               key={idx}
-              className="cs-chip inline-flex items-center gap-3 bg-card/60 backdrop-blur-xl border border-white/10 rounded-full px-7 py-3.5 mx-1 min-w-[230px] shadow-lg hover:shadow-primary/20 hover:border-primary/50 hover:scale-105 transition-all duration-300 font-mono"
+              className="cs-chip inline-flex items-center gap-3.5 bg-card/80 backdrop-blur-2xl border border-white/15 rounded-full px-8 py-4 sm:px-10 sm:py-5 w-max shrink-0 shadow-xl hover:shadow-primary/30 hover:border-primary/60 hover:scale-105 transition-all duration-300 font-mono overflow-hidden"
             >
-              <span className="text-primary text-xs font-bold font-mono">[{indexNum}]</span>
-              <Icon className="w-4 h-4 text-primary shrink-0" />
-              <span className="text-foreground font-semibold text-xs uppercase tracking-wider">{service.label}</span>
+              <span className="text-primary text-xs font-bold font-mono shrink-0">[{indexNum}]</span>
+              <Icon className="w-4.5 h-4.5 text-primary shrink-0" />
+              <span className="text-foreground font-semibold text-xs sm:text-sm uppercase tracking-wider whitespace-nowrap shrink-0">{service.label}</span>
             </div>
           );
         })}
@@ -41,7 +41,7 @@ const AnimatedTrain = () => (
 
       @media (max-width: 768px) {
         .animate-train {
-          animation-duration: 12s !important;
+          animation-duration: 14s !important;
         }
       }
     `}</style>
