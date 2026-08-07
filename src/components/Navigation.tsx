@@ -113,7 +113,7 @@ const Navigation = () => {
                 </button>
 
                 {isServicesDropdownOpen && (
-                  <div className="absolute top-full left-0 mt-3 w-64 p-2 bg-card/90 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-2xl grid gap-1 animate-in fade-in slide-in-from-top-2 duration-200 z-50 overflow-hidden max-h-[85vh]">
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[320px] sm:w-[560px] p-3 bg-card/95 backdrop-blur-3xl border border-white/15 rounded-3xl shadow-2xl shadow-primary/20 grid grid-cols-1 sm:grid-cols-2 gap-2 animate-in fade-in slide-in-from-top-2 duration-200 z-50">
                     {servicesList.map((service, idx) => {
                       const Icon = service.icon;
                       return (
@@ -121,11 +121,11 @@ const Navigation = () => {
                           key={service.path}
                           to={service.path}
                           onClick={() => setIsServicesDropdownOpen(false)}
-                          className="flex items-center gap-3 px-3.5 py-2.5 text-xs font-mono text-foreground/90 hover:text-white hover:bg-primary/20 rounded-xl transition-all duration-150 group/item"
+                          className="flex items-center gap-3 px-4 py-3 text-xs font-mono text-foreground/90 hover:text-white hover:bg-primary/20 border border-white/5 hover:border-primary/40 rounded-2xl transition-all duration-150 group/item"
                         >
-                          <span className="text-[10px] text-primary font-semibold">[0{idx+1}]</span>
-                          <Icon className="w-4 h-4 text-primary group-hover/item:scale-110 transition-transform" />
-                          <span>{service.name}</span>
+                          <span className="text-[10px] text-primary font-bold shrink-0">[0{idx+1}]</span>
+                          <Icon className="w-4 h-4 text-primary shrink-0 group-hover/item:scale-110 transition-transform" />
+                          <span className="whitespace-nowrap font-medium text-foreground group-hover/item:text-white">{service.name}</span>
                         </Link>
                       );
                     })}
