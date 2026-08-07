@@ -187,7 +187,7 @@ const ProjectShowcase = () => {
     <div
       ref={sectionRef}
       id="work"
-      className={`cs-root min-h-screen flex flex-col justify-center container mx-auto py-24 lg:py-32 px-4 sm:px-8 md:px-12 ${shown ? "cs-in" : ""}`}
+      className={`cs-root w-full py-20 sm:py-24 lg:py-28 container mx-auto px-4 sm:px-8 md:px-12 ${shown ? "cs-in" : ""}`}
       style={{ ["--accent" as string]: project.accent }}
     >
       {/* Section header — Split-Screen header format */}

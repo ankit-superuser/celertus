@@ -11,10 +11,10 @@ const services = [
 ];
 
 const AnimatedTrain = () => (
-  <div className="w-full overflow-hidden py-8 bg-background border-y border-white/10 scrollbar-none">
-    <Reveal variant="spring-up" className="relative w-full train-sheen overflow-hidden">
+  <div className="w-full overflow-hidden py-10 sm:py-12 bg-background border-y border-white/10 scrollbar-none my-6">
+    <Reveal variant="spring-up" className="relative w-full train-sheen overflow-hidden py-2">
       <div
-        className="flex gap-6 animate-train whitespace-nowrap"
+        className="flex gap-6 animate-train whitespace-nowrap items-center py-2"
         style={{ animation: 'train-scroll 25s linear infinite' }}
       >
         {Array(3).fill(services).flat().map((service, idx) => {
@@ -26,7 +26,7 @@ const AnimatedTrain = () => (
               className="cs-chip inline-flex items-center gap-3 bg-card/60 backdrop-blur-xl border border-white/10 rounded-full px-7 py-3.5 mx-1 min-w-[230px] shadow-lg hover:shadow-primary/20 hover:border-primary/50 hover:scale-105 transition-all duration-300 font-mono"
             >
               <span className="text-primary text-xs font-bold font-mono">[{indexNum}]</span>
-              <Icon className="w-4 h-4 text-primary" />
+              <Icon className="w-4 h-4 text-primary shrink-0" />
               <span className="text-foreground font-semibold text-xs uppercase tracking-wider">{service.label}</span>
             </div>
           );

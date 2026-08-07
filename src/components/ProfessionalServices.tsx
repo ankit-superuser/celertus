@@ -70,7 +70,7 @@ const ProfessionalServices = () => {
   ];
 
   return (
-    <section id="services" className="min-h-screen flex flex-col justify-center py-24 lg:py-32 bg-background px-4 sm:px-8 md:px-12 relative overflow-hidden border-b border-white/10">
+    <section id="services" className="w-full py-20 sm:py-24 lg:py-28 bg-background px-4 sm:px-8 md:px-12 relative border-b border-white/10">
       <div className="container mx-auto">
         {/* Split-Screen Header */}
         <Reveal variant="spring-up" className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-end mb-16 pb-8 border-b border-white/10">

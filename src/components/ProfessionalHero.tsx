@@ -50,13 +50,13 @@ const ProfessionalHero = () => {
       ref={heroRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-screen flex flex-col justify-center overflow-hidden py-24 lg:py-32 px-4 sm:px-8 md:px-12"
+      className="relative w-full flex flex-col justify-center pt-32 sm:pt-36 lg:pt-40 pb-16 sm:pb-20 lg:pb-24 px-4 sm:px-8 md:px-12"
     >
       {/* Background Ambient Aurora Mesh Glow */}
       <div className="cs-aurora opacity-40" aria-hidden="true" />
 
       {/* Floating lines background */}
-      <div className="absolute inset-0 z-0 w-full h-full min-h-0 opacity-40">
+      <div className="absolute inset-0 z-0 w-full h-full min-h-0 opacity-40 pointer-events-none">
         <FloatingLines
           enabledWaves={["top", "middle", "bottom"]}
           lineCount={lineCount}
@@ -87,8 +87,8 @@ const ProfessionalHero = () => {
             <span>[STUDIO // AI-FIRST DEVELOPMENT]</span>
           </div>
 
-          {/* H1: Minimum 76px on Desktop, Clash Display Bold */}
-          <h1 className="font-display font-bold text-4xl sm:text-6xl lg:text-[76px] xl:text-[84px] leading-[1.02] tracking-wide text-foreground mb-6">
+          {/* H1: Minimum 72px on Desktop, Clash Display Bold */}
+          <h1 className="font-display font-bold text-4xl sm:text-6xl lg:text-[72px] xl:text-[80px] leading-[1.05] tracking-wide text-foreground mb-6">
             CELERTUS<span className="text-primary">.AI</span><br />
             SOFTWARE <br />
             <span className="text-gradient-animated underline-draw inline-block">

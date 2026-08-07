@@ -16,7 +16,7 @@ const indexSchema = [
     "name": "Celertus.ai",
     "url": "https://celertus.germanysoon.com",
     "logo": "https://celertus.germanysoon.com/favicon.png",
-    "description": "Premier AI & Custom Software Engineering Studio building swift, scalable, and sophisticated software solutions.",
+    "description": "Premier AI & Custom Software Engineering Studio building swift, scalable, and enterprise software solutions.",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+91-8076036432",
@@ -33,6 +33,19 @@ const indexSchema = [
     "@type": "WebSite",
     "name": "Celertus.ai",
     "url": "https://celertus.germanysoon.com"
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Celertus.ai Software Engineering Studio",
+    "image": "https://celertus.germanysoon.com/social-preview.png",
+    "priceRange": "$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "New Delhi",
+      "addressCountry": "IN"
+    },
+    "telephone": "+91-8076036432"
   },
   {
     "@context": "https://schema.org",
@@ -65,30 +78,30 @@ const Index = () => {
       <SEO
         title="Celertus.ai | Premier AI & Custom Software Engineering Studio"
         description="Celertus.ai architects cutting-edge AI systems, cloud infrastructure, enterprise web & mobile applications, and high-performance microservices. Transform your digital vision into enterprise reality."
-        keywords="AI development, custom software engineering, cloud architecture, web applications, mobile apps, microservices, digital transformation, Celertus.ai"
+        keywords="AI development, artificial intelligence, custom software engineering, cloud architecture, web applications, mobile apps, microservices, digital transformation, Celertus.ai"
         canonicalUrl="/"
         schema={indexSchema}
       />
       <Navigation />
-      <main id="main-content" className="snap-y snap-proximity overflow-y-auto">
+      <main id="main-content" className="w-full">
         {/* Hero Section */}
-        <section id="hero" className="snap-start">
+        <section id="hero">
           <ProfessionalHero />
         </section>
         {/* Animated Train Section */}
-        <section id="animated-train" className="snap-start">
+        <section id="animated-train">
           <AnimatedTrain />
         </section>
         {/* Services Section */}
-        <section id="services" className="snap-start">
+        <section id="services">
           <ProfessionalServices />
         </section>
         {/* Work / Projects Showcase Section */}
-        <section id="work" className="snap-start">
+        <section id="work">
           <ProjectShowcase />
         </section>
         {/* Contact Section */}
-        <section id="contact" className="snap-start">
+        <section id="contact">
           <Contact />
         </section>
       </main>
