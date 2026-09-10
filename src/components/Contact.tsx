@@ -1,28 +1,28 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Send,
-  MessageSquare,
-  CheckCircle,
-  Clock
-} from "lucide-react";
-import ShinyText from "./ShinyText";
+import { Mail, Phone, MapPin, Send, CheckCircle, Clock } from "lucide-react";
 import Reveal from "@/components/Reveal";
 
-const typingText = "Amazing Together...";
+const typingWords = ["something people notice.", "a brand people remember.", "a product people keep."];
+
+const contactDetails = [
+  { Icon: Mail, label: "Email", value: "celertustechnologies@gmail.com", href: "mailto:celertustechnologies@gmail.com" },
+  { Icon: Phone, label: "Phone", value: "+91-8076036432", href: "tel:+918076036432" },
+  { Icon: MapPin, label: "Studio", value: "New Delhi 110043, India", href: null },
+];
+
+const inputClass =
+  "bg-background border-border focus:border-primary rounded-xl text-sm py-3.5 transition-colors";
+const labelClass = "text-sm text-muted-foreground";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
-    phone: '',
+    phone: "",
     email: "",
     company: "",
     message: ""
@@ -30,32 +30,31 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
   const [typed, setTyped] = useState("");
+  const [wordIndex, setWordIndex] = useState(0);
 
   useEffect(() => {
+    const word = typingWords[wordIndex];
     let i = 0;
     setTyped("");
-    let interval: NodeJS.Timeout;
-    let timeout: NodeJS.Timeout;
-    const startTyping = () => {
-      i = 0;
-      setTyped("");
-      interval = setInterval(() => {
-        setTyped(typingText.substring(0, i + 1));
-        i++;
-        if (i >= typingText.length) {
-          clearInterval(interval);
-          timeout = setTimeout(() => {
-            startTyping();
-          }, 3000);
-        }
-      }, 80);
-    };
-    startTyping();
+    let interval: ReturnType<typeof setInterval>;
+    let timeout: ReturnType<typeof setTimeout>;
+
+    interval = setInterval(() => {
+      setTyped(word.substring(0, i + 1));
+      i++;
+      if (i >= word.length) {
+        clearInterval(interval);
+        timeout = setTimeout(() => {
+          setWordIndex((n) => (n + 1) % typingWords.length);
+        }, 2600);
+      }
+    }, 55);
+
     return () => {
       clearInterval(interval);
       clearTimeout(timeout);
     };
-  }, []);
+  }, [wordIndex]);
 
   const SHEETY_API_URL = 'https://api.sheety.co/7c902e1a3a2e23b195242f624ed6ddc6/nuroviClients/sheet1';
 
@@ -88,16 +87,16 @@ const Contact = () => {
       }
 
       toast({
-        title: "Discovery Request Submitted!",
-        description: "Our technical architects will contact you within 24 hours.",
+        title: "Thanks — we've got it.",
+        description: "We'll get back to you within one business day.",
       });
 
       // Clear form
       setFormData({ name: "", phone: "", email: "", company: "", message: "" });
     } catch (error) {
       toast({
-        title: "Submission Failed",
-        description: (error as Error).message || "Please try again later.",
+        title: "That didn't send",
+        description: (error as Error).message || "Please try again, or email us directly.",
         variant: "destructive"
       });
     } finally {
@@ -113,97 +112,90 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="w-full py-16 sm:py-20 lg:py-24 bg-background px-4 sm:px-8 md:px-12 relative overflow-hidden">
-      <div className="container mx-auto">
-        {/* Split-Screen Header & Contact Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          
-          {/* Left Split: Details & Direct Contact */}
-          <div className="lg:col-span-5 flex flex-col items-start text-left font-mono">
-            <Reveal variant="up" className="w-full">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-primary/10 border border-primary/30 backdrop-blur-xl text-xs text-primary uppercase tracking-wider mb-4 rounded-full shadow-lg shadow-primary/10">
-                <MessageSquare className="w-4 h-4 text-primary" />
-                <span>[04 // INITIATE DISCOVERY]</span>
-              </div>
+    /* The second dark contrast band on the page. */
+    <div className="dark bg-background text-foreground">
+      <section className="w-full py-20 sm:py-24 lg:py-28 px-4 sm:px-8 md:px-12 relative overflow-hidden">
+        <div className="cs-aurora" aria-hidden="true" />
 
-              <h2 className="font-display font-bold text-3xl sm:text-5xl lg:text-6xl tracking-wide text-foreground mb-4 leading-tight">
-                LET'S BUILD <br />
-                <span className="text-gradient-animated inline-block min-h-[1.25em]">{typed}</span>
-              </h2>
+        <div className="container mx-auto relative">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
-              <p className="text-sm sm:text-base text-muted-foreground leading-[1.7] max-w-[70ch] mb-8">
-                Ready to accelerate your engineering roadmap? Share your system specifications or project objectives with our team.
-              </p>
+            {/* Left: pitch + direct contact details */}
+            <div className="lg:col-span-5">
+              <Reveal variant="up" className="w-full">
+                <span className="text-sm text-muted-foreground">Get in touch</span>
 
-              {/* Direct Info Cards */}
-              <div className="space-y-4 w-full">
-                <div className="border border-white/10 hover:border-primary/50 bg-card/60 backdrop-blur-xl p-5 rounded-2xl shadow-xl transition-all flex items-center gap-4">
-                  <div className="p-3 bg-primary/10 border border-primary/30 rounded-xl text-primary shrink-0">
-                    <Mail className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="font-display font-bold text-sm text-foreground uppercase tracking-wider">Email Us</h3>
-                    <p className="text-muted-foreground text-xs font-mono mt-0.5 truncate">celertustechnologies@gmail.com</p>
-                  </div>
+                <h2 className="font-display text-foreground mt-3 mb-5">
+                  Let&rsquo;s build{" "}
+                  {/* Fixed min-height so the typing loop can never reflow the page. */}
+                  <span className="text-gradient-animated inline-block min-h-[1.2em] align-top">
+                    {typed}
+                    <span className="sr-only">{typingWords[wordIndex]}</span>
+                  </span>
+                </h2>
+
+                <p className="text-base text-muted-foreground mb-9">
+                  Tell us what you&rsquo;re trying to grow. Whether that&rsquo;s traffic,
+                  a launch, or a platform that keeps falling over — start with the
+                  problem and we&rsquo;ll tell you what we&rsquo;d do about it.
+                </p>
+
+                <div className="space-y-3">
+                  {contactDetails.map(({ Icon, label, value, href }) => (
+                    <div
+                      key={label}
+                      className="border border-border bg-card p-5 rounded-2xl flex items-center gap-4 hover:border-primary/40 transition-colors"
+                    >
+                      <span className="p-2.5 bg-secondary rounded-xl text-primary shrink-0">
+                        <Icon className="w-4 h-4" />
+                      </span>
+                      <div className="min-w-0 flex-1">
+                        <p className="text-xs text-muted-foreground">{label}</p>
+                        {href ? (
+                          <a
+                            href={href}
+                            className="text-sm text-foreground hover:text-primary transition-colors block truncate"
+                          >
+                            {value}
+                          </a>
+                        ) : (
+                          <p className="text-sm text-foreground truncate">{value}</p>
+                        )}
+                      </div>
+                    </div>
+                  ))}
                 </div>
 
-                <div className="border border-white/10 hover:border-primary/50 bg-card/60 backdrop-blur-xl p-5 rounded-2xl shadow-xl transition-all flex items-center gap-4">
-                  <div className="p-3 bg-primary/10 border border-primary/30 rounded-xl text-primary shrink-0">
-                    <Phone className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="font-display font-bold text-sm text-foreground uppercase tracking-wider">Direct Line</h3>
-                    <p className="text-muted-foreground text-xs font-mono mt-0.5">+91-8076036432</p>
-                  </div>
+                <div className="mt-5 flex items-center gap-2.5 text-sm text-muted-foreground">
+                  <Clock className="w-4 h-4 text-primary shrink-0" />
+                  <span>We reply within one business day.</span>
                 </div>
+              </Reveal>
+            </div>
 
-                <div className="border border-white/10 hover:border-primary/50 bg-card/60 backdrop-blur-xl p-5 rounded-2xl shadow-xl transition-all flex items-center gap-4">
-                  <div className="p-3 bg-primary/10 border border-primary/30 rounded-xl text-primary shrink-0">
-                    <MapPin className="w-5 h-5 text-primary" />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="font-display font-bold text-sm text-foreground uppercase tracking-wider">Headquarters</h3>
-                    <p className="text-muted-foreground text-xs font-mono mt-0.5">New Delhi 110043, India</p>
-                  </div>
-                </div>
-              </div>
+            {/* Right: the form */}
+            <Reveal variant="up" delay={100} className="lg:col-span-7 w-full">
+              <div className="border border-border bg-card rounded-3xl p-6 sm:p-8 shadow-soft-lg">
+                <h3 className="font-display text-xl text-foreground mb-6 pb-5 border-b border-border">
+                  Tell us about your project
+                </h3>
 
-              {/* Response Guarantee Pill */}
-              <div className="mt-6 p-4 border border-emerald-500/30 bg-emerald-500/10 backdrop-blur-xl rounded-2xl flex items-center gap-3 text-xs text-foreground">
-                <Clock className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span><strong>SLA Guarantee:</strong> Technical response within 24 business hours.</span>
-              </div>
-            </Reveal>
-          </div>
-
-          {/* Right Split: High-Contrast Glass Form */}
-          <Reveal variant="up" delay={100} className="lg:col-span-7 w-full font-mono">
-            <Card className="border border-white/10 bg-card/70 backdrop-blur-2xl rounded-3xl shadow-2xl p-6 sm:p-8">
-              <CardHeader className="p-0 mb-6 pb-4 border-b border-white/10">
-                <CardTitle className="font-display text-xl font-bold uppercase tracking-wider flex items-center gap-2.5 text-foreground">
-                  <Send className="w-5 h-5 text-primary" />
-                  SUBMIT SPECIFICATIONS
-                </CardTitle>
-              </CardHeader>
-
-              <CardContent className="p-0">
                 <form onSubmit={handleSubmit} className="space-y-5">
-                  {/* Row 1: Name and Email */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="space-y-2">
-                      <Label htmlFor="name" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Full Name *</Label>
+                      <Label htmlFor="name" className={labelClass}>Your name *</Label>
                       <Input
                         id="name"
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
                         required
-                        placeholder="John Doe"
-                        className="bg-background/60 border border-white/10 focus:border-primary rounded-xl font-mono text-xs py-3.5 transition-colors"
+                        placeholder="Jane Doe"
+                        className={inputClass}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Email Address *</Label>
+                      <Label htmlFor="email" className={labelClass}>Email *</Label>
                       <Input
                         id="email"
                         name="email"
@@ -211,42 +203,42 @@ const Contact = () => {
                         value={formData.email}
                         onChange={handleChange}
                         required
-                        placeholder="john@company.com"
-                        className="bg-background/60 border border-white/10 focus:border-primary rounded-xl font-mono text-xs py-3.5 transition-colors"
+                        placeholder="jane@company.com"
+                        className={inputClass}
                       />
                     </div>
                   </div>
 
-                  {/* Row 2: Phone and Company */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                     <div className="space-y-2">
-                      <Label htmlFor="phone" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Phone Number</Label>
+                      <Label htmlFor="phone" className={labelClass}>Phone</Label>
                       <Input
                         id="phone"
                         name="phone"
                         type="tel"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="+1 (555) 000-0000"
-                        className="bg-background/60 border border-white/10 focus:border-primary rounded-xl font-mono text-xs py-3.5 transition-colors"
+                        placeholder="+91 98765 43210"
+                        className={inputClass}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="company" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Company / Organization</Label>
+                      <Label htmlFor="company" className={labelClass}>Company</Label>
                       <Input
                         id="company"
                         name="company"
                         value={formData.company}
                         onChange={handleChange}
-                        placeholder="Enterprise Inc."
-                        className="bg-background/60 border border-white/10 focus:border-primary rounded-xl font-mono text-xs py-3.5 transition-colors"
+                        placeholder="Acme Co."
+                        className={inputClass}
                       />
                     </div>
                   </div>
 
-                  {/* Project Details */}
                   <div className="space-y-2">
-                    <Label htmlFor="message" className="text-xs font-bold uppercase tracking-wider text-muted-foreground">Project Specification &amp; Timeline *</Label>
+                    <Label htmlFor="message" className={labelClass}>
+                      What are you trying to do? *
+                    </Label>
                     <Textarea
                       id="message"
                       name="message"
@@ -254,42 +246,41 @@ const Contact = () => {
                       onChange={handleChange}
                       required
                       rows={4}
-                      placeholder="Outline your project scope, target tech stack, timeline, or engineering team requirements..."
-                      className="bg-background/60 border border-white/10 focus:border-primary rounded-xl font-mono text-xs p-3.5 transition-colors"
+                      placeholder="A rough idea of the goal, the timeline, and anything you've already tried."
+                      className={`${inputClass} p-3.5`}
                     />
                   </div>
 
-                  {/* Submit Button */}
                   <Button
                     type="submit"
                     disabled={isSubmitting}
                     size="lg"
-                    className="w-full cs-magnetic font-mono text-xs uppercase tracking-wider rounded-full bg-primary hover:bg-primary/90 text-white font-bold py-6 border border-primary shadow-2xl shadow-primary/25 hover:scale-105 transition-all duration-300"
+                    className="w-full cs-magnetic rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-6 text-sm shadow-soft"
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin mr-2" />
-                        SUBMITTING REQUEST...
+                        <div className="w-4 h-4 border-2 border-current/30 border-t-current rounded-full animate-spin mr-2" />
+                        Sending…
                       </>
                     ) : (
                       <>
                         <Send className="w-4 h-4 mr-2" />
-                        INITIATE PROJECT DISCOVERY
+                        Send message
                       </>
                     )}
                   </Button>
 
-                  <div className="flex items-center justify-center gap-2 text-muted-foreground text-[11px] pt-1">
-                    <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0" />
-                    <span>Non-disclosure agreement &amp; data privacy protected</span>
+                  <div className="flex items-center justify-center gap-2 text-muted-foreground text-xs pt-1">
+                    <CheckCircle className="w-4 h-4 text-primary shrink-0" />
+                    <span>Your details stay private. Happy to sign an NDA.</span>
                   </div>
                 </form>
-              </CardContent>
-            </Card>
-          </Reveal>
+              </div>
+            </Reveal>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
   );
 };
 

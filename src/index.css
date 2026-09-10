@@ -2,73 +2,84 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here.
 All colors MUST be HSL.
+
+Theme: warm light canvas by default. `.dark` is applied to individual feature
+bands (the work showcase, the contact CTA) — NOT to <html> — so the page reads
+light and airy with two deliberate moments of contrast.
 */
 
 @layer base {
   :root {
-    --background: 0 0% 0%;
-    /* true black */
-    --foreground: 0 0% 100%;
-    /* true white */
+    --background: 35 30% 97%;
+    /* #FAF8F5 warm porcelain */
+    --foreground: 260 8% 10%;
+    /* #16151A soft near-black — never pure #000 */
 
-    --card: 0 0% 8%;
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 100%;
+    --card-foreground: 260 8% 10%;
 
-    --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 260 8% 10%;
 
-    --primary: 262 83% 58%;
+    --primary: 248 62% 63%;
+    /* #6D5AE6 calmed violet */
     --primary-foreground: 0 0% 100%;
+    --primary-glow: 248 70% 78%;
 
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 35 22% 93%;
+    --secondary-foreground: 260 8% 10%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 35 18% 91%;
+    --muted-foreground: 258 6% 45%;
+    /* #6B6873 warm grey */
 
-    --accent: 276 100% 70%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 24 68% 70%;
+    /* #E8A87C warm terracotta */
+    --accent-foreground: 260 8% 10%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 262 83% 58%;
+    --border: 35 14% 88%;
+    --input: 35 14% 88%;
+    --ring: 248 62% 63%;
 
-    --radius: 1rem;
+    --radius: 1.25rem;
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    --background: 260 10% 7%;
+    /* #111014 warm charcoal — NOT true black */
+    --foreground: 35 20% 95%;
 
-    --card: 0 0% 8%;
-    --card-foreground: 0 0% 100%;
+    --card: 260 9% 11%;
+    --card-foreground: 35 20% 95%;
 
-    --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 260 9% 11%;
+    --popover-foreground: 35 20% 95%;
 
-    --primary: 262 83% 58%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 248 70% 72%;
+    /* lifted so it reads on charcoal */
+    --primary-foreground: 260 10% 7%;
+    --primary-glow: 248 74% 80%;
 
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 260 8% 16%;
+    --secondary-foreground: 35 20% 95%;
 
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 70%;
+    --muted: 260 8% 16%;
+    --muted-foreground: 258 8% 62%;
 
-    --accent: 276 100% 70%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 24 62% 68%;
+    --accent-foreground: 260 10% 7%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 62% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 20%;
-    --input: 0 0% 20%;
-    --ring: 262 83% 58%;
+    --border: 260 8% 20%;
+    --input: 260 8% 20%;
+    --ring: 248 70% 72%;
   }
 }
 
@@ -85,31 +96,29 @@ All colors MUST be HSL.
   }
 
   body {
-    font-family: 'IBM Plex Mono', monospace;
-    @apply bg-background text-foreground antialiased selection:bg-primary/40 selection:text-white leading-[1.7];
+    font-family: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
+    @apply bg-background text-foreground antialiased selection:bg-primary/20 selection:text-foreground leading-[1.65];
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Clash Display', sans-serif;
-    font-weight: 700;
-    letter-spacing: 0.03em;
+    font-family: 'Fraunces', ui-serif, Georgia, serif;
+    font-weight: 600;
+    letter-spacing: -0.02em;
     @apply text-foreground;
   }
 
-  /* Strict H1 sizing rule: Minimum 72px on desktop and >= 3x visual weight over body text */
   h1 {
-    font-size: clamp(2.75rem, 6.5vw, 5.25rem); /* Minimum 44px on mobile up to 84px */
-    line-height: 1.05;
-    letter-spacing: -0.01em;
+    font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+    line-height: 1.08;
   }
 
   h2 {
-    font-size: clamp(2rem, 4vw, 3.25rem);
+    font-size: clamp(1.875rem, 3.6vw, 2.875rem);
     line-height: 1.15;
   }
 
   h3 {
-    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+    font-size: clamp(1.375rem, 2.2vw, 1.875rem);
     line-height: 1.25;
   }
 
@@ -120,20 +129,21 @@ All colors MUST be HSL.
 
   /* Custom scrollbar */
   ::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
   }
 
   ::-webkit-scrollbar-track {
-    background: rgba(15, 15, 20, 0.5);
+    background: hsl(var(--secondary));
   }
 
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--primary) / 0.7);
+    background: hsl(var(--muted-foreground) / 0.35);
     border-radius: 9999px;
+    border: 3px solid hsl(var(--secondary));
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--primary));
+    background: hsl(var(--muted-foreground) / 0.55);
   }
 
   /* Utility to completely hide scrollbars */
@@ -146,7 +156,7 @@ All colors MUST be HSL.
   }
 
   .text-gradient {
-    background: linear-gradient(90deg, #6a5af9, #d66efd);
+    background: linear-gradient(100deg, hsl(var(--primary)), hsl(var(--accent)));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -154,13 +164,17 @@ All colors MUST be HSL.
   }
 
   .text-gradient-animated {
-    background: linear-gradient(90deg, #a855f7, #ec4899, #d66efd, #a855f7);
+    background: linear-gradient(100deg,
+      hsl(var(--primary)),
+      hsl(var(--accent)),
+      hsl(var(--primary-glow)),
+      hsl(var(--primary)));
     background-size: 300% 100%;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     color: transparent;
-    animation: cs-gradient-flow 8s ease infinite;
+    animation: cs-gradient-flow 14s ease infinite;
   }
 }
 
@@ -174,12 +188,12 @@ All colors MUST be HSL.
     transition-property: opacity, transform, filter;
     transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .reveal[data-reveal="up"] { transform: translateY(34px); }
-  .reveal[data-reveal="down"] { transform: translateY(-34px); }
-  .reveal[data-reveal="left"] { transform: translateX(-44px); }
-  .reveal[data-reveal="right"] { transform: translateX(44px); }
-  .reveal[data-reveal="scale"] { transform: scale(0.9); }
-  .reveal[data-reveal="blur"] { filter: blur(14px); }
+  .reveal[data-reveal="up"] { transform: translateY(24px); }
+  .reveal[data-reveal="down"] { transform: translateY(-24px); }
+  .reveal[data-reveal="left"] { transform: translateX(-32px); }
+  .reveal[data-reveal="right"] { transform: translateX(32px); }
+  .reveal[data-reveal="scale"] { transform: scale(0.96); }
+  .reveal[data-reveal="blur"] { filter: blur(10px); }
   .reveal[data-reveal="fade"] { transform: none; }
 
   .reveal[data-shown="true"] {
@@ -189,9 +203,9 @@ All colors MUST be HSL.
   }
 
   /* Reusable continuous motion utilities */
-  .animate-float-slow { animation: cs-float-slow 7s ease-in-out infinite; }
+  .animate-float-slow { animation: cs-float-slow 9s ease-in-out infinite; }
   .hover-lift { transition: transform .3s cubic-bezier(0.22,1,0.36,1), box-shadow .3s ease; }
-  .hover-lift:hover { transform: translateY(-6px); }
+  .hover-lift:hover { transform: translateY(-4px); }
 }
 
 @keyframes cs-gradient-flow {
@@ -201,7 +215,7 @@ All colors MUST be HSL.
 }
 @keyframes cs-float-slow {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+  50% { transform: translateY(-8px); }
 }
 
 /* Users who prefer reduced motion get instant, static content everywhere. */
@@ -219,27 +233,27 @@ All colors MUST be HSL.
 }
 
 /* ═══════════════════════════════════════════════════════════════════
-   KINETIC SPRING motion system
-   Distinct, GPU-only (transform/opacity/filter) entrances so no two
-   sections animate alike, unified by ONE overshoot easing token.
-   Grafts: specular sheen, hero underline-draw, drifting aurora glow,
-   scroll-linked parallax. Every new variant reuses the .reveal engine.
+   CALM motion system
+   GPU-only (transform/opacity/filter) entrances, all sharing one
+   decelerating easing token — no overshoot, so nothing on the page
+   bounces or jitters. Grafts: specular sheen, drifting aurora glow,
+   scroll-linked parallax. Every variant reuses the .reveal engine.
    ─────────────────────────────────────────────────────────────────── */
 :root {
-  --cs-spring: cubic-bezier(0.34, 1.56, 0.64, 1);      /* punchy overshoot */
-  --cs-spring-soft: cubic-bezier(0.22, 1.2, 0.36, 1);  /* gentle overshoot */
+  --cs-spring: cubic-bezier(0.22, 1, 0.36, 1);        /* smooth decelerate */
+  --cs-spring-soft: cubic-bezier(0.33, 1, 0.68, 1);   /* gentler decelerate */
 }
 
 @layer utilities {
-  /* ── New reveal variants — inherit .reveal's opacity:0 + settle-on-shown;
-        we only swap the start transform + force the spring easing. ── */
-  .reveal[data-reveal="spring-up"]    { transform: translateY(48px) scale(.96); transition-timing-function: var(--cs-spring); }
-  .reveal[data-reveal="spring-left"]  { transform: translateX(-56px);           transition-timing-function: var(--cs-spring); }
-  .reveal[data-reveal="spring-right"] { transform: translateX(56px);            transition-timing-function: var(--cs-spring); }
-  .reveal[data-reveal="pop"]          { transform: scale(.7);                   transition-timing-function: var(--cs-spring); }
-  /* 3D flip — perspective baked in so no parent preserve-3d is required. */
+  /* ── Extra reveal variants — inherit .reveal's opacity:0 + settle-on-shown;
+        we only swap the start transform. ── */
+  .reveal[data-reveal="spring-up"]    { transform: translateY(32px) scale(.985); transition-timing-function: var(--cs-spring); }
+  .reveal[data-reveal="spring-left"]  { transform: translateX(-36px);            transition-timing-function: var(--cs-spring); }
+  .reveal[data-reveal="spring-right"] { transform: translateX(36px);             transition-timing-function: var(--cs-spring); }
+  .reveal[data-reveal="pop"]          { transform: scale(.94);                   transition-timing-function: var(--cs-spring); }
+  /* Gentle 3D lift — perspective baked in so no parent preserve-3d is required. */
   .reveal[data-reveal="flip-up"] {
-    transform: perspective(900px) rotateX(26deg) translateY(40px);
+    transform: perspective(1100px) rotateX(10deg) translateY(28px);
     transform-origin: 50% 100%;
     transition-timing-function: var(--cs-spring);
     backface-visibility: hidden;
@@ -247,81 +261,81 @@ All colors MUST be HSL.
   /* Explicit shown state (double-attr wins over the generic reset) so the
      3D interpolation stays smooth (matching function lists). */
   .reveal[data-reveal="flip-up"][data-shown="true"] {
-    transform: perspective(900px) rotateX(0deg) translateY(0);
+    transform: perspective(1100px) rotateX(0deg) translateY(0);
   }
 
-  /* ── Magnetic springy hover for buttons (transform only). ── */
+  /* ── Restrained hover lift for buttons (transform only). ── */
   .cs-magnetic { transition: transform .35s var(--cs-spring); will-change: transform; }
-  .cs-magnetic:hover  { transform: translateY(-4px) scale(1.06); }
-  .cs-magnetic:active { transform: translateY(-1px) scale(1.02); }
+  .cs-magnetic:hover  { transform: translateY(-2px) scale(1.02); }
+  .cs-magnetic:active { transform: translateY(0) scale(.99); }
 
-  /* ── Springy 3D tilt hover for the service cards. ── */
-  .cs-card-3d { transition: transform .4s var(--cs-spring), box-shadow .4s ease; will-change: transform; }
-  .cs-card-3d:hover { transform: perspective(900px) translateY(-8px) rotateX(6deg) scale(1.03); }
+  /* ── Card hover: a clean lift, no tilt. ── */
+  .cs-card-3d { transition: transform .4s var(--cs-spring), box-shadow .4s ease, border-color .3s ease; will-change: transform; }
+  .cs-card-3d:hover { transform: translateY(-4px); }
 
-  /* ── Hero headline: per-letter spring pop (children of a shown reveal). ── */
+  /* ── Headline: per-letter fade-up (children of a shown reveal). ── */
   .cs-letter { display: inline-block; opacity: 0; will-change: transform, opacity; }
-  [data-shown="true"] .cs-letter { animation: cs-letter-pop .62s var(--cs-spring) both; }
+  [data-shown="true"] .cs-letter { animation: cs-letter-pop .55s var(--cs-spring) both; }
 
-  /* ── Train chips: bounce-drop stagger; hover glow via filter so it never
+  /* ── Marquee chips: soft drop stagger; hover glow via filter so it never
         fights the entrance transform fill. ── */
   .cs-chip { opacity: 0; transition: filter .3s ease; will-change: transform, opacity; }
-  [data-shown="true"] .cs-chip { animation: cs-chip-drop .7s var(--cs-spring) both; }
-  .cs-chip:hover { filter: brightness(1.12) drop-shadow(0 10px 26px rgba(168, 85, 247, .4)); }
+  [data-shown="true"] .cs-chip { animation: cs-chip-drop .6s var(--cs-spring) both; }
+  .cs-chip:hover { filter: brightness(1.03) drop-shadow(0 6px 18px hsl(var(--primary) / .18)); }
 
-  /* ── Specular sheen glint that re-catches the light on hover (Unveil graft).
+  /* ── Specular sheen glint that re-catches the light on hover.
         Pure translateX on a pseudo-element → GPU-friendly, no layout. ── */
   .sheen { position: relative; overflow: hidden; isolation: isolate; }
   .sheen::after {
     content: ""; position: absolute; inset: -2px; z-index: 3; pointer-events: none;
     background: linear-gradient(115deg,
-      transparent 32%,
-      hsl(276 100% 82% / .16) 46%,
-      hsl(0 0% 100% / .42) 50%,
-      hsl(276 100% 82% / .16) 54%,
-      transparent 68%);
+      transparent 36%,
+      hsl(var(--primary) / .06) 47%,
+      hsl(0 0% 100% / .28) 50%,
+      hsl(var(--primary) / .06) 53%,
+      transparent 64%);
     transform: translateX(-150%);
   }
-  .sheen:hover::after { animation: cs-sheen .9s ease 1; }
+  .sheen:hover::after { animation: cs-sheen 1s ease 1; }
 
-  /* ── Train: a slow soft light band drifting across the whole strip. ── */
+  /* ── Marquee: a slow soft light band drifting across the whole strip. ── */
   .train-sheen { position: relative; }
   .train-sheen::before {
     content: ""; position: absolute; inset: 0; z-index: 4; pointer-events: none;
-    background: linear-gradient(100deg, transparent 42%, hsl(0 0% 100% / .07) 50%, transparent 58%);
+    background: linear-gradient(100deg, transparent 42%, hsl(0 0% 100% / .28) 50%, transparent 58%);
     transform: translateX(-100%);
-    animation: cs-band 6.5s linear infinite;
+    animation: cs-band 9s linear infinite;
   }
 
-  /* ── Hero: a glowing gradient underline that draws itself in. ── */
+  /* ── A soft gradient underline that draws itself in. ── */
   .underline-draw { position: relative; }
   .underline-draw::after {
-    content: ""; position: absolute; left: 0; right: 0; bottom: -.18em; height: 2px;
-    background: linear-gradient(90deg, #6a5af9, #d66efd, #ec4899);
+    content: ""; position: absolute; left: 0; right: 0; bottom: -.14em; height: 2px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, hsl(var(--primary)), hsl(var(--accent)));
     transform: scaleX(0); transform-origin: left center;
-    filter: drop-shadow(0 0 6px hsl(276 100% 70% / .75));
-    animation: cs-underline 1s cubic-bezier(.22, 1, .36, 1) 1.15s forwards;
+    animation: cs-underline 1.1s cubic-bezier(.22, 1, .36, 1) 1.05s forwards;
   }
 
-  /* ── Aurora gradient-mesh glow drifting behind the true-black. Blur is
-        applied ONCE (static); only the composited transform animates. ── */
+  /* ── Aurora gradient-mesh glow drifting behind the canvas. Blur is applied
+        ONCE (static); only the composited transform animates. ── */
   .cs-aurora {
     position: absolute; inset: -20%; z-index: 0; pointer-events: none;
-    filter: blur(60px) saturate(140%); opacity: .5;
+    filter: blur(70px) saturate(115%); opacity: .28;
   }
   .cs-aurora::before, .cs-aurora::after {
     content: ""; position: absolute; inset: 0; will-change: transform;
     background:
-      radial-gradient(38% 42% at 25% 30%, #6a5af9aa, transparent 60%),
-      radial-gradient(34% 40% at 78% 35%, #a855f7aa, transparent 60%),
-      radial-gradient(40% 44% at 55% 78%, #ec489988, transparent 62%);
-    animation: cs-aurora-drift 24s ease-in-out infinite;
+      radial-gradient(38% 42% at 25% 30%, hsl(var(--primary) / .55), transparent 62%),
+      radial-gradient(34% 40% at 78% 35%, hsl(var(--primary-glow) / .5), transparent 62%),
+      radial-gradient(40% 44% at 55% 78%, hsl(var(--accent) / .5), transparent 64%);
+    animation: cs-aurora-drift 34s ease-in-out infinite;
   }
   .cs-aurora::after {
     background:
-      radial-gradient(36% 40% at 70% 22%, #d66efd99, transparent 60%),
-      radial-gradient(42% 46% at 20% 70%, #6366f199, transparent 62%);
-    animation-duration: 32s; animation-direction: reverse; opacity: .85;
+      radial-gradient(36% 40% at 70% 22%, hsl(var(--accent) / .42), transparent 62%),
+      radial-gradient(42% 46% at 20% 70%, hsl(var(--primary) / .38), transparent 64%);
+    animation-duration: 44s; animation-direction: reverse; opacity: .8;
   }
 
   /* ── Scroll-linked parallax drift — progressive enhancement, fully gated
@@ -338,14 +352,11 @@ All colors MUST be HSL.
 }
 
 @keyframes cs-letter-pop {
-  0%   { opacity: 0; transform: translateY(0.7em) rotate(8deg) scale(.6); }
-  60%  { opacity: 1; transform: translateY(-0.12em) rotate(-2deg) scale(1.08); }
-  100% { opacity: 1; transform: translateY(0) rotate(0deg) scale(1); }
+  0%   { opacity: 0; transform: translateY(0.4em) scale(.94); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 @keyframes cs-chip-drop {
-  0%   { opacity: 0; transform: translateY(-90px) scale(.85); }
-  55%  { opacity: 1; transform: translateY(10px) scale(1.04); }
-  75%  {             transform: translateY(-4px) scale(.99); }
+  0%   { opacity: 0; transform: translateY(-24px) scale(.96); }
   100% { opacity: 1; transform: translateY(0) scale(1); }
 }
 @keyframes cs-sheen { from { transform: translateX(-150%); } to { transform: translateX(150%); } }
@@ -353,26 +364,15 @@ All colors MUST be HSL.
 @keyframes cs-underline { to { transform: scaleX(1); } }
 @keyframes cs-aurora-drift {
   0%   { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
-  33%  { transform: translate3d(4%, -3%, 0) scale(1.12) rotate(4deg); }
-  66%  { transform: translate3d(-3%, 2%, 0) scale(1.05) rotate(-3deg); }
+  33%  { transform: translate3d(3%, -2%, 0) scale(1.08) rotate(3deg); }
+  66%  { transform: translate3d(-2%, 1.5%, 0) scale(1.03) rotate(-2deg); }
   100% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); }
 }
-/* Referenced from ProjectShowcase's scoped <style> (keyframes are global). */
-@keyframes cs-phone-punch {
-  0%   { opacity: 0; transform: scale(.72) rotateY(-16deg); }
-  60%  { opacity: 1; transform: scale(1.05) rotateY(6deg); }
-  100% { opacity: 1; transform: scale(1) rotateY(0deg); }
-}
-@keyframes cs-card-spring {
-  0%   { opacity: 0; transform: translateX(40px) scale(.9); }
-  60%  { opacity: 1; transform: translateX(-6px) scale(1.02); }
-  100% { opacity: 1; transform: translateX(0) scale(1); }
-}
-@keyframes cs-parallax-y { from { transform: translateY(30px); } to { transform: translateY(-22px); } }
+@keyframes cs-parallax-y { from { transform: translateY(24px); } to { transform: translateY(-18px); } }
 
-/* Reduced-motion: neutralize every NEW continuous / keyframe motion.
-   (The original reduced-motion block already forces all .reveal variants
-   to transform:none/opacity:1, so the new entrances are covered too.) */
+/* Reduced-motion: neutralize every continuous / keyframe motion.
+   (The first reduced-motion block already forces all .reveal variants to
+   transform:none/opacity:1, so the entrances above are covered too.) */
 @media (prefers-reduced-motion: reduce) {
   .cs-aurora::before, .cs-aurora::after { animation: none !important; }
   .cs-letter, .cs-chip { opacity: 1 !important; transform: none !important; animation: none !important; }

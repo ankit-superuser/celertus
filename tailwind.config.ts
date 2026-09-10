@@ -19,16 +19,17 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['IBM Plex Mono', 'monospace'],
-				mono: ['IBM Plex Mono', 'monospace'],
-				display: ['Clash Display', 'sans-serif'],
-				heading: ['Clash Display', 'sans-serif'],
+				sans: ['Satoshi', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				display: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
+				heading: ['Fraunces', 'ui-serif', 'Georgia', 'serif'],
+				/* Reserved for genuine code / tabular readouts only. */
+				mono: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
 			},
 			boxShadow: {
-				'brutal-sm': '2px 2px 0px 0px rgba(168, 85, 247, 0.4)',
-				'brutal': '4px 4px 0px 0px rgba(168, 85, 247, 0.5)',
-				'brutal-lg': '6px 6px 0px 0px rgba(168, 85, 247, 0.6)',
-				'brutal-white': '4px 4px 0px 0px rgba(255, 255, 255, 0.9)',
+				/* Soft ambient elevation — replaces the old neon offset shadows. */
+				'soft': '0 1px 2px rgb(22 21 26 / .04), 0 12px 32px -8px rgb(22 21 26 / .10)',
+				'soft-lg': '0 2px 4px rgb(22 21 26 / .04), 0 24px 56px -12px rgb(22 21 26 / .14)',
+				'soft-inset': 'inset 0 1px 0 0 rgb(255 255 255 / .6)',
 			},
 			colors: {
 				border: 'hsl(var(--border))',
@@ -64,21 +65,12 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
-				},
-				sidebar: {
-					DEFAULT: 'hsl(var(--sidebar-background))',
-					foreground: 'hsl(var(--sidebar-foreground))',
-					primary: 'hsl(var(--sidebar-primary))',
-					'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-					accent: 'hsl(var(--sidebar-accent))',
-					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-					border: 'hsl(var(--sidebar-border))',
-					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
 			backgroundImage: {
-				'gradient-primary': 'linear-gradient(135deg, hsl(262 83% 58%), hsl(276 100% 70%))',
-				'gradient-secondary': 'linear-gradient(120deg, hsl(262 90% 60%) 0%, hsl(276 100% 75%) 100%)',
+				'gradient-primary': 'linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)))',
+				'gradient-secondary': 'linear-gradient(120deg, hsl(var(--primary) / 0.12) 0%, hsl(var(--accent) / 0.16) 100%)',
+				'gradient-card': 'linear-gradient(160deg, hsl(var(--card)) 0%, hsl(var(--secondary) / 0.6) 100%)',
 				'gradient-hero': 'linear-gradient(180deg, transparent 0%, hsl(var(--background) / 0.25) 60%, hsl(var(--background) / 0.7) 100%)'
 			},
 			borderRadius: {

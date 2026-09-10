@@ -14,34 +14,41 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="dark min-h-screen bg-background text-foreground flex flex-col justify-between">
+    <div className="min-h-screen bg-background text-foreground flex flex-col justify-between">
       <SEO
         title="404 Page Not Found | Celertus.ai"
-        description="The requested page could not be found on Celertus.ai. Return to our homepage to explore enterprise AI & software solutions."
+        description="The requested page could not be found on Celertus.ai. Return to our homepage to explore our marketing and technology services."
         noIndex={true}
       />
       <Navigation />
 
       <main id="main-content" className="flex-1 flex items-center justify-center py-32 px-6">
         <div className="max-w-md w-full text-center">
-          <span className="text-7xl font-extrabold text-primary block mb-2 tracking-widest animate-pulse">
-            404
-          </span>
-          <h1 className="text-3xl font-bold mb-4">Page Not Found</h1>
-          <p className="text-muted-foreground mb-8 leading-relaxed">
-            The page you are looking for might have been moved, renamed, or is temporarily unavailable.
+          <span className="font-display text-6xl text-primary block mb-3">404</span>
+          <h1 className="font-display mb-4">Page not found</h1>
+          <p className="text-muted-foreground mb-8">
+            This page may have moved, been renamed, or never existed. Let&rsquo;s get you back on track.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold">
+          <div className="flex flex-col sm:flex-row gap-3.5 justify-center">
+            <Button
+              asChild
+              size="lg"
+              className="cs-magnetic rounded-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium px-7 py-6 text-sm shadow-soft"
+            >
               <Link to="/">
                 <Home className="w-4 h-4 mr-2" />
-                Return to Home
+                Back to home
               </Link>
             </Button>
-            <Button asChild variant="outline" size="lg" className="border-border hover:bg-card">
-              <Link to="/web-development">
+            <Button
+              asChild
+              variant="outline"
+              size="lg"
+              className="cs-magnetic rounded-full border-border bg-card hover:bg-secondary px-7 py-6 text-sm font-medium"
+            >
+              <Link to="/digital-marketing">
                 <ArrowLeft className="w-4 h-4 mr-2" />
-                View Services
+                View services
               </Link>
             </Button>
           </div>

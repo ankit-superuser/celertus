@@ -1,7 +1,7 @@
 {
   "short_name": "Celertus.ai",
-  "name": "Celertus.ai - Premier AI & Custom Software Engineering Studio",
-  "description": "Building swift, scalable, and sophisticated AI & custom software solutions.",
+  "name": "Celertus.ai - Digital Marketing & Technology Studio",
+  "description": "Digital marketing, performance advertising and brand campaigns — plus the web, mobile and cloud systems behind them.",
   "icons": [
     {
       "src": "/logo192.png",
@@ -16,6 +16,6 @@
   ],
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#0F172A",
-  "background_color": "#0F172A"
+  "theme_color": "#FAF8F5",
+  "background_color": "#FAF8F5"
 }

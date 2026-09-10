@@ -1,17 +1,13 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown, Globe, Smartphone, Database, Cloud, Shield, Zap } from "lucide-react";
-import ShinyText from "./ShinyText";
+import { Menu, X, ChevronDown } from "lucide-react";
 import ScrollProgress from "./ScrollProgress";
+import { PILLAR_LABELS, growthServices, techServices, type Service } from "@/data/services";
 
-const servicesList = [
-  { name: "Web Development", path: "/web-development", icon: Globe },
-  { name: "Mobile App Development", path: "/mobile-development", icon: Smartphone },
-  { name: "Backend Systems", path: "/backend-system", icon: Database },
-  { name: "Cloud Solutions", path: "/cloud-solutions", icon: Cloud },
-  { name: "Security & Compliance", path: "/security-compliance", icon: Shield },
-  { name: "Performance Optimization", path: "/performance-optimization", icon: Zap },
+const pillars: { label: string; items: Service[] }[] = [
+  { label: PILLAR_LABELS.growth, items: growthServices },
+  { label: PILLAR_LABELS.technology, items: techServices },
 ];
 
 const Navigation = () => {
@@ -46,58 +42,56 @@ const Navigation = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
       <ScrollProgress />
-      
+
       {/* Skip to main content link for screen reader accessibility */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-primary focus:text-white"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:p-4 focus:bg-primary focus:text-primary-foreground"
       >
         Skip to main content
       </a>
 
       <nav
         aria-label="Main Navigation"
-        className={`w-full transition-all duration-300 ${
-          isScrolled
-            ? "py-3 px-4 sm:px-8"
-            : "py-5 px-4 sm:px-8"
-        }`}
+        className={`w-full transition-all duration-300 ${isScrolled ? "py-3 px-4 sm:px-8" : "py-5 px-4 sm:px-8"}`}
       >
         <div className="container mx-auto">
-          <div className={`flex items-center justify-between px-6 py-3 transition-all duration-300 ${
-            isScrolled
-              ? "bg-card/70 backdrop-blur-xl border border-white/10 rounded-full shadow-2xl shadow-primary/5"
-              : "bg-card/40 backdrop-blur-md border border-white/10 rounded-full"
-          }`}>
+          <div
+            className={`flex items-center justify-between px-5 py-3 transition-all duration-300 rounded-full border ${
+              isScrolled
+                ? "bg-card/85 backdrop-blur-xl border-border shadow-soft"
+                : "bg-card/50 backdrop-blur-md border-border/70"
+            }`}
+          >
             {/* Logo Link */}
             <Link
               to="/"
-              className="flex items-center gap-3 group focus:outline-none focus:ring-2 focus:ring-primary rounded-full p-1"
+              className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-full p-1"
               aria-label="Celertus.ai Home"
             >
               <img
                 src="/favicon.png"
                 alt="Celertus.ai Logo"
-                className="w-9 h-9 object-cover rounded-full border border-primary/50 group-hover:scale-105 transition-transform duration-300 shadow-md"
+                className="w-9 h-9 object-cover rounded-full border border-border group-hover:scale-105 transition-transform duration-300"
                 width="36"
                 height="36"
               />
-              <span className="font-display text-xl font-bold tracking-wider text-foreground">
-                CELERTUS<span className="text-primary">.AI</span>
+              <span className="font-display text-lg text-foreground">
+                Celertus<span className="text-primary">.ai</span>
               </span>
             </Link>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8 font-mono text-xs uppercase tracking-wider">
+            <div className="hidden md:flex items-center gap-7 text-sm">
               <button
                 onClick={() => handleNavClick("hero")}
-                className="text-foreground/80 hover:text-primary transition-colors focus:outline-none relative group py-1"
+                className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none relative group py-1"
               >
-                <span className="text-primary/60 mr-1">[01]</span>Home
-                <span className="absolute left-0 right-0 bottom-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
+                Home
+                <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
               </button>
 
-              {/* Services Dropdown */}
+              {/* Services mega menu — grouped by pillar */}
               <div
                 className="relative"
                 onMouseEnter={() => setIsServicesDropdownOpen(true)}
@@ -105,48 +99,63 @@ const Navigation = () => {
               >
                 <button
                   onClick={() => handleNavClick("services")}
-                  className="flex items-center gap-1 text-foreground/80 hover:text-primary transition-colors focus:outline-none relative group py-1"
+                  className="flex items-center gap-1 text-muted-foreground hover:text-foreground transition-colors focus:outline-none relative group py-1"
                   aria-expanded={isServicesDropdownOpen}
                 >
-                  <span className="text-primary/60 mr-1">[02]</span>Services <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${isServicesDropdownOpen ? "rotate-180 text-primary" : ""}`} />
-                  <span className="absolute left-0 right-0 bottom-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
+                  Services
+                  <ChevronDown
+                    className={`w-3.5 h-3.5 transition-transform duration-200 ${
+                      isServicesDropdownOpen ? "rotate-180 text-primary" : ""
+                    }`}
+                  />
+                  <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
                 </button>
 
                 {isServicesDropdownOpen && (
-                  <div className="absolute top-full left-1/2 -translate-x-1/2 mt-4 w-[360px] sm:w-[680px] p-5 bg-card/98 backdrop-blur-3xl border border-white/20 rounded-3xl shadow-2xl shadow-primary/25 grid grid-cols-1 sm:grid-cols-2 gap-3 animate-in fade-in slide-in-from-top-2 duration-200 z-50 overflow-hidden">
-                    {servicesList.map((service, idx) => {
-                      const Icon = service.icon;
-                      return (
-                        <Link
-                          key={service.path}
-                          to={service.path}
-                          onClick={() => setIsServicesDropdownOpen(false)}
-                          className="flex items-center gap-3.5 px-4 py-3.5 text-xs sm:text-sm font-mono text-foreground/90 hover:text-white hover:bg-primary/20 border border-white/10 hover:border-primary/50 rounded-2xl transition-all duration-150 group/item overflow-hidden"
-                        >
-                          <span className="text-[11px] text-primary font-bold shrink-0">[0{idx+1}]</span>
-                          <Icon className="w-4.5 h-4.5 text-primary shrink-0 group-hover/item:scale-110 transition-transform" />
-                          <span className="whitespace-nowrap font-medium text-foreground group-hover/item:text-white overflow-hidden text-ellipsis">{service.name}</span>
-                        </Link>
-                      );
-                    })}
+                  <div className="absolute top-full left-1/2 -translate-x-1/2 pt-4 z-50">
+                    <div className="w-[min(90vw,720px)] p-6 bg-popover border border-border rounded-3xl shadow-soft-lg grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-6 animate-in fade-in slide-in-from-top-2 duration-200">
+                      {pillars.map((pillar) => (
+                        <div key={pillar.label}>
+                          <p className="text-xs text-muted-foreground mb-3 px-3">
+                            {pillar.label}
+                          </p>
+                          <div className="grid gap-1">
+                            {pillar.items.map((service) => {
+                              const Icon = service.icon;
+                              return (
+                                <Link
+                                  key={service.route}
+                                  to={service.route}
+                                  onClick={() => setIsServicesDropdownOpen(false)}
+                                  className="flex items-center gap-3 px-3 py-2.5 text-sm rounded-xl text-foreground hover:bg-secondary transition-colors duration-150 group/item"
+                                >
+                                  <Icon className="w-4 h-4 text-primary shrink-0" />
+                                  <span className="truncate">{service.title}</span>
+                                </Link>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
 
               <button
                 onClick={() => handleNavClick("work")}
-                className="text-foreground/80 hover:text-primary transition-colors focus:outline-none relative group py-1"
+                className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none relative group py-1"
               >
-                <span className="text-primary/60 mr-1">[03]</span>Work
-                <span className="absolute left-0 right-0 bottom-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
+                Work
+                <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
               </button>
 
               <button
                 onClick={() => handleNavClick("contact")}
-                className="text-foreground/80 hover:text-primary transition-colors focus:outline-none relative group py-1"
+                className="text-muted-foreground hover:text-foreground transition-colors focus:outline-none relative group py-1"
               >
-                <span className="text-primary/60 mr-1">[04]</span>Contact
-                <span className="absolute left-0 right-0 bottom-0 h-[2px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
+                Contact
+                <span className="absolute left-0 right-0 -bottom-0.5 h-[1.5px] bg-primary scale-x-0 group-hover:scale-x-100 transition-transform duration-200 origin-left" />
               </button>
             </div>
 
@@ -155,17 +164,17 @@ const Navigation = () => {
               <Button
                 variant="default"
                 onClick={() => handleNavClick("contact")}
-                className="cs-magnetic font-mono text-xs uppercase tracking-wider rounded-full bg-primary hover:bg-primary/90 text-white border border-primary/80 shadow-lg shadow-primary/25 hover:scale-105 active:scale-95 transition-all duration-200 px-6 py-2.5"
-                aria-label="Get Started with Celertus.ai"
+                className="cs-magnetic rounded-full bg-primary hover:bg-primary/90 text-primary-foreground text-sm font-medium px-5 py-2.5 shadow-soft"
+                aria-label="Start a project with Celertus.ai"
               >
-                <ShinyText text="Get Started" speed={3} className="text-white font-semibold" />
+                Start a project
               </Button>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-foreground focus:outline-none focus:ring-2 focus:ring-primary rounded-lg"
+              className="md:hidden p-2 text-foreground focus:outline-none focus-visible:ring-2 focus-visible:ring-ring rounded-lg"
               aria-expanded={isMobileMenuOpen}
               aria-label="Toggle Navigation Menu"
             >
@@ -175,47 +184,49 @@ const Navigation = () => {
 
           {/* Mobile Navigation Drawer */}
           {isMobileMenuOpen && (
-            <div className="md:hidden mt-4 py-4 px-4 bg-card/95 backdrop-blur-xl rounded-2xl border border-border/60 shadow-2xl animate-in fade-in slide-in-from-top-4 duration-300">
-              <div className="flex flex-col gap-3">
+            <div className="md:hidden mt-3 py-4 px-4 bg-popover rounded-3xl border border-border shadow-soft-lg animate-in fade-in slide-in-from-top-4 duration-300 max-h-[75vh] overflow-y-auto">
+              <div className="flex flex-col gap-2">
                 <button
                   onClick={() => handleNavClick("hero")}
-                  className="text-left py-2 text-sm font-medium text-foreground hover:text-primary transition-colors"
+                  className="text-left py-2 text-sm text-foreground hover:text-primary transition-colors"
                 >
                   Home
                 </button>
 
-                <div className="border-t border-border/40 pt-2">
-                  <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider block mb-2 px-1">
-                    Services
-                  </span>
-                  <div className="grid gap-2 pl-2">
-                    {servicesList.map((service) => {
-                      const Icon = service.icon;
-                      return (
-                        <Link
-                          key={service.path}
-                          to={service.path}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                          className="flex items-center gap-2 text-xs text-foreground/80 hover:text-primary py-1"
-                        >
-                          <Icon className="w-4 h-4 text-primary" />
-                          {service.name}
-                        </Link>
-                      );
-                    })}
+                {pillars.map((pillar) => (
+                  <div key={pillar.label} className="border-t border-border pt-3 mt-1">
+                    <span className="text-xs text-muted-foreground block mb-2 px-1">
+                      {pillar.label}
+                    </span>
+                    <div className="grid gap-1 pl-1">
+                      {pillar.items.map((service) => {
+                        const Icon = service.icon;
+                        return (
+                          <Link
+                            key={service.route}
+                            to={service.route}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="flex items-center gap-2.5 text-sm text-muted-foreground hover:text-primary py-1.5"
+                          >
+                            <Icon className="w-4 h-4 text-primary shrink-0" />
+                            {service.title}
+                          </Link>
+                        );
+                      })}
+                    </div>
                   </div>
-                </div>
+                ))}
 
                 <button
                   onClick={() => handleNavClick("work")}
-                  className="text-left py-2 text-sm font-medium text-foreground hover:text-primary transition-colors border-t border-border/40"
+                  className="text-left py-2 mt-2 text-sm text-foreground hover:text-primary transition-colors border-t border-border pt-3"
                 >
                   Work
                 </button>
 
                 <button
                   onClick={() => handleNavClick("contact")}
-                  className="text-left py-2 text-sm font-medium text-foreground hover:text-primary transition-colors"
+                  className="text-left py-2 text-sm text-foreground hover:text-primary transition-colors"
                 >
                   Contact
                 </button>
@@ -223,9 +234,9 @@ const Navigation = () => {
                 <Button
                   variant="default"
                   onClick={() => handleNavClick("contact")}
-                  className="mt-2 w-full cs-magnetic"
+                  className="mt-3 w-full cs-magnetic rounded-full"
                 >
-                  <ShinyText text="Get Started" speed={3} className="text-primary-foreground font-semibold" />
+                  Start a project
                 </Button>
               </div>
             </div>

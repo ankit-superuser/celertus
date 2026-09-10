@@ -17,7 +17,7 @@ const DEFAULT_IMAGE = `${DOMAIN}/social-preview.png`;
 export const SEO = ({
   title,
   description,
-  keywords = "AI solutions, software development, cloud architecture, mobile app development, web development, digital transformation, microservices, celertus",
+  keywords = "digital marketing, performance marketing, SEO services, social media marketing, brand and content, web development, mobile app development, cloud architecture, marketing agency New Delhi, celertus",
   canonicalUrl,
   ogType = "website",
   ogImage = DEFAULT_IMAGE,
