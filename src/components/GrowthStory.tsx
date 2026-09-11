@@ -4,9 +4,14 @@ import { Search, Target, Share2, FileText, Mail } from "lucide-react";
 /**
  * GrowthStory — the interactive beat of the homepage.
  *
- * A tall section with a sticky stage. Scroll progress (0→1) drives four
- * overlapping beats: the frame settles, an SVG line draws itself, three metric
- * counters run, and channel chips fly in.
+ * A tall section with a sticky stage. The heading, chart card and metric
+ * cards are always visible — only the data inside them animates with scroll
+ * progress (0→1): an SVG line draws itself, three metric counters run, and
+ * audience dots / channel chips build up. Keeping the frame itself
+ * permanently visible (rather than fading the whole layout in from
+ * opacity:0) is deliberate: an earlier version faded in the entire card,
+ * which left the section sitting on screen fully blank for a long stretch
+ * of scroll in both directions.
  *
  * Everything animates via transform / opacity / stroke-dashoffset only, so the
  * section can never cause layout shift while the numbers are changing.
@@ -102,14 +107,17 @@ const GrowthStory = () => {
     };
   }, [isStatic]);
 
-  // Beat 1 — frame settles.
-  const frameIn = easeOut(beat(progress, 0.0, 0.25));
-  // Beat 2 — the line draws.
-  const draw = easeOut(beat(progress, 0.2, 0.55));
-  // Beat 3 — counters run.
-  const count = easeOut(beat(progress, 0.35, 0.75));
-  // Beat 4 — audience dots and channel chips.
-  const settle = easeOut(beat(progress, 0.55, 1.0));
+  // The heading, chart frame and metric cards are always visible (see JSX
+  // below) — only the data inside them animates with scroll. Fading the
+  // whole layout in from opacity:0 here used to leave the section sitting
+  // on screen, fully blank, for a long stretch of scroll in both directions;
+  // keeping the frame permanently visible removes that "blank screen" entirely.
+  // Beat 1 — the line draws.
+  const draw = easeOut(beat(progress, 0.0, 0.5));
+  // Beat 2 — counters run.
+  const count = easeOut(beat(progress, 0.15, 0.65));
+  // Beat 3 — audience dots and channel chips settle in.
+  const settle = easeOut(beat(progress, 0.35, 1.0));
 
   const dotCount = 36;
   const dotsVisible = Math.round(dotCount * settle);
@@ -118,7 +126,7 @@ const GrowthStory = () => {
     <section
       id="growth"
       ref={sectionRef}
-      className={isStatic ? "relative bg-background" : "relative bg-background h-[280vh]"}
+      className={isStatic ? "relative bg-background" : "relative bg-background h-[240vh]"}
       aria-labelledby="growth-heading"
     >
       <div
@@ -129,14 +137,9 @@ const GrowthStory = () => {
         }
       >
         <div className="container mx-auto w-full">
-          {/* Heading */}
-          <div
-            className="max-w-2xl mb-10"
-            style={{
-              opacity: frameIn,
-              transform: `translateY(${(1 - frameIn) * 20}px)`,
-            }}
-          >
+          {/* Heading — a quick one-time entrance, not gated behind scroll
+              progress, so the section is never left sitting on screen blank. */}
+          <div className="max-w-2xl mb-10">
             <span className="text-sm text-muted-foreground">Why both halves matter</span>
             <h2 id="growth-heading" className="font-display text-foreground mt-3">
               Watch a campaign compound
@@ -145,13 +148,7 @@ const GrowthStory = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Chart */}
-            <div
-              className="lg:col-span-7"
-              style={{
-                opacity: frameIn,
-                transform: `translateY(${(1 - frameIn) * 24}px)`,
-              }}
-            >
+            <div className="lg:col-span-7">
               <div className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-soft">
                 <div className="flex items-baseline justify-between mb-6">
                   <p className="text-sm text-muted-foreground">
@@ -242,14 +239,10 @@ const GrowthStory = () => {
             {/* Metrics + channels */}
             <div className="lg:col-span-5">
               <div className="space-y-4">
-                {METRICS.map((metric, i) => (
+                {METRICS.map((metric) => (
                   <div
                     key={metric.label}
                     className="rounded-2xl border border-border bg-card p-5 shadow-soft"
-                    style={{
-                      opacity: frameIn,
-                      transform: `translateY(${(1 - frameIn) * (16 + i * 6)}px)`,
-                    }}
                   >
                     <p className="text-sm text-muted-foreground mb-1.5">{metric.label}</p>
                     <p className="font-display text-3xl sm:text-4xl text-foreground tabular-nums">
