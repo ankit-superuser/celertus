@@ -1,0 +1,46 @@
+name: Daily Insights Article
+
+# Runs on its own schedule (or manually) — never on `push`, so the commit
+# this workflow makes cannot re-trigger itself. The existing deploy.yml
+# workflow already reacts to that push separately.
+on:
+  schedule:
+    - cron: "30 2 * * *" # 02:30 UTC = 08:00 IST
+  workflow_dispatch:
+    inputs:
+      auto_publish:
+        description: "Commit & push the generated article (false = generate + validate only, no write)"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-insights
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5 # a hung network call should fail the run, not burn CI time.
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate today's Insights article
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          AUTO_PUBLISH: ${{ github.event.inputs.auto_publish == 'false' && 'false' || 'true' }}
+        run: npx tsx scripts/generate-daily-insight.ts
