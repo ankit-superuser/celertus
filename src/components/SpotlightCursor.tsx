@@ -35,7 +35,7 @@ const SpotlightCursor = () => {
     <div
       className="pointer-events-none fixed inset-0 z-30 transition-opacity duration-500 hidden md:block"
       style={{
-        background: `radial-gradient(650px circle at ${pos.x}px ${pos.y}px, rgba(168, 85, 247, 0.08), rgba(99, 102, 241, 0.04) 40%, transparent 80%)`,
+        background: `radial-gradient(650px circle at ${pos.x}px ${pos.y}px, rgba(91, 91, 245, 0.08), rgba(0, 207, 193, 0.04) 40%, transparent 80%)`,
       }}
     />
   );

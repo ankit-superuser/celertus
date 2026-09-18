@@ -19,10 +19,10 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['IBM Plex Mono', 'monospace'],
-				mono: ['IBM Plex Mono', 'monospace'],
-				display: ['Clash Display', 'sans-serif'],
-				heading: ['Clash Display', 'sans-serif'],
+				sans: ['Satoshi', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+				mono: ['JetBrains Mono', 'monospace'],
+				display: ['Space Grotesk', 'sans-serif'],
+				heading: ['Space Grotesk', 'sans-serif'],
 			},
 			boxShadow: {
 				'brutal-sm': '2px 2px 0px 0px rgba(168, 85, 247, 0.4)',
@@ -74,6 +74,23 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Brand palette for the marketing & technology studio redesign.
+				// Pages compose these directly (bg-studio-ink, text-studio-ember, ...)
+				// rather than the shadcn semantic tokens above, matching the source design.
+				studio: {
+					ink: '#0A0D18',
+					inkAlt: '#121726',
+					mist: '#F3F5FA',
+					cloud: '#EEF1F8',
+					indigo: '#5B5BF5',
+					indigoDark: '#4747E0',
+					indigoLight: '#8B8BFF',
+					ember: '#FF6A45',
+					teal: '#00CFC1',
+					mutedDark: '#9AA4BC',
+					mutedLight: '#5D6478',
+					hairline: '#E2E6F0',
 				}
 			},
 			backgroundImage: {

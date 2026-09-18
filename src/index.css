@@ -19,7 +19,7 @@ All colors MUST be HSL.
     --popover: 0 0% 8%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 262 83% 58%;
+    --primary: 240 89% 66%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 12%;
@@ -28,7 +28,7 @@ All colors MUST be HSL.
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 70%;
 
-    --accent: 276 100% 70%;
+    --accent: 12 100% 63%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -36,7 +36,7 @@ All colors MUST be HSL.
 
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 262 83% 58%;
+    --ring: 240 89% 66%;
 
     --radius: 1rem;
   }
@@ -51,7 +51,7 @@ All colors MUST be HSL.
     --popover: 0 0% 8%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 262 83% 58%;
+    --primary: 240 89% 66%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 0 0% 12%;
@@ -60,7 +60,7 @@ All colors MUST be HSL.
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 70%;
 
-    --accent: 276 100% 70%;
+    --accent: 12 100% 63%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -68,7 +68,7 @@ All colors MUST be HSL.
 
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 262 83% 58%;
+    --ring: 240 89% 66%;
   }
 }
 
@@ -79,38 +79,37 @@ All colors MUST be HSL.
 
   html, body {
     scroll-behavior: smooth;
-    overflow-x: hidden !important;
+    /* `clip`, not `hidden` — `hidden` forces overflow-y to compute as `auto`
+       (a legacy CSS coupling rule), which turns body into an unintended
+       scroll container and breaks `position: sticky` for any descendant
+       (used by the home page's scroll-scrubbed story section). `clip`
+       still prevents horizontal scroll without that side effect. */
+    overflow-x: clip !important;
     max-width: 100vw;
     width: 100%;
   }
 
   body {
-    font-family: 'IBM Plex Mono', monospace;
-    @apply bg-background text-foreground antialiased selection:bg-primary/40 selection:text-white leading-[1.7];
+    font-family: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
+    @apply bg-studio-mist text-studio-ink antialiased selection:bg-studio-indigo/40 selection:text-white leading-[1.7];
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Clash Display', sans-serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-    letter-spacing: 0.03em;
-    @apply text-foreground;
+    letter-spacing: -0.03em;
   }
 
-  /* Strict H1 sizing rule: Minimum 72px on desktop and >= 3x visual weight over body text */
   h1 {
-    font-size: clamp(2.75rem, 6.5vw, 5.25rem); /* Minimum 44px on mobile up to 84px */
-    line-height: 1.05;
-    letter-spacing: -0.01em;
+    line-height: 1.02;
   }
 
   h2 {
-    font-size: clamp(2rem, 4vw, 3.25rem);
-    line-height: 1.15;
+    line-height: 1.08;
   }
 
   h3 {
-    font-size: clamp(1.5rem, 2.5vw, 2.25rem);
-    line-height: 1.25;
+    line-height: 1.15;
   }
 
   p {
@@ -202,6 +201,20 @@ All colors MUST be HSL.
 @keyframes cs-float-slow {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }
+}
+
+/* ── Marketing/technology studio redesign: shared marquee + pulse dot,
+      used by the hero chip strip and the "taking on work" status dots. ── */
+@keyframes cs-marq { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes cs-pulse { 0%, 100% { opacity: .35; transform: scale(1); } 50% { opacity: 1; transform: scale(1.25); } }
+
+@layer utilities {
+  .studio-marquee-track { animation: cs-marq 38s linear infinite; }
+  .studio-pulse-dot { animation: cs-pulse 2.6s ease-in-out infinite; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .studio-marquee-track, .studio-pulse-dot { animation: none !important; }
 }
 
 /* Users who prefer reduced motion get instant, static content everywhere. */
